@@ -26,6 +26,9 @@ public class TestSorting {
         Selection.sort(array2);
         assertArrayEquals(array2_sorted, array2);
 
+        Selection.sort(array0);
+        assertArrayEquals(array0_sorted, array0);
+
     }
 
     @Test
