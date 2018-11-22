@@ -16,6 +16,11 @@ public class TestSorting {
     private static String[] array0 = {"s", "h", "e", "l", "l", "s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
     private static String[] array0_sorted = {"a", "e", "e", "e", "h", "l","l", "l", "m", "o", "p", "r", "s", "s", "t", "x"};
 
+    private static Integer[] arrayEven = {1,5,7,9, 3,6,7,10};
+    private static Integer[] arrayOdd = {1,2,4,5,7,7, 9,10, 13};
+    private static Integer[] arrayEvenMerged = {1,3,5,6, 7, 7,9,10};
+    private static Integer[] arrayOddMerged = {1,2,4,5,7,7,9,10,13};
+
 
 
     @Test
@@ -61,6 +66,27 @@ public class TestSorting {
         assertArrayEquals(array1_sorted, array1);
 
         ShellSort.sort(array2);
+        assertArrayEquals(array2_sorted, array2);
+
+    }
+
+    @Test
+    public void testMergeSort(){
+        Integer[] auxEven = new Integer[8];
+        MergeSort.merge(arrayEven, auxEven, 0, 3, 7);
+        assertArrayEquals(arrayEvenMerged,arrayEven);
+
+        Integer[] auxOdd = new Integer[9];
+        MergeSort.merge(arrayOdd, auxOdd, 0, 4, 8);
+        assertArrayEquals(arrayOddMerged,arrayOdd);
+
+        MergeSort.sort(array0);
+        assertArrayEquals(array0_sorted, array0);
+
+        MergeSort.sort(array1);
+        assertArrayEquals(array1_sorted, array1);
+
+        MergeSort.sort(array2);
         assertArrayEquals(array2_sorted, array2);
 
     }
