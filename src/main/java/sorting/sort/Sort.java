@@ -15,4 +15,13 @@ public class Sort {
         array[indexToSwap] = array[index];
         array[index] = toSwap;
     }
+
+    public static boolean isSorted(Comparable[] array, int startIndex, int endIndex){
+        for (int i = startIndex; i < endIndex; i++){
+            if(isStrictLarger(array[i], array[i+1])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -34,4 +34,13 @@ public class TestSort {
 
 
     }
+
+    @Test
+    public void testIsSorted(){
+        Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1};
+        assertFalse(Sort.isSorted(array1, 0, 7));
+
+        Integer[] array2 = {1,1,2,3,7,7,10,17};
+        assertTrue(Sort.isSorted(array2, 0, 7));
+    }
 }

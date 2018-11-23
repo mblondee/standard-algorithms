@@ -11,7 +11,7 @@ package sorting.sort;
 public class MergeSort {
 
     // merge array[low .. mid] and array[mid+1 .. high] using aux[low .. high]
-    public static void merge(Comparable[] array, Comparable[] aux, int low, int mid, int high){
+    private static void merge(Comparable[] array, Comparable[] aux, int low, int mid, int high){
 
         //copy array into aux
         for(int i = low; i <= high; i++) {
@@ -39,7 +39,7 @@ public class MergeSort {
 
     }
 
-    public static void sort(Comparable[] array, Comparable[] aux, int low, int high){
+    private static void sort(Comparable[] array, Comparable[] aux, int low, int high){
         if (high <= low){return;}
 
         int mid = low + (high - low)/2;
