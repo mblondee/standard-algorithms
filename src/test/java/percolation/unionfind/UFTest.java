@@ -30,13 +30,13 @@ public class UFTest {
 
     @BeforeClass
     public static void initialize(){
-        String locationTiny = "/Users/marjonblondeel/Documents/algorithms-datastructures/src/main/resources/tiny.txt";
+        String locationTiny = "src/main/resources/tiny.txt";
         ReadFile readingTiny = new ReadFile();
         readingTiny.readFile(locationTiny);
         numberOfElementsTiny = readingTiny.numberOfElements;
         inputPairsTiny = readingTiny.inputPairs;
 
-        String locationMedium = "/Users/marjonblondeel/Documents/algorithms-datastructures/src/main/resources/medium.txt";
+        String locationMedium = "src/main/resources/medium.txt";
         ReadFile readingMedium = new ReadFile();
         readingMedium.readFile(locationMedium);
         numberOfElementsMedium = readingMedium.numberOfElements;

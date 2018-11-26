@@ -2,7 +2,7 @@ package sorting.sort;
 
 /*implementation of merge sort
 *
-* without copying into an auxiliary array every time merge is called
+* without copying into an auxiliary array every time merge() is called
 * this is achieved by switching roles of the original array and the auxiliary array
 *
 * also before merging testing whether array is already in order and skip call to merge()

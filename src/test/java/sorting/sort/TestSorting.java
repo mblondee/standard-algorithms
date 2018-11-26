@@ -7,8 +7,8 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class TestSorting {
 
-    private static Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1};
-    private static Integer[] array1_sorted = {1,1,2,3,7,9,10,17};
+    private static Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1, 5};
+    private static Integer[] array1_sorted = {1,1,2,3,5,7,9,10,17};
 
     private static Integer[] array2 = {};
     private static Integer[] array2_sorted = {};
@@ -106,5 +106,21 @@ public class TestSorting {
 
         MergeSortImproved.sort(array3);
         assertArrayEquals(array3_sorted, array3);
+    }
+
+    @Test
+    public void testMergeSortBottomUp(){
+        MergeSortBottomUp.sort(array0);
+        assertArrayEquals(array0_sorted, array0);
+
+        MergeSortBottomUp.sort(array1);
+        assertArrayEquals(array1_sorted, array1);
+
+        MergeSortBottomUp.sort(array2);
+        assertArrayEquals(array2_sorted, array2);
+
+        MergeSortBottomUp.sort(array3);
+        assertArrayEquals(array3_sorted, array3);
+
     }
 }
