@@ -3,9 +3,6 @@ package sorting.sort;
 // implementation of selection sort
 // O(n^2) compares and n swaps  
 
-
-//TODO add comparator version
-
 import java.util.Comparator;
 
 public class Selection {
