@@ -50,6 +50,25 @@ public class TestSorting {
     }
 
     @Test
+    public void testSelectionComparator(){
+        Selection.sort(array1, Integer::compare);
+        assertArrayEquals(array1_sorted, array1);
+
+        Selection.sort(array2, Integer::compare);
+        assertArrayEquals(array2_sorted, array2);
+
+        Selection.sort(array0, String::compareToIgnoreCase);
+        assertArrayEquals(array0_sorted, array0);
+
+
+        Selection.sort(arrayOfPersons, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+
+        Selection.sort(arrayOfPersons, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+    }
+
+    @Test
     public void testInsertion(){
         Insertion.sort(array1);
         assertArrayEquals(array1_sorted, array1);
