@@ -3,6 +3,8 @@ package sorting.sort;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.Comparator;
+
 import static org.junit.Assert.assertArrayEquals;
 
 public class TestSorting {
@@ -23,6 +25,14 @@ public class TestSorting {
 
     private static Integer[] array3 = {9, 3, 7, 1, 100, 170, 20, 10};
     private static Integer[] array3_sorted = {1,3,7,9,10,20,100,170};
+
+
+    private static Person person1 = new Person("Anna", 50, "Brussels");
+    private static Person person2 = new Person("Tom", 38, "Rome");
+    private static Person person3 = new Person("Louis", 38, "Brussels");
+    private static Person[] arrayOfPersons = {person1, person2, person3};
+    private static Person[] arrayOfPersonsByAge = {person2, person3, person1};
+
 
 
     @Test
@@ -46,6 +56,21 @@ public class TestSorting {
         Insertion.sort(array2);
         assertArrayEquals(array2_sorted, array2);
 
+        Insertion.sort(array0);
+        assertArrayEquals(array0_sorted, array0);
+
+    }
+
+    @Test
+    public void testInsertionComparator(){
+        Insertion.sort(array1, Integer::compare);
+        assertArrayEquals(array1_sorted, array1);
+
+        Insertion.sort(array2, Integer::compare);
+        assertArrayEquals(array2_sorted, array2);
+
+        Insertion.sort(array0, String::compareToIgnoreCase);
+        assertArrayEquals(array0_sorted, array0);
     }
 
     @Test

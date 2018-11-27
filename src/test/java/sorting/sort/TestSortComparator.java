@@ -55,6 +55,7 @@ public class TestSortComparator {
 
         String[] arrayS1 = {"", "haha", "akaka"};
         String[] arrayS2 = {"haha", "", "akaka"};
+        String[] arrayS3 = {};
 
         assertTrue(Sort.isSorted(arrayS1, 0,2, StringLength));
         assertTrue(Sort.isSorted(arrayS1, 1,2, StringLength));
