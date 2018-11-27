@@ -1,13 +1,24 @@
 package sorting.sort;
 
+import java.util.Comparator;
+
 public class Sort {
+
 
     public static boolean isStrictLess(Comparable element1, Comparable element2){
         return element1.compareTo(element2) < 0;
     }
 
+    public static <T> boolean isStrictLess(T element1, T element2, Comparator<T> comparator){
+        return comparator.compare(element1, element2) < 0;
+    }
+
     public static boolean isStrictLarger(Comparable element1, Comparable element2){
         return element1.compareTo(element2) > 0;
+    }
+
+    public static boolean isStrictLarger(Object element1, Object element2, Comparator comparator){
+        return comparator.compare(element1, element2) > 0;
     }
 
     public static void swap(Comparable[] array, int indexToSwap, int index){
@@ -19,6 +30,17 @@ public class Sort {
     public static boolean isSorted(Comparable[] array, int startIndex, int endIndex){
         for (int i = startIndex; i < endIndex; i++){
             if(isStrictLarger(array[i], array[i+1])){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+    public static <T> boolean isSorted(T[] array, int startIndex, int endIndex, Comparator<T> comparator){
+        for (int i = startIndex; i < endIndex; i++){
+            if (isStrictLarger(array[i], array[i+1], comparator)){
                 return false;
             }
         }
