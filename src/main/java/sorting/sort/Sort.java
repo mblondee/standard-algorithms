@@ -17,12 +17,12 @@ public class Sort {
         return element1.compareTo(element2) > 0;
     }
 
-    public static boolean isStrictLarger(Object element1, Object element2, Comparator comparator){
+    public static <T> boolean isStrictLarger(T element1, T element2, Comparator<T> comparator){
         return comparator.compare(element1, element2) > 0;
     }
 
-    public static void swap(Comparable[] array, int indexToSwap, int index){
-        Comparable toSwap = array[indexToSwap];
+    public static <T> void swap(T[] array, int indexToSwap, int index){
+        T toSwap = array[indexToSwap];
         array[indexToSwap] = array[index];
         array[index] = toSwap;
     }

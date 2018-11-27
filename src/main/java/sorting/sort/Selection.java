@@ -3,6 +3,9 @@ package sorting.sort;
 // implementation of selection sort
 // O(n^2) compares and n swaps  
 
+
+//TODO add comparator version
+
 public class Selection {
 
     //sorting an array in ascending order

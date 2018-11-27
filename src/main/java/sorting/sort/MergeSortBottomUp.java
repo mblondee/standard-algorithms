@@ -7,6 +7,8 @@ package sorting.sort;
 * log N passes through the array
 * */
 
+//TODO add comparator version
+
 public class MergeSortBottomUp {
 
     // merge array[low .. mid] and array[mid+1 .. high] using aux[low .. high]

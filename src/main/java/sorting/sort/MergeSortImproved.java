@@ -8,6 +8,9 @@ package sorting.sort;
 * also before merging testing whether array is already in order and skip call to merge()
 * */
 
+
+//TODO add comparator version
+
 public class MergeSortImproved {
 
     // merge original[low .. mid] and original[mid+1 .. high]

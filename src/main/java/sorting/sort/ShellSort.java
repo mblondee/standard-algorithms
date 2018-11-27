@@ -7,6 +7,8 @@ package sorting.sort;
 // repeat with next h until h=1
 
 
+//TODO add comparator version
+
 public class ShellSort {
 
 

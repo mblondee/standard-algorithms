@@ -8,6 +8,8 @@ package sorting.sort;
 * using an auxiliary array to merge -> requires extra space proportional to N
 * */
 
+//TODO add comparator version
+
 public class MergeSort {
 
     // merge array[low .. mid] and array[mid+1 .. high] using aux[low .. high]

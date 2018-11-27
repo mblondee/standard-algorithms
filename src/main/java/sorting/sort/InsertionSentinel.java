@@ -7,6 +7,8 @@ package sorting.sort;
 // eliminates the j>0 test in the inner loop of insertion sort
 // also eliminating all swaps to move a smaller element to the beginning of the array
 
+//TODO add comparator version
+
 public class InsertionSentinel {
 
     public static void sort(Comparable[] array){
