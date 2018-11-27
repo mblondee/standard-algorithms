@@ -7,7 +7,6 @@ package sorting.sort;
 // eliminates the j>0 test in the inner loop of insertion sort
 // also eliminating all swaps to move a smaller element to the beginning of the array
 
-//TODO add comparator version
 
 import java.util.Comparator;
 
