@@ -32,6 +32,7 @@ public class TestSorting {
     private static Person person3 = new Person("Louis", 38, "Brussels");
     private static Person[] arrayOfPersons = {person1, person2, person3};
     private static Person[] arrayOfPersonsByAge = {person2, person3, person1};
+    private static Person[] arrayOfPersonsByName = {person1, person3, person2};
 
 
 
@@ -71,6 +72,12 @@ public class TestSorting {
 
         Insertion.sort(array0, String::compareToIgnoreCase);
         assertArrayEquals(array0_sorted, array0);
+
+        Insertion.sort(arrayOfPersons, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+
+        Insertion.sort(arrayOfPersons, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
     }
 
     @Test
@@ -80,6 +87,25 @@ public class TestSorting {
 
         InsertionSentinel.sort(array2);
         assertArrayEquals(array2_sorted, array2);
+
+    }
+
+    @Test
+    public void testInsertionSentinelComparator() {
+        InsertionSentinel.sort(array1, Integer::compare);
+        assertArrayEquals(array1_sorted, array1);
+
+        InsertionSentinel.sort(array2, Integer::compare);
+        assertArrayEquals(array2_sorted, array2);
+
+        InsertionSentinel.sort(array0, String::compareToIgnoreCase);
+        assertArrayEquals(array0_sorted, array0);
+
+        InsertionSentinel.sort(arrayOfPersons, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+
+        InsertionSentinel.sort(arrayOfPersons, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
 
     }
 
