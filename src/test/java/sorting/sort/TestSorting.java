@@ -143,6 +143,25 @@ public class TestSorting {
     }
 
     @Test
+    public void testShellSortComparator() {
+        ShellSort.sort(array1, Integer::compare);
+        assertArrayEquals(array1_sorted, array1);
+
+        ShellSort.sort(array2, Integer::compare);
+        assertArrayEquals(array2_sorted, array2);
+
+        ShellSort.sort(array0, String::compareToIgnoreCase);
+        assertArrayEquals(array0_sorted, array0);
+
+        ShellSort.sort(arrayOfPersons, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+
+        ShellSort.sort(arrayOfPersons, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+
+    }
+
+    @Test
     public void testMergeSort(){
 /*        Integer[] auxEven = new Integer[8];
         MergeSort.merge(arrayEven, auxEven, 0, 3, 7);
