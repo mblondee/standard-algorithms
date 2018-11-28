@@ -1,13 +1,17 @@
 package sorting.sort;
 
-// implementation of shellsort
-// h-sorting the array using the increment sequence h = 3h+1, starting with 1 (1,4, 13, 40, ...)
-// we start from the highest h that is still an index in the array
-// for every index i>=h compare array[i] with array[i-h], array[i-2*h], ...
-// repeat with next h until h=1
+/*
+* implementation of shellsort
+* h-sorting the array using the increment sequence h = 3h+1, starting with 1 (1,4, 13, 40, ...)
+*
+* we start from the highest h that is still an index in the array
+* for every index i>=h compare array[i] with array[i-h], array[i-2*h], ...
+* repeat with next h until h=1
+* is not stable
+* */
 
 
-// todo is stable?
+
 
 import java.util.Comparator;
 

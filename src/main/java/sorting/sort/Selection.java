@@ -1,9 +1,15 @@
 package sorting.sort;
 
-// implementation of selection sort
-// O(n^2) compares and n swaps  
+/*
+* implementation of selection sort
+* O(n^2) compares and n swaps
+*
+* is not stable
+* */
 
-//TODO is stable?
+
+
+
 
 import java.util.Comparator;
 
