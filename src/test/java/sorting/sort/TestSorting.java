@@ -263,6 +263,12 @@ public class TestSorting {
         MergeSortImproved.sort(arrayOfPersons, Person.compareByName);
         assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
 
+        // test stability
+        MergeSortImproved.sort(arrayOfPersonsA, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsAlfabet, arrayOfPersonsA);
+        MergeSortImproved.sort(arrayOfPersonsA, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAlfabetAge, arrayOfPersonsA);
+
     }
 
 

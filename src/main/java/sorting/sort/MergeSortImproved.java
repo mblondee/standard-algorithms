@@ -6,9 +6,12 @@ package sorting.sort;
 * this is achieved by switching roles of the original array and the auxiliary array
 *
 * also before merging testing whether array is already in order and skip call to merge()
+*
+* two version one using the natural order and one using comparators
+* is stable
 * */
 
-// todo is stable?
+
 
 import java.util.Comparator;
 
