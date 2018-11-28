@@ -5,10 +5,12 @@ package sorting.sort;
 * repeatedly merging together small sub arrays on one pass through the array
 * using sub arrays of length 1,2,4,8,...
 * log N passes through the array
+*
+* two version one using the natural order and one using comparators
+* is stable
 * */
 
 
-// todo is stable?
 
 import java.util.Comparator;
 

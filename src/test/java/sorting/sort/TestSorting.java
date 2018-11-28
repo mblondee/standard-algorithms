@@ -300,5 +300,11 @@ public class TestSorting {
         MergeSortBottomUp.sort(arrayOfPersons, Person.compareByName);
         assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
 
+        // test stability
+        MergeSortBottomUp.sort(arrayOfPersonsA, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsAlfabet, arrayOfPersonsA);
+        MergeSortBottomUp.sort(arrayOfPersonsA, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAlfabetAge, arrayOfPersonsA);
+
     }
 }
