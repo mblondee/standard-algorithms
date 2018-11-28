@@ -1,13 +1,17 @@
 package sorting.sort;
 
-// implementation of insertion sort with a sentinel
-// first put smallest element in first position
-// for every index i compare with array[i] with array[j] with j=i-1 to j=0, swap if smaller
-// break if not smaller
-// eliminates the j>0 test in the inner loop of insertion sort
-// also eliminating all swaps to move a smaller element to the beginning of the array
 
-//TODO: is stable?
+/*
+*implementation of insertion sort with a sentinel
+*first put smallest element in first position
+* for every index i compare with array[i] with array[j] with j=i-1 to j=0, swap if smaller
+* break if not smaller
+* eliminates the j>0 test in the inner loop of insertion sort
+* also eliminating all swaps to move a smaller element to the beginning of the array
+*
+* two version one using the natural order and one using comparators
+* is stable
+* */
 
 import java.util.Comparator;
 
