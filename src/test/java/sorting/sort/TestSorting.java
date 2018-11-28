@@ -34,6 +34,16 @@ public class TestSorting {
     private static Person[] arrayOfPersonsByAge = {person2, person3, person1};
     private static Person[] arrayOfPersonsByName = {person1, person3, person2};
 
+    private static Person person1A = new Person("Anna", 5, "Brussels");
+    private static Person person2A = new Person("Bob", 5, "Rome");
+    private static Person person3A = new Person("Chris", 8, "Brussels");
+    private static Person person4A = new Person("David", 3, "Brussels");
+    private static Person person5A = new Person("Erik", 8, "Brussels");
+    private static Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
+    private static Person[] arrayOfPersonsAlfabet = {person1A, person2A, person3A, person4A, person5A};
+    private static Person[] arrayOfPersonsByAlfabetAge = {person4A, person1A, person2A, person3A, person5A};
+
+
 
 
     @Test
@@ -180,6 +190,8 @@ public class TestSorting {
         MergeSort.sort(array2);
         assertArrayEquals(array2_sorted, array2);
 
+
+
     }
 
     @Test
@@ -198,6 +210,12 @@ public class TestSorting {
 
         MergeSort.sort(arrayOfPersons, Person.compareByName);
         assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+
+        // test stability
+        MergeSort.sort(arrayOfPersonsA, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsAlfabet, arrayOfPersonsA);
+        MergeSort.sort(arrayOfPersonsA, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAlfabetAge, arrayOfPersonsA);
 
     }
 

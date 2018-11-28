@@ -6,6 +6,9 @@ package sorting.sort;
 * at most 6NlogN array accesses
 * for arrays of length N
 * using an auxiliary array to merge -> requires extra space proportional to N
+*
+* two version one using the natural order and one using comparators
+* stable sort
 * */
 
 
