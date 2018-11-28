@@ -8,6 +8,7 @@ package sorting.sort;
 * */
 
 
+// todo is stable?
 
 import java.util.Comparator;
 

@@ -107,6 +107,12 @@ public class TestSorting {
 
         Insertion.sort(arrayOfPersons, Person.compareByName);
         assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+
+        // test stability
+        Insertion.sort(arrayOfPersonsA, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsAlfabet, arrayOfPersonsA);
+        Insertion.sort(arrayOfPersonsA, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAlfabetAge, arrayOfPersonsA);
     }
 
     @Test

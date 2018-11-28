@@ -7,7 +7,13 @@ break if not smaller
 worst case ~N^2/2 compares and  ~N^2/2 swaps
 best case N-1 compares and 0 swaps
 average case ~N^2/4 compares and ~N^2/4 swaps
+
+two version one using the natural order and one using comparators
+is stable
 */
+
+
+
 
 
 import java.util.Comparator;

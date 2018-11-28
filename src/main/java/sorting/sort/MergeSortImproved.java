@@ -8,7 +8,7 @@ package sorting.sort;
 * also before merging testing whether array is already in order and skip call to merge()
 * */
 
-
+// todo is stable?
 
 import java.util.Comparator;
 

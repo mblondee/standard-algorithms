@@ -7,6 +7,7 @@ package sorting.sort;
 // repeat with next h until h=1
 
 
+// todo is stable?
 
 import java.util.Comparator;
 
