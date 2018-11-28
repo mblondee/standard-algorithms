@@ -183,6 +183,25 @@ public class TestSorting {
     }
 
     @Test
+    public void testMergeSortComparator(){
+        MergeSort.sort(array1, Integer::compare);
+        assertArrayEquals(array1_sorted, array1);
+
+        MergeSort.sort(array2, Integer::compare);
+        assertArrayEquals(array2_sorted, array2);
+
+        MergeSort.sort(array0, String::compareToIgnoreCase);
+        assertArrayEquals(array0_sorted, array0);
+
+        MergeSort.sort(arrayOfPersons, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+
+        MergeSort.sort(arrayOfPersons, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+
+    }
+
+    @Test
     public void testMergeSortImproved(){
         MergeSortImproved.sort(array0);
         assertArrayEquals(array0_sorted, array0);
