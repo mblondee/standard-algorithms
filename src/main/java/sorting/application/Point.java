@@ -2,23 +2,46 @@ package sorting.application;
 
 /*
 * a data type for points in the plane
+* two points can be compared to a reference point by there respective slopes
 * */
 
-//TODO override hashCode()
 
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Point implements Comparable<Point> {
 
     private final int x; // x-coordinate of the point, cannot change
     private final int y; // y-coordinate of the point, cannot change
 
+    // a comparator with respect to this point
+    public final Comparator<Point> CompareSlope = new CompareSlope();
+
 
     //initializing a point
     public Point(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    // a comparator comparing two points by slope
+    private class CompareSlope implements Comparator<Point>{
+        @Override
+        public int compare(Point point1, Point point2){
+            double slope1 = slope(point1);
+            double slope2 = slope(point2);
+            if (slope1 == slope2){
+                return 0; // also 0 when both Double.POSITIVE_INFINITY
+            }
+            else if (slope1 < slope2){
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        }
+
     }
 
     public int getX(){
@@ -54,6 +77,10 @@ public class Point implements Comparable<Point> {
         return compareTo((Point)otherPoint) == 0;
     }
 
+    @Override
+    public int hashCode(){
+        return Objects.hash(x,y);
+    }
 
     /*
     * return slope between the point and another point
@@ -69,7 +96,7 @@ public class Point implements Comparable<Point> {
             return Double.POSITIVE_INFINITY;
         }
         else{
-            return (otherPoint.getY() - y) / (otherPoint.getX() - x);
+            return (double) (otherPoint.getY() - y) / (otherPoint.getX() - x);
         }
     }
 
