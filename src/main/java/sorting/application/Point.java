@@ -1,11 +1,13 @@
 package sorting.application;
 
 /*
-* a data type for points in the plane
+* a data type for points in the plane, coordinates are integers
 * two points can be compared to a reference point by there respective slopes
 * */
 
 
+
+import help.libraries.StdDraw;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -23,6 +25,14 @@ public class Point implements Comparable<Point> {
     public Point(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
     }
 
     /*
@@ -47,13 +57,7 @@ public class Point implements Comparable<Point> {
 
     }
 
-    public int getX(){
-        return x;
-    }
 
-    public int getY(){
-        return y;
-    }
 
     @Override
     public String toString(){
@@ -103,6 +107,9 @@ public class Point implements Comparable<Point> {
         }
     }
 
+    public void draw(){
+        StdDraw.point((double)x,(double)y);
+    }
 
 
 
