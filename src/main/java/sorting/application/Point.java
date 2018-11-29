@@ -15,17 +15,20 @@ public class Point implements Comparable<Point> {
     private final int x; // x-coordinate of the point, cannot change
     private final int y; // y-coordinate of the point, cannot change
 
-    // a comparator with respect to this point
+    /* a comparator with respect to this point*/
     public final Comparator<Point> CompareSlope = new CompareSlope();
 
 
-    //initializing a point
+    /*initializing a point*/
     public Point(int x, int y){
         this.x = x;
         this.y = y;
     }
 
-    // a comparator comparing two points by slope
+    /*
+     * a comparator that compares two points by the slopes they make with this point
+     * (x1,y1) is less than (x2, y2) if slope(x1,y1) < slope(x2,y2)
+     * */
     private class CompareSlope implements Comparator<Point>{
         @Override
         public int compare(Point point1, Point point2){
@@ -100,10 +103,7 @@ public class Point implements Comparable<Point> {
         }
     }
 
-    /*
-    * return a comparator that compares two points by the slopes they make with this point
-    * (x1,y1) is less than (x2, y2) if slope(x1,y1) < slope(x2,y2)
-    * */
+
 
 
 
