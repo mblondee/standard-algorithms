@@ -17,6 +17,9 @@ public class CollinearPoints {
     private ArrayList<LineSegment> lineSegments = new ArrayList<>(); //list for adding lineSegments
     private int numberChecking; // at least 3
 
+    private static int SCALE = 33000; //scale for drawing
+    private static double RADIUS = 0.005; //pen radius for drawing
+
     public CollinearPoints(Point[] points, int numberChecking){
 
         this.points = points;
@@ -33,9 +36,9 @@ public class CollinearPoints {
     }
 
     public void draw(){
-        StdDraw.setXscale(0, 33000);
-        StdDraw.setYscale(0, 33000);
-        StdDraw.setPenRadius(0.005);
+        StdDraw.setXscale(0, SCALE);
+        StdDraw.setYscale(0, SCALE);
+        StdDraw.setPenRadius(RADIUS);
         for (Point p : points){
             p.draw();
         }
