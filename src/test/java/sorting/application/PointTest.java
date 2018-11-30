@@ -69,6 +69,14 @@ public class PointTest {
 
     }
 
+    @Test
+    public void otherTestCompare(){
+        Point point1 = new Point(1,2);
+        Point point2 = new Point(4,10);
+        Point refPoint = new Point(2,5);
+        Point point4 = new Point(1,9);
+        System.out.println(refPoint.CompareSlope.compare(refPoint, point4));
+    }
 
 
 }
