@@ -26,6 +26,12 @@ public class TestSorting {
     private static Integer[] array3 = {9, 3, 7, 1, 100, 170, 20, 10};
     private static Integer[] array3_sorted = {1,3,7,9,10,20,100,170};
 
+    private static Integer[] array4 = {1,1,1,1,1};
+    private static Integer[] array4_sorted = {1,1,1,1,1};
+
+    private static Integer[] array5 = {1,2,3,4,5};
+    private static Integer[] array5_sorted = {1,2,3,4,5};
+
 
     private static Person person1 = new Person("Anna", 50, "Brussels");
     private static Person person2 = new Person("Tom", 38, "Rome");
@@ -311,6 +317,47 @@ public class TestSorting {
         assertArrayEquals(arrayOfPersonsAlfabet, arrayOfPersonsA);
         MergeSortBottomUp.sort(arrayOfPersonsA, Person.compareByAge);
         assertArrayEquals(arrayOfPersonsByAlfabetAge, arrayOfPersonsA);
+
+    }
+
+    @Test
+    public void testQuickSort(){
+        QuickSort.sort(array0);
+        assertArrayEquals(array0_sorted, array0);
+
+        QuickSort.sort(array1);
+        assertArrayEquals(array1_sorted, array1);
+
+        QuickSort.sort(array2);
+        assertArrayEquals(array2_sorted, array2);
+
+        QuickSort.sort(array3);
+        assertArrayEquals(array3_sorted, array3);
+
+        QuickSort.sort(array4);
+        assertArrayEquals(array4_sorted, array4);
+
+
+
+    }
+
+    @Test
+    public void testQuickSortComparator(){
+        QuickSort.sort(array1, Integer::compare);
+        assertArrayEquals(array1_sorted, array1);
+
+        QuickSort.sort(array2, Integer::compare);
+        assertArrayEquals(array2_sorted, array2);
+
+        QuickSort.sort(array0, String::compareToIgnoreCase);
+        assertArrayEquals(array0_sorted, array0);
+
+        QuickSort.sort(arrayOfPersons, Person.compareByAge);
+        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+
+        QuickSort.sort(arrayOfPersons, Person.compareByName);
+        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+
 
     }
 }
