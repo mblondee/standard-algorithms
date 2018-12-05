@@ -2,12 +2,16 @@ package sorting.sort;
 
 /*
 * implementation of quicksort
-*
+* for the pivotIndex that will partition the array we choose 0: this would mean O(n^2) in worst case
+* average case nlog(n)
+* not stable
 * */
 
 import java.util.Comparator;
 
 public class QuickSort {
+
+
 
     // puts array[low] into its final index (partitionIndex)
     // for all i, i < partitionIndex: array[i] <= array[partitionIndex]
@@ -15,7 +19,9 @@ public class QuickSort {
     // returns partitionIndex
     // using natural order
     private static int partition(Comparable[] array, int low, int high){
-        Comparable toPutInPlace = array[low];
+        int pivotIndex = low;
+        Comparable toPutInPlace = array[pivotIndex];
+
 
         int left = low; // pointer moving from left to right
         int right = high + 1; // pointer moving from right to left, at end will be index to swap with low
@@ -39,13 +45,13 @@ public class QuickSort {
                 break;
             }
             else{
-                // swap elements because there violate the property we want
+                // swap elements because they violate the property we want
                 Sort.swap(array, left, right);
             }
 
         }
 
-        Sort.swap(array, low, right);
+        Sort.swap(array, pivotIndex, right);
         return right;
     }
 

@@ -33,6 +33,9 @@ public class TestSorting {
     private static Integer[] array5_sorted = {1,2,3,4,5};
 
 
+    private static Integer[] array6 = {7,2,3,4,5};
+    private static Integer[] array6_sorted = {2,3,4,5,7};
+
     private static Person person1 = new Person("Anna", 50, "Brussels");
     private static Person person2 = new Person("Tom", 38, "Rome");
     private static Person person3 = new Person("Louis", 38, "Brussels");
@@ -322,7 +325,7 @@ public class TestSorting {
 
     @Test
     public void testQuickSort(){
-        QuickSort.sort(array0);
+/*        QuickSort.sort(array0);
         assertArrayEquals(array0_sorted, array0);
 
         QuickSort.sort(array1);
@@ -336,6 +339,13 @@ public class TestSorting {
 
         QuickSort.sort(array4);
         assertArrayEquals(array4_sorted, array4);
+
+
+        QuickSort.sort(array5);
+        assertArrayEquals(array5_sorted, array5);*/
+
+        QuickSort.sort(array6);
+        assertArrayEquals(array6_sorted, array6);
 
 
 
