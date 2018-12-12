@@ -2,11 +2,12 @@ package sorting.sort;
 
 /*
 * implementation of quicksort
-* for the pivotIndex that will partition the array we choose 0: this would mean O(n^2) in worst case
-* average case nlog(n)
+* for the pivotIndex that will partition the array we choose 0: this would mean O(n^2/2) in worst case
+* average case ~ 2 nlog(n) compares
 * not stable
 * */
 
+import java.util.Collections;
 import java.util.Comparator;
 
 public class QuickSort {

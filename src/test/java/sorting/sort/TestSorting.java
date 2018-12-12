@@ -325,7 +325,7 @@ public class TestSorting {
 
     @Test
     public void testQuickSort(){
-/*        QuickSort.sort(array0);
+        QuickSort.sort(array0);
         assertArrayEquals(array0_sorted, array0);
 
         QuickSort.sort(array1);
@@ -342,7 +342,7 @@ public class TestSorting {
 
 
         QuickSort.sort(array5);
-        assertArrayEquals(array5_sorted, array5);*/
+        assertArrayEquals(array5_sorted, array5);
 
         QuickSort.sort(array6);
         assertArrayEquals(array6_sorted, array6);
@@ -367,6 +367,33 @@ public class TestSorting {
 
         QuickSort.sort(arrayOfPersons, Person.compareByName);
         assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+
+
+    }
+
+    @Test
+    public void testQuickMedianOfThreeSort(){
+        QuickSortMedianOfThree.sort(array0);
+        assertArrayEquals(array0_sorted, array0);
+
+        QuickSortMedianOfThree.sort(array1);
+        assertArrayEquals(array1_sorted, array1);
+
+        QuickSortMedianOfThree.sort(array2);
+        assertArrayEquals(array2_sorted, array2);
+
+        QuickSortMedianOfThree.sort(array3);
+        assertArrayEquals(array3_sorted, array3);
+
+        QuickSortMedianOfThree.sort(array4);
+        assertArrayEquals(array4_sorted, array4);
+
+
+        QuickSortMedianOfThree.sort(array5);
+        assertArrayEquals(array5_sorted, array5);
+        QuickSortMedianOfThree.sort(array6);
+        assertArrayEquals(array6_sorted, array6);
+
 
 
     }
