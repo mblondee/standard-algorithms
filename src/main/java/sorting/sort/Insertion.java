@@ -37,6 +37,20 @@ public class Insertion {
         }
     }
 
+    //sorting a subarray in ascending order using the natural order
+    public static void sort(Comparable[] array, int low, int high){
+        for(int i = low + 1; i<=high; i++){
+            for(int j = i; j>0; j--){
+                if (Sort.isStrictLess(array[j], array[j-1])){
+                    Sort.swap(array, j, j-1);
+                }
+                else{break;}
+            }
+
+
+        }
+    }
+
     //sorting an array in ascending order using a comparator
     public static <T> void sort(T[] array, Comparator<T> comparator){
         int length = array.length;
@@ -45,7 +59,19 @@ public class Insertion {
                 if (Sort.isStrictLess(array[j], array[j-1], comparator)){
                     Sort.swap(array, j, j-1);
                 }
-                else{break;}
+            }
+
+
+        }
+    }
+
+    //sorting a subarray in ascending order using a comparator
+    public static <T> void sort(T[] array, int low, int high, Comparator<T> comparator){
+        for(int i = low + 1; i<=high; i++){
+            for(int j = i; j>0; j--){
+                if (Sort.isStrictLess(array[j], array[j-1], comparator)){
+                    Sort.swap(array, j, j-1);
+                }
             }
 
 
