@@ -27,6 +27,8 @@ public class Sort {
         array[index] = toSwap;
     }
 
+
+
     public static boolean isSorted(Comparable[] array, int startIndex, int endIndex){
         for (int i = startIndex; i < endIndex; i++){
             if(isStrictLarger(array[i], array[i+1])){
@@ -34,6 +36,11 @@ public class Sort {
             }
         }
         return true;
+    }
+
+
+    public static boolean isSorted(Comparable[] array){
+          return isSorted(array, 0, array.length-1);
     }
 
 
@@ -45,5 +52,10 @@ public class Sort {
             }
         }
         return true;
+    }
+
+
+    public static <T> boolean isSorted(T[] array, Comparator<T> comparator) {
+        return isSorted(array, 0, array.length - 1, comparator);
     }
 }

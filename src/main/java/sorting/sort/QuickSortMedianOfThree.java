@@ -110,7 +110,7 @@ public class QuickSortMedianOfThree {
         if(high <= low){}
 
         // check whether subarray has at least CUTOFF elements
-        if(high-low + 1 < CUTOFF){
+        else if(high-low + 1 < CUTOFF){
             Insertion.sort(array, low, high, comparator );
         }
 
@@ -148,40 +148,10 @@ public class QuickSortMedianOfThree {
     public static void sort(Comparable[] array){
         quicksort(array, 0, array.length-1);
     }
+
     public static <T> void sort(T[] array, Comparator<T> comparator){
         quicksort(array, 0, array.length-1, comparator);
     }
 
-/*    private static void insertionSort(Comparable[] array, int low, int high){
-        for(int i = low+1; i<=high; i++){
-            for(int j = i; j>low; j--){
-                if (Sort.isStrictLess(array[j], array[j-1])){
-                    Sort.swap(array, j, j-1);
-                }
-                else{break;}
-            }
-
-
-        }
-
-    }*/
-
-/*    private static <T> void insertionSort(T[] array, int low, int high, Comparator<T> comparator){
-        for(int i = low+1; i<=high; i++){
-            System.out.println(i);
-            System.out.println(array[i]);
-            for(int j = i; j>low; j--){
-                System.out.println(array[j]);
-                if (Sort.isStrictLess(array[j], array[j-1], comparator)){
-                    Sort.swap(array, j, j-1);
-                    for (T el: array){System.out.println(el);}
-                }
-                //else{break;}
-            }
-
-
-        }
-
-    }*/
 
 }

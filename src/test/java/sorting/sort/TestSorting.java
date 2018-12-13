@@ -6,36 +6,21 @@ import org.junit.Test;
 import java.util.Comparator;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestSorting {
 
-    private static Integer[] array1_sorted = {1,1,2,3,5,7,9,10,17};
-    private static Integer[] array2_sorted = {};
-    private static String[] array0_sorted = {"a", "e", "e", "e", "h", "l","l", "l", "m", "o", "p", "r", "s", "s", "t", "x"};
-
-    private static Integer[] arrayEven = {1,5,7,9, 3,6,7,10};
-    private static Integer[] arrayOdd = {1,2,4,5,7,7, 9,10, 13};
-    private static Integer[] arrayEvenMerged = {1,3,5,6, 7, 7,9,10};
-    private static Integer[] arrayOddMerged = {1,2,4,5,7,7,9,10,13};
-
-    private static Integer[] array3_sorted = {1,3,7,9,10,20,100,170};
-    private static Integer[] array4_sorted = {1,1,1,1,1};
-    private static Integer[] array5_sorted = {1,2,3,4,5};
-    private static Integer[] array6_sorted = {2,3,4,5,7};
 
     private static Person person1 = new Person("Anna", 50, "Brussels");
     private static Person person2 = new Person("Tom", 38, "Rome");
     private static Person person3 = new Person("Louis", 38, "Brussels");
-    //private static Person[] arrayOfPersons = {person1, person2, person3};
-    private static Person[] arrayOfPersonsByAge = {person2, person3, person1};
-    private static Person[] arrayOfPersonsByName = {person1, person3, person2};
+
 
     private static Person person1A = new Person("Anna", 5, "Brussels");
     private static Person person2A = new Person("Bob", 5, "Rome");
     private static Person person3A = new Person("Chris", 8, "Brussels");
     private static Person person4A = new Person("David", 3, "Brussels");
     private static Person person5A = new Person("Erik", 8, "Brussels");
-    //private static Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
     private static Person[] arrayOfPersonsAlfabet = {person1A, person2A, person3A, person4A, person5A};
     private static Person[] arrayOfPersonsByAlfabetAge = {person4A, person1A, person2A, person3A, person5A};
 
@@ -54,25 +39,25 @@ public class TestSorting {
 
 
         Selection.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         Selection.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         Selection.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         Selection.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         Selection.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
         Selection.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
 
         Selection.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
 
     }
 
@@ -85,20 +70,20 @@ public class TestSorting {
         Person[] arrayOfPersons = {person1, person2, person3};
 
         Selection.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         Selection.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         Selection.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
 
         Selection.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         Selection.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
     }
 
     @Test
@@ -112,25 +97,25 @@ public class TestSorting {
         Integer[] array6 = {7,2,3,4,5};
 
         Insertion.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         Insertion.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         Insertion.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         Insertion.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         Insertion.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
         Insertion.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
 
         Insertion.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
 
         String[] array7 = {"s", "h", "e", "l", "l", "s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
         String[] array7_sorted = {"s", "h", "e", "l","l", "o", "r", "s", "t", "e", "x", "a", "m", "p", "l", "e"};
@@ -147,24 +132,24 @@ public class TestSorting {
         Person[] arrayOfPersons = {person1, person2, person3};
 
         Insertion.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         Insertion.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         Insertion.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         Insertion.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         arrayOfPersons = new Person[] {person1, person2, person3};
         Insertion.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
         arrayOfPersons = new Person[] {person1, person2, person3};
         Insertion.sort(arrayOfPersons, 0, 2, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         // test stability
         Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
@@ -182,13 +167,13 @@ public class TestSorting {
 
 
         InsertionSentinel.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         InsertionSentinel.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         InsertionSentinel.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
     }
 
@@ -200,19 +185,19 @@ public class TestSorting {
         Person[] arrayOfPersons = {person1, person2, person3};
 
         InsertionSentinel.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         InsertionSentinel.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         InsertionSentinel.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         InsertionSentinel.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         InsertionSentinel.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
         // test stability
         Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
@@ -231,13 +216,13 @@ public class TestSorting {
         Integer[] array2 = {};
 
         ShellSort.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         ShellSort.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         ShellSort.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
     }
 
@@ -248,19 +233,19 @@ public class TestSorting {
         Integer[] array2 = {};
         Person[] arrayOfPersons = {person1, person2, person3};
         ShellSort.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         ShellSort.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         ShellSort.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         ShellSort.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         ShellSort.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
     }
 
@@ -274,34 +259,27 @@ public class TestSorting {
         Integer[] array4 = {1,1,1,1,1};
         Integer[] array5 = {1,2,3,4,5};
         Integer[] array6 = {7,2,3,4,5};
-/*        Integer[] auxEven = new Integer[8];
-        MergeSort.merge(arrayEven, auxEven, 0, 3, 7);
-        assertArrayEquals(arrayEvenMerged,arrayEven);
-
-        Integer[] auxOdd = new Integer[9];
-        MergeSort.merge(arrayOdd, auxOdd, 0, 4, 8);
-        assertArrayEquals(arrayOddMerged,arrayOdd);*/
 
         MergeSort.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         MergeSort.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         MergeSort.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         MergeSort.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         MergeSort.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
         MergeSort.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
 
         MergeSort.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
 
 
 
@@ -314,19 +292,19 @@ public class TestSorting {
         Integer[] array2 = {};
         Person[] arrayOfPersons = {person1, person2, person3};
         MergeSort.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         MergeSort.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         MergeSort.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         MergeSort.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         MergeSort.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
         // test stability
         Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
@@ -349,25 +327,25 @@ public class TestSorting {
         Integer[] array6 = {7,2,3,4,5};
 
         MergeSortImproved.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         MergeSortImproved.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         MergeSortImproved.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         MergeSortImproved.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         MergeSortImproved.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
         MergeSortImproved.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
 
         MergeSortImproved.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
     }
 
     @Test
@@ -377,19 +355,19 @@ public class TestSorting {
         Integer[] array2 = {};
         Person[] arrayOfPersons = {person1, person2, person3};
         MergeSortImproved.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         MergeSortImproved.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         MergeSortImproved.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         MergeSortImproved.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         MergeSortImproved.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
         // test stability
         Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
@@ -414,25 +392,25 @@ public class TestSorting {
         Integer[] array6 = {7,2,3,4,5};
 
         MergeSortBottomUp.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         MergeSortBottomUp.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         MergeSortBottomUp.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         MergeSortBottomUp.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         MergeSortBottomUp.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
         MergeSortBottomUp.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
 
         MergeSortBottomUp.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
 
     }
 
@@ -443,19 +421,19 @@ public class TestSorting {
         Integer[] array2 = {};
         Person[] arrayOfPersons = {person1, person2, person3};
         MergeSortBottomUp.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         MergeSortBottomUp.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         MergeSortBottomUp.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         MergeSortBottomUp.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         MergeSortBottomUp.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
         // test stability
         Person[] arrayOfPersonsA = {person5A, person2A, person1A, person3A, person4A};
@@ -478,26 +456,26 @@ public class TestSorting {
         Integer[] array6 = {7,2,3,4,5};
 
         QuickSort.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
 
         QuickSort.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         QuickSort.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         QuickSort.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         QuickSort.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
 
         QuickSort.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
 
         QuickSort.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
 
 
 
@@ -510,19 +488,19 @@ public class TestSorting {
         Integer[] array2 = {};
         Person[] arrayOfPersons = {person1, person2, person3};
         QuickSort.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
 
         QuickSort.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         QuickSort.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         QuickSort.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
         QuickSort.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByName));
 
 
     }
@@ -538,25 +516,26 @@ public class TestSorting {
         Integer[] array6 = {7,2,3,4,5};
 
         QuickSortMedianOfThree.sort(array0);
-        assertArrayEquals(array0_sorted, array0);
+        assertTrue(Sort.isSorted(array0));
+
 
         QuickSortMedianOfThree.sort(array1);
-        assertArrayEquals(array1_sorted, array1);
+        assertTrue(Sort.isSorted(array1));
 
         QuickSortMedianOfThree.sort(array2);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2));
 
         QuickSortMedianOfThree.sort(array3);
-        assertArrayEquals(array3_sorted, array3);
+        assertTrue(Sort.isSorted(array3));
 
         QuickSortMedianOfThree.sort(array4);
-        assertArrayEquals(array4_sorted, array4);
+        assertTrue(Sort.isSorted(array4));
 
 
         QuickSortMedianOfThree.sort(array5);
-        assertArrayEquals(array5_sorted, array5);
+        assertTrue(Sort.isSorted(array5));
         QuickSortMedianOfThree.sort(array6);
-        assertArrayEquals(array6_sorted, array6);
+        assertTrue(Sort.isSorted(array6));
 
 
 
@@ -569,20 +548,21 @@ public class TestSorting {
         Integer[] array2 = {};
         Person[] arrayOfPersons = {person1, person2, person3};
 
-/*        QuickSortMedianOfThree.sort(array1, Integer::compare);
-        assertArrayEquals(array1_sorted, array1);
+        QuickSortMedianOfThree.sort(array1, Integer::compare);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
+
 
         QuickSortMedianOfThree.sort(array2, Integer::compare);
-        assertArrayEquals(array2_sorted, array2);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
 
         QuickSortMedianOfThree.sort(array0, String::compareToIgnoreCase);
-        assertArrayEquals(array0_sorted, array0);*/
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
 
         QuickSortMedianOfThree.sort(arrayOfPersons, Person.compareByAge);
-        assertArrayEquals(arrayOfPersonsByAge, arrayOfPersons);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
 
-/*        QuickSortMedianOfThree.sort(arrayOfPersons, Person.compareByName);
-        assertArrayEquals(arrayOfPersonsByName, arrayOfPersons);*/
+        QuickSortMedianOfThree.sort(arrayOfPersons, Person.compareByName);
+        assertTrue(Sort.isSorted(arrayOfPersons, Person.compareByName));
 
 
     }
