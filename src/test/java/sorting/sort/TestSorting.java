@@ -566,4 +566,66 @@ public class TestSorting {
 
 
     }
+
+    @Test
+    public void testQuickThreeWay(){
+        String[] array0 = {"s", "h", "e", "l", "l", "s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+        Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1, 5};
+        Integer[] array2 = {};
+        Integer[] array3 = {9, 3, 7, 1, 100, 170, 20, 10};
+        Integer[] array4 = {1,1,1,1,1};
+        Integer[] array5 = {1,2,3,4,5};
+        Integer[] array6 = {7,2,3,4,5};
+
+        QuickSortThreeWay.sort(array0);
+        assertTrue(Sort.isSorted(array0));
+
+
+        QuickSortThreeWay.sort(array1);
+        assertTrue(Sort.isSorted(array1));
+
+        QuickSortThreeWay.sort(array2);
+        assertTrue(Sort.isSorted(array2));
+
+        QuickSortThreeWay.sort(array3);
+        assertTrue(Sort.isSorted(array3));
+
+        QuickSortThreeWay.sort(array4);
+        assertTrue(Sort.isSorted(array4));
+
+
+        QuickSortThreeWay.sort(array5);
+        assertTrue(Sort.isSorted(array5));
+        QuickSortThreeWay.sort(array6);
+        assertTrue(Sort.isSorted(array6));
+
+
+
+    }
+
+    @Test
+    public void testQuickThreeWayComparator(){
+        String[] array0 = {"s", "h", "e", "l", "l", "s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+        Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1, 5};
+        Integer[] array2 = {};
+        Person[] arrayOfPersons = {person1, person2, person3};
+
+        QuickSortThreeWay.sort(array1, Integer::compare);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
+
+
+        QuickSortThreeWay.sort(array2, Integer::compare);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
+
+        QuickSortThreeWay.sort(array0, String::compareToIgnoreCase);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
+
+        QuickSortThreeWay.sort(arrayOfPersons, Person.compareByAge);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
+
+        QuickSortThreeWay.sort(arrayOfPersons, Person.compareByName);
+        assertTrue(Sort.isSorted(arrayOfPersons, Person.compareByName));
+
+
+    }
 }
