@@ -1,10 +1,9 @@
 package sorting.priorityqueue;
 
-
 /*
-* priority queue implementation using an unordered array
-* using the natural order
-* */
+ * priority queue implementation using an ordered array
+ * using the natural order
+ * */
 
 //TODO: check about generic type
 
@@ -12,13 +11,12 @@ import sorting.sort.Sort;
 
 import java.util.NoSuchElementException;
 
-// restrict generic type Item
-public class UnorderedArrayMaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>{
+public class OrderedArrayMaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item> {
     private Item[] pq; //array of items
     private int numberOfItems; //number of items in pq
 
     //initialize empty pq
-    public UnorderedArrayMaxPQ(){
+    public OrderedArrayMaxPQ(){
         pq = (Item[]) new Comparable[2]; // initially array of size 2
         numberOfItems = 0; // initially no items in pq
     }
@@ -38,14 +36,21 @@ public class UnorderedArrayMaxPQ<Item extends Comparable<Item>> implements Prior
         pq = temp;
     }
 
-    // add item to pq (at the end of the array)
+    // add item to pq in correct spot, i.e. array in ascending order
     // if there is no room left on pq, resize array (doubling it)
     @Override
     public void insert(Item itemToAdd){
         if(numberOfItems == pq.length){
             resize(2*pq.length);
         }
-        pq[numberOfItems] = itemToAdd; // add item to pq
+        //find index where itemToAdd should be added
+        int indexToCheck = numberOfItems -1;
+        while(indexToCheck >= 0 && Sort.isStrictLess(itemToAdd,pq[indexToCheck])){
+            pq[indexToCheck + 1] = pq[indexToCheck];
+            indexToCheck--;
+        }
+
+        pq[indexToCheck + 1] = itemToAdd; // add item to pq
         numberOfItems++; // increment number of items
     }
 
@@ -57,17 +62,7 @@ public class UnorderedArrayMaxPQ<Item extends Comparable<Item>> implements Prior
             throw new NoSuchElementException();
         }
         // find index max key
-        int max = 0;
-        for(int i = 1; i<numberOfItems; i++){
-            if(Sort.isStrictLess(pq[max] , pq[i])){
-                max = i;
-            }
-        }
-        // swap max with last
-        Sort.swap(pq, max, numberOfItems-1);
         return pq[--numberOfItems];
 
     }
-
-
 }
