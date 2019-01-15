@@ -35,9 +35,10 @@ public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>
     public int size(){return numberOfItems;}
 
     // resize array to an array with capacity
-    public void resize(int capacity){
+    private void resize(int capacity){
         Item[] temp = (Item[]) new Comparable[capacity];
-        for (int i = 0; i < numberOfItems; i++) {
+        //used indices in pq are 1 to numberOfItems
+        for (int i = 1; i <= numberOfItems; i++) {
             temp[i] = pq[i];
         }
         pq = temp;
@@ -53,6 +54,7 @@ public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>
         }
         pq[++numberOfItems] = itemToAdd; // increment numberOfItems and add item to pq (we do not use 0!)
         swim(numberOfItems);
+
     }
 
     // delete max item from pq, this element is in index 1, swap with last element, remove it from heap and
@@ -66,11 +68,16 @@ public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>
         // max item is at root (index 1)
         Item max = pq[1];
         // swap with last item (index numberOfItems) and decrement numberOfItems
-        Sort.swap(pq, 1, numberOfItems--);
+        Sort.swap(pq, 1, numberOfItems);
         // avoid loitering
-        pq[numberOfItems+1] = null;
+        pq[numberOfItems] = null;
+        numberOfItems--;
         // restore heap condition
         sink(1);
+        // resize (we need one more element than numberOfItems)
+        if(numberOfItems > 0 && numberOfItems + 1 == pq.length/4 ) {
+            resize(pq.length/2);
+        }
         return max;
 
     }

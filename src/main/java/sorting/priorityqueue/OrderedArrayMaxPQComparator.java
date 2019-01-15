@@ -29,7 +29,7 @@ public class OrderedArrayMaxPQComparator<Item> implements PriorityQueue<Item> {
     public int size(){return numberOfItems;}
 
     // resize array to an array with capacity
-    public void resize(int capacity){
+    private void resize(int capacity){
         Item[] temp = (Item[]) new Object[capacity];
         for (int i = 0; i < numberOfItems; i++) {
             temp[i] = pq[i];
