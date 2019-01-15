@@ -16,9 +16,10 @@ package sorting.priorityqueue;
 import sorting.sort.Sort;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MaxPQ<Item> implements PriorityQueue<Item> {
+public class MaxPQ<Item> implements PriorityQueue<Item>, Iterable<Item> {
     private Item[] pq; //array (heap) of items
     private int numberOfItems; //number of items in pq
     private Comparator<Item> comparatorItem; // comparator used to order items
@@ -141,6 +142,46 @@ public class MaxPQ<Item> implements PriorityQueue<Item> {
         else{
             // use comparator
             return Sort.isStrictLess(pq[i], pq[j], comparatorItem);
+        }
+    }
+
+    // returns an iterator that iterates through the items in descending order
+    public Iterator<Item> iterator(){
+        return new HeapIterator();
+    }
+
+    // an iterator
+    private class HeapIterator implements Iterator<Item>{
+        private MaxPQ<Item> copy; // copy of pq
+
+        public HeapIterator() {
+            if (comparatorItem == null){
+                // use natural order
+                copy = new MaxPQ<>();
+            }
+            else{
+                // use comparatorItem
+                copy = new MaxPQ<>(comparatorItem);
+            }
+            // copy elements of pq into copy
+            for (int i = 1; i <= numberOfItems; i++){
+                copy.insert(pq[i]);
+            }
+        }
+
+        public boolean hasNext(){
+            return !copy.isEmpty();
+        }
+
+        public void remove(){
+            throw new UnsupportedOperationException();
+        }
+
+        public Item next(){
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
+            return copy.delMax();
         }
     }
 }
