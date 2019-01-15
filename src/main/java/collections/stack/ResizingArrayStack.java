@@ -16,7 +16,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     private int numberOfItems; //number of items in stack
 
     //initialize empty stack
-    public ResizingArrayStack(){
+    public ResizingArrayStack(){ ;
         arrayStack = (Item[]) new Object[2]; // initially array of size 2
         numberOfItems = 0; // initially no items in stack
     }

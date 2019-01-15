@@ -6,13 +6,12 @@ package sorting.priorityqueue;
 * using the natural order
 * */
 
-//TODO: check about generic type
 
 import sorting.sort.Sort;
 
 import java.util.NoSuchElementException;
 
-// restrict generic type Item
+// restrict Item, has to implement Comparable<Item>
 public class UnorderedArrayMaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>{
     private Item[] pq; //array of items
     private int numberOfItems; //number of items in pq
@@ -45,8 +44,7 @@ public class UnorderedArrayMaxPQ<Item extends Comparable<Item>> implements Prior
         if(numberOfItems == pq.length){
             resize(2*pq.length);
         }
-        pq[numberOfItems] = itemToAdd; // add item to pq
-        numberOfItems++; // increment number of items
+        pq[numberOfItems++] = itemToAdd; // add item to pq and increment numberOfItems
     }
 
     // delete max item from pq
@@ -65,7 +63,7 @@ public class UnorderedArrayMaxPQ<Item extends Comparable<Item>> implements Prior
         }
         // swap max with last
         Sort.swap(pq, max, numberOfItems-1);
-        return pq[--numberOfItems];
+        return pq[--numberOfItems]; // return last element in array and decrement numberOfItems
 
     }
 

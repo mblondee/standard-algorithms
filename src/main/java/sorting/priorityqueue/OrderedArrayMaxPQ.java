@@ -5,17 +5,17 @@ package sorting.priorityqueue;
  * using the natural order
  * */
 
-//TODO: check about generic type
 
 import sorting.sort.Sort;
 
 import java.util.NoSuchElementException;
 
+// restrict Item, has to implement Comparable<Item>
 public class OrderedArrayMaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item> {
     private Item[] pq; //array of items
     private int numberOfItems; //number of items in pq
 
-    //initialize empty pq
+    //initialize empty pq array
     public OrderedArrayMaxPQ(){
         pq = (Item[]) new Comparable[2]; // initially array of size 2
         numberOfItems = 0; // initially no items in pq

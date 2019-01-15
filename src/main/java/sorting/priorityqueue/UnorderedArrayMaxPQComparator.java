@@ -45,8 +45,7 @@ public class UnorderedArrayMaxPQComparator<Item> implements PriorityQueue<Item> 
         if(numberOfItems == pq.length){
             resize(2*pq.length);
         }
-        pq[numberOfItems] = itemToAdd; // add item to pq
-        numberOfItems++; // increment number of items
+        pq[numberOfItems++] = itemToAdd; // add item to pq and increment numberOfItems
     }
 
     // delete max item from pq
@@ -65,7 +64,7 @@ public class UnorderedArrayMaxPQComparator<Item> implements PriorityQueue<Item> 
         }
         // swap max with last
         Sort.swap(pq, max, numberOfItems -1);
-        return pq[--numberOfItems];
+        return pq[--numberOfItems]; //return last element in array and decrement numberOfItems
 
     }
 }
