@@ -2,7 +2,7 @@ package sorting.priorityqueue;
 
 /*
  * priority queue implementation using a heap
- * using the natural order
+ * using the natural order or a comparator
  * in a binary heap, the items are stored in an array satisfying the heap condition
  * heap condition: item in each node is larger than or equal to the children's items
  * we do not use the index 0 in the array representing the heap
@@ -10,22 +10,30 @@ package sorting.priorityqueue;
  * parent of item in position i is found at i/2
  * */
 
-//TODO: comparator version (maybe in same class?)
 //TODO: implement iterable
-//TODO: check other versions wrt previous todo's
+//TODO: check other versions comparator and comparable in same class + implement iterable
 
 import sorting.sort.Sort;
 
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item> {
-    private Item[] pq; //array (heao) of items
+public class MaxPQ<Item> implements PriorityQueue<Item> {
+    private Item[] pq; //array (heap) of items
     private int numberOfItems; //number of items in pq
+    private Comparator<Item> comparatorItem; // comparator used to order items
 
-    //initialize empty pq
+    //initialize empty pq using natural order
     public MaxPQ(){
-        pq = (Item[]) new Comparable[2]; // initially array of size 2
+        pq = (Item[]) new Object[2]; // initially array of size 2
         numberOfItems = 0; // initially no items in pq
+    }
+
+    //initialize empty pq using a comparator
+    public MaxPQ(Comparator<Item> comparator){
+        pq = (Item[]) new Object[2]; // initially array of size 2
+        numberOfItems = 0; // initially no items in pq
+        comparatorItem = comparator;
     }
 
     @Override
@@ -36,7 +44,7 @@ public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>
 
     // resize array to an array with capacity
     private void resize(int capacity){
-        Item[] temp = (Item[]) new Comparable[capacity];
+        Item[] temp = (Item[]) new Object[capacity];
         //used indices in pq are 1 to numberOfItems
         for (int i = 1; i <= numberOfItems; i++) {
             temp[i] = pq[i];
@@ -89,7 +97,7 @@ public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>
     private void swim(int k){
         // we only use indices >1
         // heap condition is violated if item in parent is strict less than item in k
-        while(k>1 && Sort.isStrictLess(pq[k/2], pq[k])){
+        while(k>1 && isStrictLess(k/2, k)){
             // swap with parent
             Sort.swap(pq,k,k/2);
             k = k/2; // repeat with parent (k/2)
@@ -106,17 +114,33 @@ public class MaxPQ<Item extends Comparable<Item>> implements PriorityQueue<Item>
             int maxChild = 2*k;
             // check if there is a second child
             // check which child is max item
-            if(maxChild < numberOfItems && Sort.isStrictLess(pq[maxChild], pq[maxChild + 1])){
+            if(maxChild < numberOfItems && isStrictLess(maxChild, maxChild + 1)){
                 maxChild ++;
             }
             // check if parent (k) is smaller than maxChild, if so replace and repeat process, else break
-            if(Sort.isStrictLess(pq[k], pq[maxChild])){
+            if(isStrictLess(k, maxChild)){
                 Sort.swap(pq, k, maxChild);
                 k = maxChild;
             }
             else{
                 break;
             }
+        }
+    }
+
+    /*
+    * helper function
+    * is pq[i] strict less than pq[j]?
+    * */
+
+    private boolean isStrictLess(int i, int j){
+        if(comparatorItem == null){
+            // use natural order
+            return Sort.isStrictLess((Comparable) pq[i], (Comparable) pq[j]);
+        }
+        else{
+            // use comparator
+            return Sort.isStrictLess(pq[i], pq[j], comparatorItem);
         }
     }
 }

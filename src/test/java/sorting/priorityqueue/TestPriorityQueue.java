@@ -179,9 +179,11 @@ public class TestPriorityQueue {
 
     }
 
+
+
     @Test
-    public void testMaxPQ() {
-        MaxPQ<String> pq1 = new MaxPQ<>();
+    public void testMaxPQComparator() {
+        MaxPQ<String> pq1 = new MaxPQ<>(String::compareToIgnoreCase);
         assertTrue(pq1.isEmpty());
         assertEquals(0, pq1.size());
 
