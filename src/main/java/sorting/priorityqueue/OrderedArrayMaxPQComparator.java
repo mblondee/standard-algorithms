@@ -62,7 +62,13 @@ public class OrderedArrayMaxPQComparator<Item> implements PriorityQueue<Item> {
         if (isEmpty()){
             throw new NoSuchElementException();
         }
-        return pq[--numberOfItems]; //return last element in array and decrement numberOfItems
+        Item max = pq[numberOfItems - 1];
+        pq[numberOfItems - 1] = null; //avoid loitering
+        numberOfItems --;
+        if(numberOfItems > 0 && numberOfItems == pq.length/4 ) {
+            resize(pq.length/2);
+        }
+        return max;
 
     }
 }

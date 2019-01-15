@@ -64,7 +64,13 @@ public class UnorderedArrayMaxPQComparator<Item> implements PriorityQueue<Item> 
         }
         // swap max with last
         Sort.swap(pq, max, numberOfItems -1);
-        return pq[--numberOfItems]; //return last element in array and decrement numberOfItems
+        Item maxItem = pq[numberOfItems - 1];
+        pq[numberOfItems - 1] = null; //avoid loitering
+        numberOfItems --;
+        if(numberOfItems > 0 && numberOfItems == pq.length/4 ) {
+            resize(pq.length/2);
+        }
+        return maxItem;
 
     }
 }
