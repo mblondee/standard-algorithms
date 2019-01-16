@@ -1,4 +1,4 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
 /*
  * a data type for line segments in the plane, coordinates of endpoints are integers

@@ -1,4 +1,4 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
 /*
 * a data type for points in the plane, coordinates are integers

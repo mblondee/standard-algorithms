@@ -1,4 +1,4 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
 
 /*given a set of points (read from a file)

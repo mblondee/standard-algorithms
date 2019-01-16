@@ -270,5 +270,147 @@ public class TestPriorityQueue {
         assertTrue(pq1.isEmpty());
     }
 
+    @Test
+    public void testMinPQ() {
+        MinPQ<String> pq1 = new MinPQ<>();
+        assertTrue(pq1.isEmpty());
+        assertEquals(0, pq1.size());
+
+        System.out.println("inserting s");
+        pq1.insert("s");
+        assertFalse(pq1.isEmpty());
+        assertEquals(1, pq1.size());
+        System.out.println("----");
+        System.out.println("inserting h");
+        pq1.insert("h");
+
+        System.out.println("----");
+        System.out.println("inserting e");
+        pq1.insert("e");
+
+        System.out.println("inserting l");
+        System.out.println("----");
+        pq1.insert("l");
+
+        System.out.println("inserting l");
+        System.out.println("----");
+        pq1.insert("l");
+
+        System.out.println("inserting x");
+        System.out.println("----");
+        pq1.insert("x");
+
+        System.out.println("inserting a");
+        System.out.println("----");
+        pq1.insert("a");
+
+        System.out.println("----");
+        assertEquals(7, pq1.size());
+
+        for(String s : pq1){
+            System.out.println(s);
+        }
+
+        System.out.println("deleting");
+        assertEquals("a", pq1.delMin());
+        assertEquals(6, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("e", pq1.delMin());
+        assertEquals(5, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("h", pq1.delMin());
+        assertEquals(4, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("l", pq1.delMin());
+        assertEquals(3, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("l", pq1.delMin());
+        assertEquals(2, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("s", pq1.delMin());
+        assertEquals(1, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("x", pq1.delMin());
+        assertEquals(0, pq1.size());
+        assertTrue(pq1.isEmpty());
+    }
+
+    @Test
+    public void testMinPQComparator() {
+        MinPQ<String> pq1 = new MinPQ<>(String::compareToIgnoreCase);
+        assertTrue(pq1.isEmpty());
+        assertEquals(0, pq1.size());
+
+        System.out.println("inserting s");
+        pq1.insert("s");
+        assertFalse(pq1.isEmpty());
+        assertEquals(1, pq1.size());
+        System.out.println("----");
+        System.out.println("inserting h");
+        pq1.insert("h");
+
+        System.out.println("----");
+        System.out.println("inserting e");
+        pq1.insert("e");
+
+        System.out.println("inserting l");
+        System.out.println("----");
+        pq1.insert("l");
+
+        System.out.println("inserting l");
+        System.out.println("----");
+        pq1.insert("l");
+
+        System.out.println("inserting x");
+        System.out.println("----");
+        pq1.insert("x");
+
+        System.out.println("inserting a");
+        System.out.println("----");
+        pq1.insert("a");
+
+        System.out.println("----");
+        assertEquals(7, pq1.size());
+
+        for(String s : pq1){
+            System.out.println(s);
+        }
+
+        System.out.println("deleting");
+        assertEquals("a", pq1.delMin());
+        assertEquals(6, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("e", pq1.delMin());
+        assertEquals(5, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("h", pq1.delMin());
+        assertEquals(4, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("l", pq1.delMin());
+        assertEquals(3, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("l", pq1.delMin());
+        assertEquals(2, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("s", pq1.delMin());
+        assertEquals(1, pq1.size());
+
+        System.out.println("deleting");
+        assertEquals("x", pq1.delMin());
+        assertEquals(0, pq1.size());
+        assertTrue(pq1.isEmpty());
+    }
+
 
 }

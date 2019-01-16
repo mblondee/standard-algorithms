@@ -1,4 +1,4 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
 /*
 * Given a set of n distinct points in the plane, find every line segment that connects k>=3 or more of these points.

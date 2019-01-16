@@ -1,7 +1,8 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
-import help.libraries.StdDraw;
 import org.junit.Test;
+import sorting.application.collinearpoints.Point;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;

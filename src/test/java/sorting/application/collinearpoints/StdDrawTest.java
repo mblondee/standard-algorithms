@@ -1,6 +1,8 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
 import help.libraries.StdDraw;
+import sorting.application.collinearpoints.LineSegment;
+import sorting.application.collinearpoints.Point;
 
 public class StdDrawTest {
     public static void main(String[] args) {

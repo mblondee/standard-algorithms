@@ -1,7 +1,9 @@
-package sorting.application;
+package sorting.application.collinearpoints;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
+import sorting.application.collinearpoints.CollinearPoints;
+import sorting.application.collinearpoints.LineSegment;
+import sorting.application.collinearpoints.Point;
 
 import static org.junit.Assert.*;
 
