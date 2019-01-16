@@ -628,4 +628,80 @@ public class TestSorting {
 
 
     }
+
+    @Test
+    public void testHeapSort(){
+
+        String[] array0 = {"s", "h", "e", "l", "l", "s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+        String[] array00 = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+        Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1, 5};
+        Integer[] array2 = {};
+        Integer[] array3 = {9, 3, 7, 1, 100, 170, 20, 10};
+        Integer[] array4 = {1,1,1,1,1};
+        Integer[] array5 = {1,2,3,4,5};
+        Integer[] array6 = {7,2,3,4,5};
+
+
+        Integer[] array = {5,4,3,2,1};
+
+/*        HeapSort.sort(array5);
+        for(Integer s : array5){
+            System.out.println(s);
+        }*/
+
+/*        HeapSort.sort(array00);
+        for(String s : array00){
+            System.out.println(s);
+        }*/
+
+        HeapSort.sort(array0);
+        assertTrue(Sort.isSorted(array0));
+
+        HeapSort.sort(array1);
+        assertTrue(Sort.isSorted(array1));
+
+        HeapSort.sort(array2);
+        assertTrue(Sort.isSorted(array2));
+
+        HeapSort.sort(array3);
+        assertTrue(Sort.isSorted(array3));
+        HeapSort.sort(array4);
+        assertTrue(Sort.isSorted(array4));
+
+        HeapSort.sort(array5);
+        assertTrue(Sort.isSorted(array5));
+
+        HeapSort.sort(array6);
+        assertTrue(Sort.isSorted(array6));
+
+
+
+    }
+
+
+    @Test
+    public void testHeapSortComparator(){
+        String[] array0 = {"s", "h", "e", "l", "l", "s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+        Integer[] array1 = {9, 3, 7, 1, 10, 17, 2, 1, 5};
+        Integer[] array2 = {};
+        Person[] arrayOfPersons = {person1, person2, person3};
+
+        HeapSort.sort(array1, Integer::compare);
+        assertTrue(Sort.isSorted(array1, Integer::compareTo));
+
+
+        HeapSort.sort(array2, Integer::compare);
+        assertTrue(Sort.isSorted(array2, Integer::compareTo));
+
+        HeapSort.sort(array0, String::compareToIgnoreCase);
+        assertTrue(Sort.isSorted(array0, String::compareToIgnoreCase));
+
+        HeapSort.sort(arrayOfPersons, Person.compareByAge);
+        assertTrue(Sort.isSorted(arrayOfPersons,  Person.compareByAge));
+
+        HeapSort.sort(arrayOfPersons, Person.compareByName);
+        assertTrue(Sort.isSorted(arrayOfPersons, Person.compareByName));
+
+
+    }
 }

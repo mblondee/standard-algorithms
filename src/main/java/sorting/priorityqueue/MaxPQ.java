@@ -8,9 +8,11 @@ package sorting.priorityqueue;
  * we do not use the index 0 in the array representing the heap
  * hence: children of item in position i are found at 2i and 2i+1
  * parent of item in position i is found at i/2
+ *
+ * n items -> insert() <= 1 + log_2 N compares
+ *         -> delMax() <= 2 log_2 N compares
  * */
 
-//TODO: implement iterable
 //TODO: check other versions comparator and comparable in same class + implement iterable
 
 import sorting.sort.Sort;
