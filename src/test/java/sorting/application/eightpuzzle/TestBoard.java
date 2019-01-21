@@ -20,9 +20,9 @@ public class TestBoard {
         assertEquals(0, board1.hamming());
         assertEquals(4, board2.hamming());
         assertEquals(5, board3.hamming());
-        assertEquals(0, board1.manhatten());
-        assertEquals(4, board2.manhatten());
-        assertEquals(10, board3.manhatten());
+        assertEquals(0, board1.manhattan());
+        assertEquals(4, board2.manhattan());
+        assertEquals(10, board3.manhattan());
         assertTrue(board1.isGoal());
         assertFalse(board2.isGoal());
         assertFalse(board3.isGoal());
@@ -33,17 +33,17 @@ public class TestBoard {
 /*    @Test
     public void testDistance(){
         Board board1 = new Board(blocks1);
-        assertEquals(0, board1.manhatten(0,0));
-        assertEquals(0, board1.manhatten(8,8));
-        assertEquals(1, board1.manhatten(0,1));
-        assertEquals(2, board1.manhatten(0,2));
-        assertEquals(1, board1.manhatten(0,3));
-        assertEquals(2, board1.manhatten(0,4));
-        assertEquals(3, board1.manhatten(0,5));
-        assertEquals(2, board1.manhatten(0,6));
-        assertEquals(3, board1.manhatten(0,7));
-        assertEquals(4, board1.manhatten(0,8));
-        assertEquals(1, board1.manhatten(4,5));
+        assertEquals(0, board1.manhattan(0,0));
+        assertEquals(0, board1.manhattan(8,8));
+        assertEquals(1, board1.manhattan(0,1));
+        assertEquals(2, board1.manhattan(0,2));
+        assertEquals(1, board1.manhattan(0,3));
+        assertEquals(2, board1.manhattan(0,4));
+        assertEquals(3, board1.manhattan(0,5));
+        assertEquals(2, board1.manhattan(0,6));
+        assertEquals(3, board1.manhattan(0,7));
+        assertEquals(4, board1.manhattan(0,8));
+        assertEquals(1, board1.manhattan(4,5));
     }*/
 
 /*    @Test

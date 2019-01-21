@@ -1,11 +1,17 @@
 package sorting.application.eightpuzzle;
 
+import sorting.priorityqueue.MinPQ;
+
 import java.util.Arrays;
+import java.util.Comparator;
+
+//TODO: hamming needed?
 
 public class Board {
 
     private int dimension; //dimension of the board
     private int[] board; //array representing the board
+
 
     /*
     * constructs a board from an n-by-n array of blocks
@@ -47,30 +53,30 @@ public class Board {
     /*
     * returns sum of distances between blocks and their goal index
     * */
-    public int manhatten(){
+    public int manhattan(){
         int sum = 0;
         for(int i = 0; i<board.length; i++){
             if(board[i] != i + 1 && board[i] != 0){
                 // board[i] is not in place and should be in board[i]-1
                 // find distance between i and board[i] - 1
-                int distance = manhatten(i, board[i] -1);
+                int distance = manhattan(i, board[i] -1);
                 sum += distance;
             }
         }
         return sum;
     }
 
-    /*returns manhatten distance between
+    /*returns manhattan distance between
     * two indices in board
     * */
-    private int manhatten(int index1, int index2){
+    private int manhattan(int index1, int index2){
         int row1 = index1 / 3;
         int column1 = index1 % 3;
         int row2 = index2 / 3;
         int column2 = index2 % 3;
-        int distancerows = Math.abs(row1 - row2);
-        int distancecolumns = Math.abs(column1 - column2);
-        return distancecolumns + distancerows;
+        int distanceRows = Math.abs(row1 - row2);
+        int distanceColumns = Math.abs(column1 - column2);
+        return distanceColumns + distanceRows;
     }
 
     /*
@@ -103,5 +109,7 @@ public class Board {
         }
         return true;
     }
+
+
 
 }
