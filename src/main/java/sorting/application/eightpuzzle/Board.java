@@ -1,18 +1,14 @@
 package sorting.application.eightpuzzle;
 
-import sorting.priorityqueue.MinPQ;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Stack;
+import java.util.*;
 
-//TODO: hamming needed?
 
 public class Board {
 
     private int dimension; //dimension of the board
     private int[] board; //array representing the board
-    private int boardlength; // dimension*dimemsion
+    private int boardLength; // dimension*dimemsion
 
 
     /*
@@ -20,8 +16,8 @@ public class Board {
     * */
     public Board(int[][] blocks){
         dimension = blocks[0].length;
-        boardlength = dimension*dimension;
-        board = new int[boardlength];
+        boardLength = dimension*dimension;
+        board = new int[boardLength];
 
         for(int i = 0; i < dimension; i++){
             for(int j = 0; j < dimension; j++){
@@ -36,8 +32,8 @@ public class Board {
      * used in neighbours()
      * */
     private Board(int[] blocks){
-        boardlength = blocks.length;
-        dimension = (int) Math.sqrt(boardlength);
+        boardLength = blocks.length;
+        dimension = (int) Math.sqrt(boardLength);
         board = blocks;
     }
 
@@ -49,26 +45,13 @@ public class Board {
         return dimension;
     }
 
-    /*
-    returns number of blocks out of place
-    if board[i-1] != i for i = 1 .... length-1
-    */
-    public int hamming(){
-        int sum = 0;
-        for(int i = 0; i < boardlength; i++){
-            if (board[i] != i + 1 && board[i] != 0){
-                sum++;
-            }
-        }
-        return sum;
-    }
 
     /*
     * returns sum of distances between blocks and their goal index
     * */
     public int manhattan(){
         int sum = 0;
-        for(int i = 0; i<boardlength; i++){
+        for(int i = 0; i< boardLength; i++){
             if(board[i] != i + 1 && board[i] != 0){
                 // board[i] is not in place and should be in board[i]-1
                 // find distance between i and board[i] - 1
@@ -117,7 +100,7 @@ public class Board {
     * */
 
     public boolean isGoal(){
-        for(int i = 0; i<boardlength; i++){
+        for(int i = 0; i< boardLength; i++){
             if(board[i] != i + 1 && board[i] != 0){
                 return false;
             }
@@ -145,10 +128,10 @@ public class Board {
     * return all neighbours of the board: all boards that differ in one movement (up-down-left-right)
     * */
     public Iterable<Board> neighbours(){
-        Stack<Board> neighbours = new Stack<>();
+        ArrayList<Board> neighbours = new ArrayList<>();
         // find index which contains the 0 (empty block)
         int index0 = 0;
-        for (int i = 0; i < boardlength; i++){
+        for (int i = 0; i < boardLength; i++){
             if(board[i] == 0){
                 index0 = i;
                 break;
@@ -157,31 +140,31 @@ public class Board {
 
         // move empty block up (only possible if index0 >= dimension)
         if(index0 >= dimension){
-            Board above = new Board(Arrays.copyOf(board, boardlength));
+            Board above = new Board(Arrays.copyOf(board, boardLength));
             above.exchange(index0, index0-dimension);
-            neighbours.push(above);
+            neighbours.add(above);
         }
 
-        // move empty block down (only possible if index0 < boardlength - dimension)
-        if (index0 < boardlength - dimension){
-            Board under = new Board(Arrays.copyOf(board, boardlength));
+        // move empty block down (only possible if index0 < boardLength - dimension)
+        if (index0 < boardLength - dimension){
+            Board under = new Board(Arrays.copyOf(board, boardLength));
             under.exchange(index0, index0+dimension);
-            neighbours.push(under);
+            neighbours.add(under);
         }
 
 
         // move empty block left (only possible if index0 % dimension != 0)
         if (index0 % dimension != 0){
-            Board left = new Board(Arrays.copyOf(board, boardlength));
+            Board left = new Board(Arrays.copyOf(board, boardLength));
             left.exchange(index0, index0-1);
-            neighbours.push(left);
+            neighbours.add(left);
         }
 
         // move empty block right (only possible if index0 % dimension != dimension -1)
         if (index0 % dimension != dimension -1 ){
-            Board right = new Board(Arrays.copyOf(board, boardlength));
+            Board right = new Board(Arrays.copyOf(board, boardLength));
             right.exchange(index0, index0+1);
-            neighbours.push(right);
+            neighbours.add(right);
         }
 
         return neighbours;
@@ -189,13 +172,14 @@ public class Board {
 
 
     /*
-    * return a board that is obtained by exchanging 2 randoms blocks
+    * return a board that is obtained by exchanging 2 blocks
+    * using first and last not 0 index
     * */
 
     public Board exchangeTwoBlocks(){
         // find 2 blocks that are not 0
         int firstIndex = 0;
-        int lastIndex = boardlength - 1;
+        int lastIndex = boardLength - 1;
 
         while (board[firstIndex] == 0){
             firstIndex++;
@@ -204,7 +188,7 @@ public class Board {
             lastIndex--;
 
         }
-        Board newBoard = new Board(Arrays.copyOf(board, boardlength));
+        Board newBoard = new Board(Arrays.copyOf(board, boardLength));
         newBoard.exchange(firstIndex, lastIndex);
         return newBoard;
     }
