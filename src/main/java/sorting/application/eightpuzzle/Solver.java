@@ -37,19 +37,15 @@ public class Solver {
         while(! nextNodes.isEmpty() && !parallelList.isEmpty()){
             // get minimal next node
             Node current = nextNodes.delMin();
-            System.out.println("current node ");
-            System.out.println(current);
             Node currentParallel = parallelList.delMin();
-            System.out.println("current parallel node ");
-            System.out.println(currentParallel);
 
             // current board is goal board
             // puzzle is solvable
             if (current.getBoard().isGoal()){
                 solvable = true;
                 endNode = current;
-                System.out.println("solvable! printing path: ");
-                printNodes(current);
+                //System.out.println("solvable! printing path: ");
+                //printNodes(current);
                 break;
             }
 
@@ -57,8 +53,8 @@ public class Solver {
             // puzzle is not solvable
             if (currentParallel.getBoard().isGoal()){
                 solvable = false;
-                System.out.println("not solvable: printing path of parallel");
-                printNodes(currentParallel);
+                //System.out.println("not solvable: printing path of parallel");
+                //printNodes(currentParallel);
                 break;
             }
 
@@ -70,14 +66,6 @@ public class Solver {
                 }
 
             }
-
-            System.out.println("in pq: ");
-            for(Node node : nextNodes){
-                System.out.println(node);
-                System.out.println("processed " + node.getNumberNodesProcessed());
-                System.out.println("priority " + node.getPriority());
-            }
-            System.out.println("------");
 
 
             // check neighbouring boards of currentParallel
@@ -104,10 +92,9 @@ public class Solver {
     }
 
     private void printNodes(Node endNode){
-        while(endNode.getParentNode() != null){
+        while(endNode != null){
             System.out.println(endNode);
             endNode = endNode.getParentNode();
         }
-        System.out.println(endNode);
     }
 }

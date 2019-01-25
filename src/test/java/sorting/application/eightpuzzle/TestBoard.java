@@ -18,9 +18,6 @@ public class TestBoard {
         Board board1 = new Board(blocks1);
         Board board2 = new Board(blocks2);
         Board board3 = new Board(blocks3);
-        assertEquals(0, board1.hamming());
-        assertEquals(4, board2.hamming());
-        assertEquals(5, board3.hamming());
         assertEquals(0, board1.manhattan());
         assertEquals(4, board2.manhattan());
         assertEquals(10, board3.manhattan());
