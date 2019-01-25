@@ -48,12 +48,4 @@ public class Node implements Comparable<Node> {
     }
 
 
-/*    @Override
-    public boolean equals(Object other){
-        if (other == null){return false;}
-        if(other.getClass() != this.getClass()){return false;}
-
-        return this.getBoard().equals(((Node) other).getBoard());
-    }*/
-
 }

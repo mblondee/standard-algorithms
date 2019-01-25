@@ -104,6 +104,7 @@ public class Board {
 
     @Override
     public boolean equals(Object other){
+        if( this == other){return true;}
         if (other == null){return false;}
         if(other.getClass() != this.getClass()){return false;}
 
