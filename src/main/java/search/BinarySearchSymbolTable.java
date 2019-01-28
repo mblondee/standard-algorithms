@@ -12,10 +12,10 @@ package search;
  * */
 
 
-//TODO: add iteration (remove print)
-
 import collections.queue.ResizingArrayQueue;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 
@@ -48,6 +48,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
     * returns number of key-value pairs
     * */
+    @Override
     public int getSize(){
         return size;
     }
@@ -55,6 +56,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
     * is symbol table empty?
     * */
+    @Override
     public boolean isEmpty(){
         return size == 0;
     }
@@ -62,6 +64,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
     * does the symbol table contain a given key?
     * */
+    @Override
     public boolean contains(Key key){
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
@@ -73,6 +76,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
     * returns value associated with a given key
     * */
+    @Override
     public Value get(Key key){
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
@@ -129,7 +133,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
     * insert a key-value pair into the symbol table
     * */
-
+    @Override
     public void put(Key key, Value value){
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
@@ -167,6 +171,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
     * delete a key and its value
      */
+    @Override
     public void delete(Key key){
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
@@ -202,6 +207,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
      * delete min key and its value
      */
+    @Override
     public void deleteMin(){
         if(isEmpty()){
             throw new NoSuchElementException("table may not be empty");
@@ -213,6 +219,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
      * delete max key and its value
      */
+    @Override
     public void deleteMax(){
         if(isEmpty()){
             throw new NoSuchElementException("table may not be empty");
@@ -224,6 +231,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
      * return largest key less than or equal to key
      */
+    @Override
     public Key floor(Key key){
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
@@ -245,7 +253,8 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
     /*
      * return smallest key greater than or equal to key
      */
-    public Key Ceiling(Key key){
+    @Override
+    public Key ceiling(Key key){
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
         }
@@ -258,15 +267,14 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> impleme
         return keys[rank];
     }
 
+    @Override
     public Iterable<Key> keys(){
-        if(isEmpty()){
-            throw new NoSuchElementException("cannot iterate over empty table");
-        }
-        ResizingArrayQueue<Key> queue = new ResizingArrayQueue<>();
-        for(int i = 0; i < size; i++){
-            queue.enqueue(keys[i]);
-        }
-        return queue;
+        List<Key> listOfKeys = new ArrayList<>();
+            for(int i = 0; i < size; i++){
+                listOfKeys.add(keys[i]);
+            }
+
+        return listOfKeys;
     }
 
 

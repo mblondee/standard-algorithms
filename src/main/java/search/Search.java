@@ -15,7 +15,7 @@ public interface Search<Key, Value> {
     public void deleteMax();
 
     public Key floor(Key key);
-    public Key Ceiling(Key key);
+    public Key ceiling(Key key);
 
     public Iterable<Key> keys();
 }
