@@ -11,7 +11,15 @@ package search;
  * getSize, isEmpty: constant time
  * */
 
-public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> {
+
+//TODO: add iteration (remove print)
+
+import collections.queue.ResizingArrayQueue;
+
+import java.util.NoSuchElementException;
+
+
+public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> implements Search<Key, Value> {
 
     private Key[] keys;
     private Value[] values;
@@ -61,26 +69,11 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> {
         return (get(key) != null);
     }
 
-    public void print(){
-        System.out.println("keys: ");
-        for(Key key: keys){
-            System.out.println(key + " ");
-        }
-        System.out.println();
-        System.out.println("values: ");
-        for(Value val: values){
-            System.out.println(val + " ");
-        }
-        System.out.println();
-    }
 
     /*
     * returns value associated with a given key
     * */
     public Value get(Key key){
-        //System.out.println("calling get with key " + key);
-        //System.out.println("current printing: ");
-        //print();
         if(key == null){
             throw new IllegalArgumentException("key may not be null");
         }
@@ -89,8 +82,6 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> {
         }
         // find index of key in keys
         int rank = getRank(key);
-        //System.out.println("rank " + rank);
-        //System.out.println("size " + rank);
         // if rank = 0 check if correct key
         if(rank < size && keys[rank].compareTo(key) == 0){
             return values[rank];
@@ -116,13 +107,13 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> {
         while(low <= high){
             int mid = low + (high - low)/2;
             // key in index mid?
-            int comparation = key.compareTo(keys[mid]);
+            int comparison  = key.compareTo(keys[mid]);
             // key < keys[mid]
-            if(comparation < 0){
+            if(comparison < 0){
                 high = mid -1;
             }
             // key > key[mid]
-            else if (comparation > 0){
+            else if (comparison > 0){
                 low = mid + 1;
             }
             // key = key[mid]
@@ -162,7 +153,7 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> {
             resize(2*keys.length);
         }
         //move elements in index > rank (from right to left)
-        for(int i = size; i > rank; i++){
+        for(int i = size; i > rank; i--){
             keys[i] = keys[i-1];
             values[i] = values[i-1];
         }
@@ -208,4 +199,94 @@ public class BinarySearchSymbolTable<Key extends Comparable<Key>, Value> {
         }
     }
 
+    /*
+     * delete min key and its value
+     */
+    public void deleteMin(){
+        if(isEmpty()){
+            throw new NoSuchElementException("table may not be empty");
+        }
+        // smallest key is in keys[0]
+        delete(keys[0]);
+    }
+
+    /*
+     * delete max key and its value
+     */
+    public void deleteMax(){
+        if(isEmpty()){
+            throw new NoSuchElementException("table may not be empty");
+        }
+        // largest key is in keys[size-1]
+        delete(keys[size-1]);
+    }
+
+    /*
+     * return largest key less than or equal to key
+     */
+    public Key floor(Key key){
+        if(key == null){
+            throw new IllegalArgumentException("key may not be null");
+        }
+        //find rank
+        int rank = getRank(key);
+        //check if key is in keys
+        if(rank < size && keys[rank].compareTo(key) == 0){
+            return keys[rank];
+        }
+        if(rank == 0){
+            // no keys are strictly less than key
+            return null;
+        }
+        return keys[rank-1];
+
+    }
+
+    /*
+     * return smallest key greater than or equal to key
+     */
+    public Key Ceiling(Key key){
+        if(key == null){
+            throw new IllegalArgumentException("key may not be null");
+        }
+        //find rank
+        int rank = getRank(key);
+        if(rank == size){
+            // key is greater than all other keys
+            return null;
+        }
+        return keys[rank];
+    }
+
+    public Iterable<Key> keys(){
+        if(isEmpty()){
+            throw new NoSuchElementException("cannot iterate over empty table");
+        }
+        ResizingArrayQueue<Key> queue = new ResizingArrayQueue<>();
+        for(int i = 0; i < size; i++){
+            queue.enqueue(keys[i]);
+        }
+        return queue;
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -50,4 +50,37 @@ public class BinarySearchSymbolTableTest {
 
 
     }
+
+    @Test
+    public void testOthers(){
+        BinarySearchSymbolTable<String, Integer> ST1 = new BinarySearchSymbolTable<>();
+        ST1.put("a", 1);
+        ST1.put("e", 4);
+        for(String s: ST1.keys()){
+            System.out.println(s);
+        }
+        System.out.println("--------");
+        ST1.put("b", 2);
+        ST1.put("k", 7);
+        for(String s: ST1.keys()){
+            System.out.println(s);
+        }
+        System.out.println("--------");
+        ST1.put("a", 8);
+        ST1.put("f", 14);
+
+        ST1.put("a", 10);
+        ST1.put("g", 7);
+        ST1.put("a", 11);
+        ST1.put("e", 1);
+        for(String s: ST1.keys()){
+            System.out.println(s);
+        }
+        System.out.println("--------");
+        ST1.delete("a");
+        ST1.delete("e");
+        for(String s: ST1.keys()){
+            System.out.println(s);
+        }
+    }
 }
