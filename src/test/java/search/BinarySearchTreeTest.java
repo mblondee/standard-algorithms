@@ -94,4 +94,23 @@ public class BinarySearchTreeTest {
         }
         System.out.println("-----");
     }
+
+    @Test
+    public void testRank(){
+        BinarySearchTree<Integer, String> BST = new BinarySearchTree<>();
+        BST.put(1, "a");
+        assertEquals(new Integer(1), (Integer) BST.rank(2) );
+        assertEquals(new Integer(0), (Integer) BST.rank(1) );
+        BST.put(5, "a");
+        assertEquals(new Integer(1), (Integer) BST.rank(2) );
+        assertEquals(new Integer(1), (Integer) BST.rank(5) );
+        assertEquals(new Integer(2), (Integer) BST.rank(6) );
+        BST.put(5, "b");
+        assertEquals(new Integer(1), (Integer) BST.rank(2) );
+        assertEquals(new Integer(1), (Integer) BST.rank(5) );
+        assertEquals(new Integer(2), (Integer) BST.rank(6) );
+        assertEquals(new Integer(2), (Integer) BST.sizeRange(0,6));
+        assertEquals(new Integer(2), (Integer) BST.sizeRange(1,5));
+        assertEquals(new Integer(0), (Integer) BST.sizeRange(3,4));
+    }
 }

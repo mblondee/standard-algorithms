@@ -7,6 +7,8 @@ package search;
 * */
 
 
+import sorting.sort.Sort;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -95,6 +97,47 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements Sea
             return node.value;
         }
     }
+
+    /*
+    * how many keys are strictly less than {@code key}
+    * */
+    public int rank(Key key){
+        if(key == null){throw new IllegalArgumentException("key may not be null");}
+        return rank(key, root);
+    }
+
+    /*
+     * how many keys are strictly less than {@code key} in subtree rooted at {@code node}
+     * */
+    private int rank(Key key, Node node){
+        if(node == null){return 0;}
+        int comparison = node.key.compareTo(key);
+        // node.key > key: we only need to count in left subtree
+        if(comparison > 0){
+            return rank(key, node.leftNode);
+        }
+        // node.key < key: size of left subtree + node + count in right subtree
+        else if(comparison < 0){
+            return size(node.leftNode) + 1 + rank(key, node.rightNode);
+        }
+        // node.key = key: size of left subtree
+        else{
+            return size(node.leftNode);
+        }
+    }
+
+    public int sizeRange(Key lowKey, Key highKey){
+        if(lowKey == null){throw new IllegalArgumentException("first key may not be null");}
+        if(highKey == null){throw new IllegalArgumentException("second key may not be null");}
+        if(Sort.isStrictLess(highKey, lowKey)){return 0;}
+        if(contains(highKey)){
+            return rank(highKey) - rank(lowKey) + 1;
+        }
+        else{
+            return rank(highKey) - rank(lowKey);
+        }
+    }
+
 
 
     /*
