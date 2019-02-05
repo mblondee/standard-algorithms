@@ -113,4 +113,28 @@ public class BinarySearchTreeTest {
         assertEquals(new Integer(2), (Integer) BST.sizeRange(1,5));
         assertEquals(new Integer(0), (Integer) BST.sizeRange(3,4));
     }
+
+    @Test
+    public void testIter(){
+        BinarySearchTree<Integer, String> BST = new BinarySearchTree<>();
+        for(Integer el: BST.keys(1,10)){
+            System.out.println(el);
+        }
+        System.out.println("--------");
+        BST.put(1, "a");
+        BST.put(5, "a");
+        BST.put(20, "c");
+        BST.put(9, "d");
+        for(Integer el: BST.keys(1,10)){
+            System.out.println(el);
+        }
+        System.out.println("--------");
+        for(Integer el: BST.keys(10,1)){
+            System.out.println(el);
+        }
+        System.out.println("--------");
+        for(Integer el: BST.keys(3,10)){
+            System.out.println(el);
+        }
+    }
 }

@@ -444,4 +444,14 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements Sea
     }
 
 
+    /*return all keys in a given range*/
+    public Iterable<Key> keys(Key lowKey, Key highKey){
+        if(lowKey == null){throw new IllegalArgumentException("first key may not be null");}
+        if(highKey == null){throw new IllegalArgumentException("second key may not be null");}
+        List<Key> listOfKeys = new ArrayList<>();
+        keys(listOfKeys, root, lowKey, highKey);
+        return listOfKeys;
+    }
+
+
 }
