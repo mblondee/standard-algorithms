@@ -13,30 +13,35 @@ public class PointSet2dTreeTest {
         assertTrue(BST.isEmpty());
         assertEquals(0, BST.size());
         Point2D point1 = new Point2D(0.7, 0.2);
-        System.out.println("inserting point1");
+        assertFalse(BST.contains(point1));
         BST.insert(point1);
         assertFalse(BST.isEmpty());
         assertEquals(1, BST.size());
+        assertTrue(BST.contains(point1));
 
         Point2D point2 = new Point2D(0.5, 0.4);
-        System.out.println("inserting point2");
+        assertFalse(BST.contains(point2));
         BST.insert(point2);
         assertEquals(2, BST.size());
+        assertTrue(BST.contains(point2));
 
         Point2D point3 = new Point2D(0.2, 0.3);
-        System.out.println("inserting point3");
+        assertFalse(BST.contains(point3));
         BST.insert(point3);
         assertEquals(3, BST.size());
+        assertTrue(BST.contains(point3));
 
         Point2D point4 = new Point2D(0.4, 0.7);
-        System.out.println("inserting point4");
+        assertFalse(BST.contains(point4));
         BST.insert(point4);
         assertEquals(4, BST.size());
+        assertTrue(BST.contains(point4));
 
         Point2D point5 = new Point2D(0.9, 0.6);
-        System.out.println("inserting point4");
+        assertFalse(BST.contains(point5));
         BST.insert(point5);
         assertEquals(5, BST.size());
+        assertTrue(BST.contains(point5));
     }
 
     public static void main(String[] args) {

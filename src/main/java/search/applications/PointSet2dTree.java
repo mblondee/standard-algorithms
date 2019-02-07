@@ -98,12 +98,9 @@ public class PointSet2dTree {
     * */
     private Node insert(Node node, Point2D point, Rectangle2D rectangle, boolean direction){
         // end of path: a new node has to be inserted
-        System.out.println("node in tree " + node);
         if(node == null){
             Node nodeToInsert = new Node(point, rectangle, null, null);
             size++;
-            System.out.println("inserted");
-            System.out.println(nodeToInsert);
             return nodeToInsert;
         }
         // if point is key of current node: do nothing, return node
@@ -190,11 +187,52 @@ public class PointSet2dTree {
                 }
             }
         }
-
-        System.out.println("check");
-        System.out.println(node);
         return node;
 
+    }
+
+    /*
+    * does the tree contain {@code point}?
+    * */
+    public boolean contains(Point2D point){
+        return contains(root, point, VERTICAL);
+    }
+
+    /*
+    * does the tree with root {@code node} contain {@code point}?
+    * */
+    private boolean contains(Node node, Point2D point, boolean direction){
+        if(node == null){
+            return false;
+        }
+        if(node.point.equals(point)){
+            return true;
+        }
+        // node has vertical direction: is point left or right?
+        if(isVertical(direction)){
+            // point is left from partitioning line
+            if(Sort.isStrictLess(point, node.point, Point2D.x_order)){
+                // look in left subtree
+                return contains(node.leftNode, point, !direction);
+            }
+            else{
+                // look in right subtree
+                return contains(node.rightNode, point, !direction);
+            }
+        }
+        // node has horizontal direction: is point below or above?
+        else{
+            // point is below partitioning line
+            if(Sort.isStrictLess(point, node.point, Point2D.y_order)) {
+                // look in left subtree
+                return contains(node.leftNode, point, !direction);
+            }
+            // point is above partitioning line
+            else{
+                //look in right subtree
+                return contains(node.rightNode, point, !direction);
+            }
+        }
     }
 
     /*
