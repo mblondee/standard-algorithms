@@ -13,7 +13,7 @@ package sorting.priorityqueue;
  *         -> delMin() <= 2 log_2 N compares
  * */
 
-//TODO: check other versions comparator and comparable in same class + implement iterable
+//TODO: check other versions comparator and comparable in same class
 
 import sorting.sort.Sort;
 
