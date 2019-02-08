@@ -6,10 +6,13 @@ package search.applications;
  * assumption: all x and y coordinates are distinct
  * */
 
+
 import help.libraries.StdDraw;
 import sorting.sort.Sort;
 
-import java.awt.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PointSet2dTree {
 
@@ -236,6 +239,126 @@ public class PointSet2dTree {
     }
 
     /*
+    * find all points inside or on the boundary of {@rect}
+    * */
+    public Iterable<Point2D> range(Rectangle2D rect){
+        List<Point2D> listOfPoints = new ArrayList<>();
+        range(root, rect, listOfPoints);
+        return listOfPoints;
+    }
+
+
+    /*
+     * find in the subtree with root {@code node} all points inside or on the boundary of {@rect}
+     * */
+    private void range(Node node, Rectangle2D rect, List<Point2D> listOfPoints){
+        if(node == null){
+            return;
+        }
+        // is current point in rect?
+        if(rect.contains(node.point)){
+            listOfPoints.add(node.point);
+        }
+        // does left subtree (if not null) intersect with rect?
+        if(node.leftNode != null && rect.intersect(node.leftNode.rect)){
+            // look in left subtree
+            range(node.leftNode, rect, listOfPoints);
+        }
+        // does right subtree (if not null) intersect with rect?
+        if(node.rightNode != null && rect.intersect(node.rightNode.rect)){
+            // look in right subtree
+            range(node.rightNode, rect, listOfPoints);
+        }
+
+
+
+    }
+
+    /*
+    * nearest neighbour to {@code point}
+    * */
+    public Point2D nearest(Point2D point){
+        Point2DWrapper nearestPoint = new Point2DWrapper();
+        Double currentDistance = Double.MAX_VALUE;
+        nearest(root, point, currentDistance, nearestPoint, VERTICAL);
+        return nearestPoint.getPoint();
+    }
+
+    /*
+    * find nearestPoint in the subtree with root {@code node}
+    *
+    * uses squared distances to compare
+    * */
+    private void nearest(Node node, Point2D point, Double currentDistance, Point2DWrapper nearestPoint, boolean direction){
+        if(node == null){
+            return;
+        }
+
+        //if current nearestPoint is null replace is with point in node
+        if(nearestPoint.getPoint() == null){
+            nearestPoint.setPoint(node.point);
+            currentDistance = point.distanceToSquare(nearestPoint.getPoint());
+        }
+        //if current nearestPoint is not null, we check if point in node is nearer
+        else{
+            Double distance = point.distanceToSquare(node.point);
+            // if nearer update nearestPoint and currentDistance
+            if(distance < currentDistance){
+                nearestPoint.setPoint(node.point);
+                currentDistance = distance;
+            }
+        }
+
+        //we first look in subtree corresponding to the side of the dividing line the point is at
+        //if (after coming back out of the recursion) the other side is not closer than the nearest point it is not necessary
+        //to also look at the this side
+        if(direction == VERTICAL){
+            // point is left from partitioning line
+            if(Sort.isStrictLess(point, node.point, Point2D.x_order)){
+                // look in left subtree
+                nearest(node.leftNode, point, currentDistance, nearestPoint, !direction);
+                // if right subtree is not null we check if the distance point to rect is smaller than current distance
+                if(node.rightNode != null && node.rightNode.rect.distanceToSquare(point) < currentDistance){
+                    nearest(node.rightNode, point, currentDistance, nearestPoint, !direction);
+                }
+            }
+            else{
+                // look in right subtree
+                nearest(node.rightNode, point, currentDistance, nearestPoint, !direction);
+                // if left subtree is not null we check if the distance point to rect is smaller than current distance
+                if(node.leftNode != null && node.leftNode.rect.distanceToSquare(point) < currentDistance){
+                    nearest(node.leftNode, point, currentDistance, nearestPoint, !direction);
+                }
+            }
+        }
+
+        else{
+            // point is below partitioning line
+            if(Sort.isStrictLess(point, node.point, Point2D.y_order)) {
+                // look in left subtree
+                nearest(node.leftNode, point, currentDistance, nearestPoint, !direction);
+                // if right subtree is not null we check if the distance point to rect is smaller than current distance
+                if(node.rightNode != null && node.rightNode.rect.distanceToSquare(point) < currentDistance){
+                    nearest(node.rightNode, point, currentDistance, nearestPoint, !direction);
+                }
+            }
+            // point is above partitioning line
+            else{
+                // look in right subtree
+                nearest(node.rightNode, point, currentDistance, nearestPoint, !direction);
+                // if left subtree is not null we check if the distance point to rect is smaller than current distance
+                if(node.leftNode != null && node.leftNode.rect.distanceToSquare(point) < currentDistance){
+                    nearest(node.leftNode, point, currentDistance, nearestPoint, !direction);
+                }
+            }
+
+        }
+
+
+
+    }
+
+    /*
     * draw all points and lines
     * vertical lines in red
     * horizontal lines in blue
@@ -273,5 +396,17 @@ public class PointSet2dTree {
         //draw subtrees
         draw(node.leftNode, !direction);
         draw(node.rightNode, !direction);
+    }
+
+    private class Point2DWrapper {
+        public Point2D point;
+
+        public void setPoint(Point2D point) {
+            this.point = point;
+        }
+
+        public Point2D getPoint() {
+            return point;
+        }
     }
 }

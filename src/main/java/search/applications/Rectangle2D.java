@@ -108,11 +108,11 @@ public final class Rectangle2D {
     }
 
     /*
-    * distance from {@code point} to the closest point in the rectangle
+    * square of distance from {@code point} to the closest point in the rectangle
     * is point is inside the rectangle: 0
     * */
 
-    public double distanceTo(Point2D point){
+    public double distanceToSquare(Point2D point){
         double dx = 0;
         double dy = 0;
         if(point.getX() < xLowerLeft){
@@ -129,7 +129,11 @@ public final class Rectangle2D {
             dy = point.getY() - yUpperRight;
         }
 
-        return Math.sqrt(dx*dx + dy*dy);
+        return dx*dx + dy*dy;
+    }
+
+    public double distanceTo(Point2D point){
+        return Math.sqrt(distanceToSquare(point));
     }
 
 

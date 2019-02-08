@@ -44,6 +44,51 @@ public class PointSet2dTreeTest {
         assertTrue(BST.contains(point5));
     }
 
+    @Test
+    public void test2(){
+        PointSet2dTree BST = new PointSet2dTree();
+        BST.insert(new Point2D(0.7, 0.2));
+        BST.insert(new Point2D(0.5, 0.4));
+        BST.insert(new Point2D(0.2, 0.3));
+        BST.insert(new Point2D(0.9, 0.6));
+        BST.insert(new Point2D(0.4, 0.7));
+        for(Point2D p : BST.range(new Rectangle2D(0.1,0.1, 0.3, 0.3))){
+            System.out.println(p);
+        }
+        System.out.println("------");
+        for(Point2D p : BST.range(new Rectangle2D(0.1,0.1, 0.9, 0.9))){
+            System.out.println(p);
+        }
+        System.out.println("------");
+        for(Point2D p : BST.range(new Rectangle2D(0.3,0.4, 0.9, 0.8))){
+            System.out.println(p);
+        }
+        System.out.println("------");
+    }
+
+    @Test
+    public void test3(){
+        PointSet2dTree BST = new PointSet2dTree();
+        Point2D point1 = new Point2D(0.7, 0.2);
+        BST.insert(point1);
+
+        Point2D point2 = new Point2D(0.5, 0.4);
+        BST.insert(point2);
+
+        Point2D point3 = new Point2D(0.2, 0.3);
+        BST.insert(point3);
+
+        Point2D point4 = new Point2D(0.4, 0.7);
+        BST.insert(point4);
+
+        Point2D point5 = new Point2D(0.9, 0.6);
+        BST.insert(point5);
+
+        Point2D point1a = new Point2D(0.1, 0.1);
+        System.out.println(BST.nearest(point1a));
+
+    }
+
     public static void main(String[] args) {
         run();
     }
@@ -53,7 +98,7 @@ public class PointSet2dTreeTest {
         BST.insert(new Point2D(0.7, 0.2));
         BST.insert(new Point2D(0.5, 0.4));
         BST.insert(new Point2D(0.2, 0.3));
-        BST.insert(new Point2D(0.7, 0.2));
+        BST.insert(new Point2D(0.4, 0.7));
         BST.insert(new Point2D(0.9, 0.6));
         BST.draw();
     }

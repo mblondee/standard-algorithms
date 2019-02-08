@@ -81,10 +81,20 @@ public final class Point2D implements Comparable<Point2D>{
      * distance between points
      * *****************************/
 
-    public double distanceTo(Point2D otherPoint){
+    /*
+    * square of distance to {@code otherPoint}
+    * */
+    public double distanceToSquare(Point2D otherPoint){
         double dx = x - otherPoint.x;
         double dy = y - otherPoint.y;
-        return Math.sqrt(dx*dx + dy*dy);
+        return dx*dx + dy*dy;
+    }
+
+    /*
+     * distance to {@code otherPoint}
+     * */
+    public double distanceTo(Point2D otherPoint){
+        return Math.sqrt(distanceToSquare(otherPoint));
     }
 
     /****************************
