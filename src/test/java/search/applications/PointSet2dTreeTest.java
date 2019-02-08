@@ -85,7 +85,14 @@ public class PointSet2dTreeTest {
         BST.insert(point5);
 
         Point2D point1a = new Point2D(0.1, 0.1);
-        System.out.println(BST.nearest(point1a));
+        assertEquals(BST.nearest(point1a), point3);
+        Point2D point2a = new Point2D(0.1, 0.45);
+        assertEquals(BST.nearest(point2a), point3);
+        Point2D point3a = new Point2D(0.5, 0.1);
+        assertEquals(BST.nearest(point3a), point1);
+
+        Point2D point4a = new Point2D(0.45, 0.45);
+        assertEquals(BST.nearest(point4a), point2);
 
     }
 
@@ -101,5 +108,7 @@ public class PointSet2dTreeTest {
         BST.insert(new Point2D(0.4, 0.7));
         BST.insert(new Point2D(0.9, 0.6));
         BST.draw();
+        Point2D point = new Point2D(0.45, 0.45);
+        point.draw();
     }
 }
