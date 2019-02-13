@@ -15,12 +15,23 @@ public class SeparateChainingTest {
 
         HST.put("a", 1);
         assertEquals(1, HST.getSize());
+        assertEquals(new Integer(1), HST.get("a"));
         HST.put("b", 3);
         assertEquals(2, HST.getSize());
+        assertEquals(new Integer(3), HST.get("b"));
         HST.put("c", 5);
         assertEquals(3, HST.getSize());
+        assertEquals(new Integer(5), HST.get("c"));
+        assertFalse(HST.contains("d"));
+        assertTrue(HST.contains("a"));
         HST.put("a", 10);
         assertEquals(3, HST.getSize());
+        assertEquals(new Integer(10), HST.get("a"));
+
+        HST.delete("a");
+        assertEquals(2, HST.getSize());
+        assertFalse(HST.contains("a"));
+
     }
 
     @Test

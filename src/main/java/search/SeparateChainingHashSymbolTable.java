@@ -31,6 +31,7 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
         return (key.hashCode() & 0x7fffffff) % hashTableSize;
     }
 
+
     /*
     * return number of key-value pairs
     * */
@@ -53,7 +54,6 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
         if(key == null){throw new IllegalArgumentException("key may not be null");}
         if(value == null){return;}
 
-        //TODO resize if necessary!
 
         // get hash for key: pair has to be added in linked list at searchTable[index]
         int index = hash(key);
@@ -68,5 +68,38 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
             size++;
         }
         searchTable[index].put(key, value);
+    }
+
+
+    /*
+     * return value for {@code key}
+     * */
+    public Value get(Key key){
+        if(key == null){throw new IllegalArgumentException("key may not be null");}
+        int index = hash(key);
+        if(searchTable[index] == null){
+            return null;
+        }
+        return searchTable[index].get(key);
+    }
+
+
+    /*
+     * does hashtable contain {@code key}?
+     * */
+    public boolean contains(Key key){
+        return get(key) != null;
+    }
+
+    /*
+     * delete key-value pair corresponding to {@code key}
+     * */
+    public void delete(Key key){
+        if(key == null){throw new IllegalArgumentException("key may not be null");}
+        int index = hash(key);
+        if(searchTable[index].contains(key)){
+            size--;
+        }
+        searchTable[index].delete(key);
     }
 }
