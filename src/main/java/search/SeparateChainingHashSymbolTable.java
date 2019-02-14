@@ -7,6 +7,8 @@ package search;
 
 public class SeparateChainingHashSymbolTable<Key, Value> {
 
+    private static int DEFAULTSIZE = 4;
+
 
     private int size; //number of key-value pairs
     private int hashTableSize; //length of hash table
@@ -19,16 +21,25 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
     public SeparateChainingHashSymbolTable(int hashTableSize){
         this.hashTableSize = hashTableSize;
         searchTable = new LinkedList[hashTableSize];
-        // we will put empty linked lists in searchTable if necessary (in put method)
+        for(int i = 0; i < hashTableSize; i++){
+            searchTable[i] = new LinkedList<>();
+        }
+    }
+    public SeparateChainingHashSymbolTable(){
+        this(DEFAULTSIZE);
     }
 
     /*
-    * hash value between 0 and hashTableSize - 1
+     * initialize hash table without specifying size
+     * */
+
+    /*
+    * hash value between 0 and upperbound - 1
     * 0x7fffffff is 0111 1111 1111 1111 1111 1111 1111 111: all 1 except the sign bit
     * key.hashCode() & 0x7fffffff will result in a positive integer
     * */
-    private int hash(Key key){
-        return (key.hashCode() & 0x7fffffff) % hashTableSize;
+    private int hash(Key key, int upperbound){
+        return (key.hashCode() & 0x7fffffff) % upperbound;
     }
 
 
@@ -47,6 +58,32 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
         return size == 0;
     }
 
+
+    /*
+    * resize hashtable
+    * */
+    private void resize(int capacity){
+        System.out.println("resizing");
+
+        LinkedList<Key, Value>[] temp = new LinkedList[capacity];
+        for(int i = 0; i < capacity; i++){
+            temp[i] = new LinkedList<>();
+        }
+        for(int i = 0; i < hashTableSize; i++){
+            //iterate over keys in linked list at searchTable[i]
+            for(Key key: searchTable[i].keys()){
+                // get hash for key: pair has to be added in linked list at temp[index]
+                int index = hash(key, capacity);
+
+                // put key-value pair in temp
+                temp[index].put(key, searchTable[i].get(key));
+            }
+        }
+        this.hashTableSize = capacity;
+        this.searchTable = temp;
+
+    }
+
     /*
     * insert {@code key} {@code value} pair into hash table
     * */
@@ -54,15 +91,14 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
         if(key == null){throw new IllegalArgumentException("key may not be null");}
         if(value == null){return;}
 
+        // if average length of linked lists is >=10 size of searchTable will be doubled
+        if(size > hashTableSize*10){
+            resize(2*hashTableSize);
+        }
 
         // get hash for key: pair has to be added in linked list at searchTable[index]
-        int index = hash(key);
+        int index = hash(key, hashTableSize);
 
-        // if searchTable[index] is null -> a new linked
-        // list has to be made at this index
-        if(searchTable[index] == null){
-            searchTable[index] = new LinkedList<>();
-        }
 
         if(!searchTable[index].contains(key)){
             size++;
@@ -76,7 +112,7 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
      * */
     public Value get(Key key){
         if(key == null){throw new IllegalArgumentException("key may not be null");}
-        int index = hash(key);
+        int index = hash(key, hashTableSize);
         if(searchTable[index] == null){
             return null;
         }
@@ -96,10 +132,15 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
      * */
     public void delete(Key key){
         if(key == null){throw new IllegalArgumentException("key may not be null");}
-        int index = hash(key);
+        int index = hash(key, hashTableSize);
         if(searchTable[index].contains(key)){
             size--;
         }
         searchTable[index].delete(key);
+
+        // if average length of linked lists is <=2 size of searchTable will be halved
+        if( size > DEFAULTSIZE && size <= 2*hashTableSize){
+            resize(hashTableSize/2);
+        }
     }
 }

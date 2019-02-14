@@ -1,5 +1,8 @@
 package search;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LinkedList<Key, Value> {
 
     private int size;
@@ -90,6 +93,19 @@ public class LinkedList<Key, Value> {
         }
         node.next = delete(node.next, key);
         return node;
+    }
+
+    /*
+     * return all keys
+     * */
+    public Iterable<Key> keys(){
+        List<Key> listOfKeys = new ArrayList();
+        Node node = firstNode;
+        while(node != null){
+            listOfKeys.add(node.key);
+            node = node.next;
+        }
+        return listOfKeys;
     }
 
 
