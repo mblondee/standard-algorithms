@@ -9,7 +9,6 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
 
     private static int DEFAULTSIZE = 4;
 
-
     private int size; //number of key-value pairs
     private int hashTableSize; //length of hash table
     private LinkedList<Key, Value>[] searchTable; //hash table: array of linked lists
@@ -25,13 +24,15 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
             searchTable[i] = new LinkedList<>();
         }
     }
-    public SeparateChainingHashSymbolTable(){
-        this(DEFAULTSIZE);
-    }
 
     /*
      * initialize hash table without specifying size
      * */
+    public SeparateChainingHashSymbolTable(){
+        this(DEFAULTSIZE);
+    }
+
+
 
     /*
     * hash value between 0 and upperbound - 1
@@ -63,7 +64,6 @@ public class SeparateChainingHashSymbolTable<Key, Value> {
     * resize hashtable
     * */
     private void resize(int capacity){
-        System.out.println("resizing");
 
         LinkedList<Key, Value>[] temp = new LinkedList[capacity];
         for(int i = 0; i < capacity; i++){
