@@ -44,6 +44,13 @@ public class Graph<Vertex> {
         return numberOfEdges;
     }
 
+    /*
+    * return degree (number of neighbours) of {@code vertex}
+    * */
+    public int getDegree(Vertex v){
+        return adjacencyList.get(v).size();
+    }
+
 
     /*
      * add new vertex to the graph
@@ -61,7 +68,7 @@ public class Graph<Vertex> {
      * */
     public void removeVertex(Vertex v) {
         validate(v);
-        int edgesToRemove = adjacencyList.get(v).size();
+        int edgesToRemove = getDegree(v);
         adjacencyList.remove(v);
 
         // remove vertex from all neighbours
