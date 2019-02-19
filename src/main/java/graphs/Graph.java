@@ -136,14 +136,10 @@ public class Graph<Vertex> {
     }
 
 
-    /*************************
-    * private methods
-    *
-    * ************************/
 
     /*validate vertex: is {@code v} a vertex in graph?*/
 
-    private void validate(Vertex v) {
+    public void validate(Vertex v) {
         if (!adjacencyList.containsKey(v)) {
             throw new IllegalArgumentException(("not a vertex in Graph"));
         }

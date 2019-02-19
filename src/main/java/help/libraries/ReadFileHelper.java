@@ -23,12 +23,6 @@ public class ReadFileHelper {
                 listOfLines.add(p);
             }
             bufferReader.close();
-/*            int[] arrayOfInt = new int[listOfLines.size()];
-            int i = 0;
-            for(int item : listOfLines){
-                System.out.print(item);
-                arrayOfInt[i++] = item;
-            }*/
 
 
         }

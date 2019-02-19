@@ -25,8 +25,7 @@ public class ThreeSum {
     }
 
     public static void main(String[] args){
-        String fileName = "/Users/marjonblondeel/Documents/algo-data/src/main/resources/1Kints.txt";
-        //String fileName = "/Users/marjonblondeel/Documents/algo-data/src/main/resources/2Kints.txt";
+        String fileName = "/src/main/resources/1Kints.txt";
         int[] intsToCheck = ReadFileHelper.readFileInts(fileName);
 
         Stopwatch timer = new Stopwatch();
