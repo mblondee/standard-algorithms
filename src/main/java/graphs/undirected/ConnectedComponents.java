@@ -1,4 +1,4 @@
-package graphs;
+package graphs.undirected;
 
 /*
 * a connected component in a graph is a maximal set of connected vertices

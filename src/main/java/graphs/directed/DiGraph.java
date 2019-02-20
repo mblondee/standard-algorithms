@@ -1,26 +1,28 @@
-package graphs;
+package graphs.directed;
+
 
 /*
-* representation of a simple undirected and unweighted graph using adjacency lists
-* using a HashMap to keep track of vertices and their neighbours
-* */
-
+ * representation of a directed and unweighted graph using adjacency lists
+ * using a HashMap to keep track of vertices and their neighbours
+ * */
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Graph<Vertex> {
+public class DiGraph<Vertex> {
     // adjacency list containing for each vertex its neighbours
     private HashMap<Vertex, Set<Vertex>> adjacencyList;
+    private HashMap<Vertex, Integer> inDegree; // for each vertex, the indegree
     private int numberOfVertices = 0;
     private int numberOfEdges = 0;
 
     /*
-     * initialize new Graph object
+     * initialize new DiGraph object
      * */
-    public Graph() {
+    public DiGraph() {
         adjacencyList = new HashMap<>();
+        inDegree = new HashMap<>();
     }
 
     /*
@@ -44,13 +46,6 @@ public class Graph<Vertex> {
         return numberOfEdges;
     }
 
-    /*
-    * return degree (number of neighbours) of {@code vertex}
-    * */
-    public int getDegree(Vertex v){
-        return adjacencyList.get(v).size();
-    }
-
 
     /*
      * add new vertex to the graph
@@ -60,6 +55,7 @@ public class Graph<Vertex> {
             return;
         }
         adjacencyList.put(v, new HashSet<>());
+        inDegree.put(v,0);
         numberOfVertices++;
     }
 
@@ -68,23 +64,16 @@ public class Graph<Vertex> {
      * */
     public void removeVertex(Vertex v) {
         validate(v);
-        int edgesToRemove = getDegree(v);
+        int edgesToRemove = getOutDegree(v);
         adjacencyList.remove(v);
-
-        // remove vertex from all neighbours
-        for (Vertex w : adjacencyList.keySet()) {
-            adjacencyList.get(w).remove(v);
-        }
 
         numberOfVertices--;
         numberOfEdges = numberOfEdges - edgesToRemove;
 
     }
 
-
-
     /*
-     * add a new edge between {@code v} and {@ code w} to the graph
+     * add a new edge from {@code v} to {@ code w} to the graph
      * */
     public void addEdge(Vertex v, Vertex w) {
         validate(v);
@@ -93,9 +82,8 @@ public class Graph<Vertex> {
         if (!adjacencyList.get(v).contains(w)) {
             // add w to neighbours of v
             adjacencyList.get(v).add(w);
-            // add v to neighbours of w
-            adjacencyList.get(w).add(v);
             numberOfEdges++;
+            inDegree.put(w, inDegree.get(w) + 1);
         }
     }
 
@@ -105,11 +93,27 @@ public class Graph<Vertex> {
         // only remove when present
         if(adjacencyList.get(v).contains(w)) {
             adjacencyList.get(v).remove(w);
-            adjacencyList.get(w).remove(v);
-
             numberOfEdges--;
+            inDegree.put(w, inDegree.get(w) -1);
         }
 
+    }
+
+
+    /*
+     * return outdegree (number of directed edges incident from vertex {@code vertex})
+     * */
+    public int getOutDegree(Vertex v){
+        validate(v);
+        return adjacencyList.get(v).size();
+    }
+
+    /*
+     * return indegree (number of directed edges incident to vertex {@code vertex})
+     * */
+    public int getInDegree(Vertex v){
+        validate(v);
+        return inDegree.get(v);
     }
 
     public Iterable<Vertex> getVertices(){
@@ -144,9 +148,5 @@ public class Graph<Vertex> {
             throw new IllegalArgumentException(("not a vertex in Graph"));
         }
     }
+
 }
-
-
-
-
-

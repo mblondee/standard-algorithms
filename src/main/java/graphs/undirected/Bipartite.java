@@ -1,4 +1,4 @@
-package graphs;
+package graphs.undirected;
 
 /*
  * a data type for determining whether a simple (no loops) undirected and unweighted graph
@@ -6,7 +6,6 @@ package graphs;
  * */
 
 import java.util.HashMap;
-import java.util.Stack;
 
 public class Bipartite<Vertex> {
     private boolean isBipartite = true; // is the graph bipartite

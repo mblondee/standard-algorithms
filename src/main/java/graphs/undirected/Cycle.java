@@ -1,4 +1,4 @@
-package graphs;
+package graphs.undirected;
 
 /*
 * a data type for determining whether a simple (no loops) undirected and unweighted graph

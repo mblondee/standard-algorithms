@@ -1,4 +1,4 @@
-package graphs;
+package graphs.undirected;
 
 /*
  * data type for finding paths from a source vertex to every other vertex in a

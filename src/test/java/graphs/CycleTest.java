@@ -1,5 +1,7 @@
 package graphs;
 
+import graphs.undirected.Cycle;
+import graphs.undirected.Graph;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
