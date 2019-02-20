@@ -40,7 +40,7 @@ public class ConnectedComponentsTest {
     @Test
     public void test(){
         ConnectedComponents<Integer> cc = new ConnectedComponents<>(G);
-        //component: 1,2,3,4,5,6
+        //component: 0, 1,2,3,4,5,6
         // component: 7,8
         //component: 9,10,11,12
         assertTrue(cc.connected(1,2));
@@ -59,6 +59,13 @@ public class ConnectedComponentsTest {
         assertFalse(cc.connected(1,7));
         assertFalse(cc.connected(1,9));
         assertFalse(cc.connected(1,12));
+
+        assertEquals(7, cc.size(1));
+        assertEquals(7, cc.size(6));
+        assertEquals(2, cc.size(7));
+        assertEquals(4, cc.size(11));
+
+        assertEquals(3, cc.numberOfConnectedComponents());
 
     }
 }
