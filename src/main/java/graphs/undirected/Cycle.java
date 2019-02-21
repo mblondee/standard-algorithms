@@ -5,13 +5,15 @@ package graphs.undirected;
 * has a simple cycle
 * */
 
+import collections.stack.LinkedStack;
+
 import java.util.HashMap;
-import java.util.Stack;
+
 
 public class Cycle<Vertex> {
     private HashMap<Vertex, Boolean> markedVertices; // for every vertex v: has it been visited?
     private HashMap<Vertex, Vertex> edgeFrom; // for every vertex v: last vertex on path to v
-    private Stack<Vertex> cycle;
+    private LinkedStack<Vertex> cycle;
     private final Graph<Vertex> G;
 
     public Cycle(Graph<Vertex> G){
@@ -46,7 +48,7 @@ public class Cycle<Vertex> {
             }
             // if w is marked but not last edge (this would not be a cycle)
             else if(w != startVertex){
-                cycle = new Stack<>();
+                cycle = new LinkedStack<>();
                 // add all vertices from v to w to cycle
                 for(Vertex x = v; x != w ; x = edgeFrom.get(x)){
                     cycle.push(x);

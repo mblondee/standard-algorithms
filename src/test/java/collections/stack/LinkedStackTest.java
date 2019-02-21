@@ -65,4 +65,15 @@ public class LinkedStackTest {
         LinkedStack<Integer> bagOfNum = new LinkedStack<>();
         bagOfNum.pop();
     }
+
+    @Test
+    public void iterable(){
+        LinkedStack<String> stackOfStr = new LinkedStack<String>();
+        stackOfStr.push("a");
+        stackOfStr.push("b");
+        stackOfStr.push("c");
+        for(String el: stackOfStr){
+            System.out.println(el);
+        }
+    }
 }

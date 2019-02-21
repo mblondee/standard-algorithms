@@ -1,8 +1,8 @@
-package graphs.undirected;
+package graphs.directed;
 
 /*
  * data type for finding paths from a source vertex to every other vertex in a
- * simple undirected and unweighted graph using breadth first search
+ * simple directed and unweighted graph using breadth first search
  * it uses a queue to save the next vertex to visit, hence the paths found are shortest paths
  * when a vertex is removed from the queue, its neighbours that are not visited yet are
  * marked and added to the queue
@@ -13,16 +13,17 @@ import collections.queue.LinkedQueue;
 import collections.stack.LinkedStack;
 
 import java.util.HashMap;
-import java.util.Stack;
 
-public class BFS<Vertex> {
+
+public class DirectedBFS<Vertex> {
+
     private HashMap<Vertex, Boolean> markedVertices; // for every vertex v: is there a path from source to v?
     private HashMap<Vertex, Vertex> edgeFrom; // for every vertex v: last vertex from source to v
     private HashMap<Vertex, Integer> distanceTo; // for every vertex v: distance (number of edges) from source to v
     private final Vertex source; // source vertex
-    private final Graph<Vertex> G;
+    private final DiGraph<Vertex> G;
 
-    public BFS(Graph<Vertex> G, Vertex source){
+    public DirectedBFS(DiGraph<Vertex> G, Vertex source){
         this.G = G;
         this.source = source;
         G.validate(source);
@@ -39,7 +40,7 @@ public class BFS<Vertex> {
         bfs(G,source);
     }
 
-    private void bfs(Graph<Vertex> G, Vertex source){
+    private void bfs(DiGraph<Vertex> G, Vertex source){
         LinkedQueue<Vertex> queue = new LinkedQueue<>();
         queue.enqueue(source);
         markedVertices.put(source, true);
@@ -87,8 +88,7 @@ public class BFS<Vertex> {
      * */
     public Iterable<Vertex> pathTo(Vertex w){
         G.validate(w);
-        LinkedStack<Vertex> path = new LinkedStack<Vertex>() {
-        };
+        LinkedStack <Vertex> path = new LinkedStack<>();
         if(hasPathTo(w)){
             for(Vertex v = w; v != source; v = edgeFrom.get(v)){
                 path.push(v);

@@ -42,9 +42,9 @@ public class CycleTest {
     @Test
     public void test(){
         Cycle<Integer> cyc = new Cycle<>(G);
-        for(Integer i : cyc.getCycle()){
-            System.out.println(i);
-        }
+//        for(Integer i : cyc.getCycle()){
+//            System.out.println(i);
+//        }
         assertTrue(cyc.hasCycle());
     }
 

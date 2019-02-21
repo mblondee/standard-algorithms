@@ -6,6 +6,9 @@ package graphs.undirected;
 * to search in a graph: mark a vertex as visited and visit recursively all neighbouring vertices that have not yet been marked
 * */
 
+import collections.deque.LinkedDeque;
+import collections.stack.LinkedStack;
+
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -61,7 +64,7 @@ public class DFS <Vertex> {
     * */
     public Iterable<Vertex> pathTo(Vertex w){
         G.validate(w);
-        Stack<Vertex> path = new Stack<Vertex>() {
+        LinkedStack<Vertex> path = new LinkedStack<Vertex>() {
         };
         if(hasPathTo(w)){
             for(Vertex v = w; v != source; v = edgeFrom.get(v)){

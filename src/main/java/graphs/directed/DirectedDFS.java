@@ -6,6 +6,8 @@ package graphs.directed;
  * to search in a graph: mark a vertex as visited and visit recursively all neighbouring vertices that have not yet been marked
  * */
 
+import collections.stack.LinkedStack;
+
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -61,8 +63,7 @@ public class DirectedDFS<Vertex> {
      * */
     public Iterable<Vertex> pathTo(Vertex w){
         G.validate(w);
-        Stack<Vertex> path = new Stack<Vertex>() {
-        };
+        LinkedStack<Vertex> path = new LinkedStack<>();
         if(hasPathTo(w)){
             for(Vertex v = w; v != source; v = edgeFrom.get(v)){
                 path.push(v);
