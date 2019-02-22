@@ -1,7 +1,5 @@
-package graphs;
+package graphs.directed;
 
-import graphs.directed.DiGraph;
-import graphs.directed.DirectedDFS;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -10,7 +8,8 @@ import java.io.FileReader;
 
 import static org.junit.Assert.*;
 
-public class DirectedDFSTest {
+public class DirectedPathTest {
+
 
     private static DiGraph<Integer> G;
 
@@ -39,28 +38,38 @@ public class DirectedDFSTest {
         }
     }
 
-
     @Test
     public void test(){
-        DirectedDFS<Integer> dfs = new DirectedDFS<>(G,4 );
-        assertTrue(dfs.hasPathTo(2));
-        assertTrue(dfs.hasPathTo(3));
-        assertTrue(dfs.hasPathTo(0));
-        assertTrue(dfs.hasPathTo(5));
-        assertTrue(dfs.hasPathTo(1));
-        assertTrue(dfs.hasPathTo(4));
+        DirectedPath<Integer> path = new DirectedPath<>(G, 4);
+        for(Integer i = 0; i <= 5; i++){
+            assertTrue(path.onPath(i));
+        }
 
-        assertFalse(dfs.hasPathTo(6));
-        assertFalse(dfs.hasPathTo(7));
-        assertFalse(dfs.hasPathTo(8));
-        assertFalse(dfs.hasPathTo(9));
-        assertFalse(dfs.hasPathTo(10));
-        assertFalse(dfs.hasPathTo(11));
-        assertFalse(dfs.hasPathTo(12));
+        for(Integer i = 6; i <= 12; i++){
+            assertFalse(path.onPath(i));
+        }
 
-        System.out.println(dfs.pathTo(5));
+        System.out.println("on path from 4");
+        for(Integer i : path.getPathFromSource()){
+            System.out.println(i);
+        }
 
+        DirectedPath<Integer> path1 = new DirectedPath<>(G, 11);
+        for(Integer i = 0; i <= 5; i++){
+            assertTrue(path1.onPath(i));
+        }
 
+        for(Integer i = 6; i <= 8; i++){
+            assertFalse(path1.onPath(i));
+        }
+
+        for(Integer i = 9; i <= 12; i++){
+            assertTrue(path1.onPath(i));
+        }
+
+        System.out.println("on path from 11");
+        for(Integer i : path1.getPathFromSource()){
+            System.out.println(i);
+        }
     }
-
 }

@@ -1,8 +1,7 @@
-package graphs;
-
+package graphs.directed;
 
 import graphs.directed.DiGraph;
-import graphs.directed.DirectedCycle;
+import graphs.directed.DirectedDFS;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -11,7 +10,7 @@ import java.io.FileReader;
 
 import static org.junit.Assert.*;
 
-public class DirectedCycleTest {
+public class DirectedDFSTest {
 
     private static DiGraph<Integer> G;
 
@@ -40,31 +39,28 @@ public class DirectedCycleTest {
         }
     }
 
-    @Test
-    public void test(){
-        DirectedCycle<Integer> cyc = new DirectedCycle<>(G);
-        assertTrue(cyc.hasCycle());
-        for(Integer i : cyc.getCycle()){
-            System.out.println(i);
-        }
-    }
 
     @Test
-    public void test1(){
-        DiGraph<String> G1 = new DiGraph<>();
-        G1.addVertex("a");
-        G1.addVertex("b");
-        G1.addVertex("c");
-        G1.addEdge("a", "b");
-        G1.addEdge("b", "c");
-        G1.addEdge("a", "c");
-        DirectedCycle<String> cyc = new DirectedCycle<>(G1);
-        assertFalse(cyc.hasCycle());
-        G1.addEdge("c", "a");
-        DirectedCycle<String> cyc1 = new DirectedCycle<>(G1);
-        assertTrue(cyc1.hasCycle());
-        for(String i : cyc1.getCycle()){
-            System.out.println(i);
-        }
+    public void test(){
+        DirectedDFS<Integer> dfs = new DirectedDFS<>(G,4 );
+        assertTrue(dfs.hasPathTo(2));
+        assertTrue(dfs.hasPathTo(3));
+        assertTrue(dfs.hasPathTo(0));
+        assertTrue(dfs.hasPathTo(5));
+        assertTrue(dfs.hasPathTo(1));
+        assertTrue(dfs.hasPathTo(4));
+
+        assertFalse(dfs.hasPathTo(6));
+        assertFalse(dfs.hasPathTo(7));
+        assertFalse(dfs.hasPathTo(8));
+        assertFalse(dfs.hasPathTo(9));
+        assertFalse(dfs.hasPathTo(10));
+        assertFalse(dfs.hasPathTo(11));
+        assertFalse(dfs.hasPathTo(12));
+
+        System.out.println(dfs.pathTo(5));
+
+
     }
+
 }

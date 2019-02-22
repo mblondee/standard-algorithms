@@ -1,6 +1,7 @@
-package graphs;
+package graphs.directed;
 
 import graphs.directed.DiGraph;
+import graphs.directed.DirectedEuler;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -9,7 +10,8 @@ import java.io.FileReader;
 
 import static org.junit.Assert.*;
 
-public class DiGraphTest {
+
+public class DirectedEulerTest {
 
     private static DiGraph<Integer> G;
 
@@ -39,30 +41,20 @@ public class DiGraphTest {
     }
 
     @Test
-    public void test1(){
-        //System.out.println(G);
-        assertEquals(13,G.numberOfVertices());
-        assertEquals(22,G.numberOfEdges());
+    public void test(){
+        DiGraph<Integer> G1 = new DiGraph<>();
+        G1.addVertex(0);
+        G1.addVertex(1);
+        G1.addVertex(2);
+        G1.addVertex(3);
+        G1.addVertex(4);
+        G1.addEdge(0,1);
+        G1.addEdge(1,2);
+        G1.addEdge(2,0);
+        G1.addEdge(0,3);
+        G1.addEdge(3,4);
+        G1.addEdge(4,0);
 
-        assertEquals(4, G.getOutDegree(6));
-        assertEquals(2, G.getOutDegree(0));
-        assertEquals(0, G.getOutDegree(1));
-
-        assertEquals(1, G.getInDegree(1));
-        assertEquals(0, G.getInDegree(7));
-        assertEquals(3, G.getInDegree(4));
-
-        G.removeVertex(6);
-        assertEquals(12,G.numberOfVertices());
-        assertEquals(18,G.numberOfEdges());
-
-        G.removeEdge(4,2);
-        assertEquals(12,G.numberOfVertices());
-        assertEquals(17,G.numberOfEdges());
-
-        G.removeEdge(9,8); // does not exist
-        assertEquals(12,G.numberOfVertices());
-        assertEquals(17,G.numberOfEdges());
-
+        DirectedEuler<Integer> euler = new DirectedEuler<>(G1);
     }
 }

@@ -25,6 +25,7 @@ public class DiGraph<Vertex> {
         inDegree = new HashMap<>();
     }
 
+
     /*
      * does graph contain {@code v}?
      * */
@@ -147,6 +148,25 @@ public class DiGraph<Vertex> {
         if (!adjacencyList.containsKey(v)) {
             throw new IllegalArgumentException(("not a vertex in Graph"));
         }
+    }
+
+    /*
+    * Returns a new directed graph in which all edges have opposite direction
+    *
+    * */
+    public DiGraph reverse(){
+        DiGraph<Vertex> reverseGraph = new DiGraph<>();
+        // add all vertices
+        for(Vertex v : getVertices()){
+            reverseGraph.addVertex(v);
+        }
+        // add all edges but reversed
+        for(Vertex v : getVertices()){
+            for (Vertex w : getNeighbours(v)){
+                reverseGraph.addEdge(w,v);
+            }
+        }
+        return reverseGraph;
     }
 
 }

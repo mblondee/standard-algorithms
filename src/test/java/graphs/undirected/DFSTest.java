@@ -1,4 +1,4 @@
-package graphs;
+package graphs.undirected;
 
 
 import graphs.undirected.DFS;
@@ -42,13 +42,13 @@ public class DFSTest {
     }
 
 
-    @Test
+/*    @Test
     public void test1(){
         assertEquals(250, G.numberOfVertices());
         assertEquals(1273, G.numberOfEdges());
         source = 244;
         DFS<Integer> dfs = new DFS<>(G, source );
-    }
+    }*/
 
     @Test
     public void smallTest(){

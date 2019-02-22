@@ -53,7 +53,7 @@ public class DirectedCycle<Vertex> {
             else if(currentPath.get(w)){
                 cycle = new LinkedStack<>();
                 // add all vertices from v to w to cycle
-                for(Vertex x = v; x != w ; x = edgeFrom.get(x)){
+                for(Vertex x = v;  x != w ; x = edgeFrom.get(x)){
                     cycle.push(x);
                 }
                 cycle.push(w);

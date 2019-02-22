@@ -1,6 +1,6 @@
-package graphs;
+package graphs.undirected;
 
-import graphs.undirected.Cycle;
+import graphs.undirected.Bipartite;
 import graphs.undirected.Graph;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,8 +10,8 @@ import java.io.FileReader;
 
 import static org.junit.Assert.*;
 
-public class CycleTest {
 
+public class BipartiteTest {
     private static Graph<Integer> G;
 
     @BeforeClass
@@ -41,35 +41,22 @@ public class CycleTest {
 
     @Test
     public void test(){
-        Cycle<Integer> cyc = new Cycle<>(G);
-//        for(Integer i : cyc.getCycle()){
-//            System.out.println(i);
-//        }
-        assertTrue(cyc.hasCycle());
+        Bipartite<Integer> bip = new Bipartite<>(G);
+        assertFalse(bip.isBipartite());
     }
 
     @Test
     public void test1(){
-        Graph<Integer> G1 = new Graph();
-        G1.addVertex(0);
-        G1.addVertex(1);
-        G1.addVertex(2);
-        G1.addVertex(3);
-        G1.addVertex(4);
-        G1.addEdge(1,2);
-        G1.addEdge(2,3);
-        Cycle<Integer> cyc1 = new Cycle<>(G1);
-        assertFalse(cyc1.hasCycle());
-        G1.addEdge(3,1);
-        Cycle<Integer> cyc2 = new Cycle<>(G1);
-        assertTrue(cyc2.hasCycle());
-        Cycle<Integer> cyc = new Cycle<>(G1);
-        for(Integer i : cyc.getCycle()){
-            System.out.println(i);
-        }
-
-
-
+        Graph<String> G1 = new Graph();
+        G1.addVertex("a");
+        G1.addVertex("b");
+        G1.addVertex("c");
+        G1.addEdge("a", "b");
+        G1.addEdge("b", "c");
+        Bipartite<String> bip = new Bipartite<>(G1);
+        assertTrue(bip.isBipartite());
+        G1.addEdge("a", "c");
+        Bipartite<String> bip1 = new Bipartite<>(G1);
+        assertFalse(bip1.isBipartite());
     }
-
 }

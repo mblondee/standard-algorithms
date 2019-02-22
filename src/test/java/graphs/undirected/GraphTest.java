@@ -1,4 +1,4 @@
-package graphs;
+package graphs.undirected;
 
 
 import graphs.undirected.Graph;

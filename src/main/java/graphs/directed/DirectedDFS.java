@@ -9,7 +9,6 @@ package graphs.directed;
 import collections.stack.LinkedStack;
 
 import java.util.HashMap;
-import java.util.Stack;
 
 public class DirectedDFS<Vertex> {
     private HashMap<Vertex, Boolean> markedVertices; // for every vertex v: is there a path from source to v?
@@ -65,7 +64,7 @@ public class DirectedDFS<Vertex> {
         G.validate(w);
         LinkedStack<Vertex> path = new LinkedStack<>();
         if(hasPathTo(w)){
-            for(Vertex v = w; v != source; v = edgeFrom.get(v)){
+            for(Vertex v = w;  v != source; v = edgeFrom.get(v)){
                 path.push(v);
             }
             path.push(source);

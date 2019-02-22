@@ -90,7 +90,7 @@ public class BFS<Vertex> {
         LinkedStack<Vertex> path = new LinkedStack<Vertex>() {
         };
         if(hasPathTo(w)){
-            for(Vertex v = w; v != source; v = edgeFrom.get(v)){
+            for(Vertex v = w;  v != source; v = edgeFrom.get(v)){
                 path.push(v);
             }
             path.push(source);

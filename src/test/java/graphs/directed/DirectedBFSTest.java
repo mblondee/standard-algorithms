@@ -1,4 +1,4 @@
-package graphs;
+package graphs.directed;
 
 import graphs.directed.DiGraph;
 import graphs.directed.DirectedBFS;
