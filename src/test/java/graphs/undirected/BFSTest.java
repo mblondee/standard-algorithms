@@ -1,7 +1,6 @@
 package graphs.undirected;
 
-import graphs.undirected.BFS;
-import graphs.undirected.Graph;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
