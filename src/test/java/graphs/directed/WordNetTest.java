@@ -1,12 +1,10 @@
 package graphs.directed;
 
 
-import com.sun.tools.jdi.IntegerValueImpl;
 import graphs.directed.application.AncestorBFS;
 import graphs.directed.application.Outcast;
 import graphs.directed.application.ShortestAncestralPath;
 import graphs.directed.application.WordNet;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 

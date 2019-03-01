@@ -1,7 +1,6 @@
 package graphs.undirected;
 
 
-import graphs.undirected.Graph;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
