@@ -1,7 +1,6 @@
 package graphs.undirected;
 
 
-import graphs.directed.MSTPrimLazy;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

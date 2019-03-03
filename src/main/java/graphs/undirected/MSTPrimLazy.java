@@ -1,4 +1,4 @@
-package graphs.directed;
+package graphs.undirected;
 
 /*
  * a data type for computing a minimum spanning tree in an edge weighted (undirected) connected graph
@@ -11,11 +11,11 @@ package graphs.directed;
  * since it uses a priority queue
  *
  * if the graph is not connected it computes a minimum spanning forest
+ *
+ * lazy version: edges that will be not used stay on the pq
  * */
 
 import collections.queue.LinkedQueue;
-import graphs.undirected.Edge;
-import graphs.undirected.EdgeWeightedGraph;
 import sorting.priorityqueue.MinPQ;
 
 import java.util.HashMap;

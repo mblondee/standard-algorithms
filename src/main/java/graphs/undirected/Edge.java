@@ -62,6 +62,6 @@ public class Edge<Vertex> implements Comparable<Edge> {
 
     @Override
     public String toString(){
-        return String.format("%d-%d %5f",v,w, weight);
+        return String.format("%s-%s %5f",v.toString(),w.toString(), weight);
     }
 }

@@ -127,9 +127,9 @@ public class Graph<Vertex> {
         str.append(numberOfVertices + " vertices " + numberOfEdges + " edges " + "\n");
         str.append("edges:\n");
         for (Vertex v : getVertices()) {
-            str.append(v + " :");
+            str.append(v.toString() + " :");
             for (Vertex w : getNeighbours(v)) {
-                str.append(" " + w);
+                str.append(" " + w.toString());
             }
             str.append("\n");
         }

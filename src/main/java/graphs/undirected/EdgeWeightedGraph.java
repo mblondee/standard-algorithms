@@ -3,7 +3,10 @@ package graphs.undirected;
 /*
  * representation of an undirected and weighted graph using adjacency lists
  * using a HashMap to keep track of vertices and the edges starting or ending in each vertex
+ *
+ * possible to have parallel edges
  * */
+
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -157,9 +160,9 @@ public class EdgeWeightedGraph<Vertex> {
         str.append(numberOfVertices + " vertices " + numberOfEdges + " edges " + "\n");
         str.append("edges:\n");
         for (Vertex v : getVertices()) {
-            str.append(v + " ->\n");
-            for (Edge e : getNeighbours(v)) {
-                str.append(" " + e.otherVertex(v) + " " + e.getWeight() +"\n");
+            str.append(v.toString() + " ->\n");
+            for (Edge<Vertex> e : getNeighbours(v)) {
+                str.append(" " + e.otherVertex(v).toString() + " " + e.getWeight() +"\n");
             }
             str.append("\n");
         }

@@ -2,29 +2,31 @@ package graphs.directed;
 
 
 /*
- * representation of a directed and unweighted graph using adjacency lists
+ * representation of a directed and weighted graph using adjacency lists
  * using a HashMap to keep track of vertices and their neighbours
+ *
+ * possible to have parallel edges
  * */
+
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DiGraph<Vertex> {
-    // adjacency list containing for each vertex its neighbours
-    private HashMap<Vertex, Set<Vertex>> adjacencyList;
+public class EdgeWeightedDiGraph<Vertex> {
+    // adjacency list containing for each vertex its neighbours (represented by the directed edge)
+    private HashMap<Vertex, Set<DirectedEdge<Vertex>>> adjacencyList;
     private HashMap<Vertex, Integer> inDegree; // for each vertex, the indegree
     private int numberOfVertices = 0;
     private int numberOfEdges = 0;
 
     /*
-     * initialize new DiGraph object
+     * initialize new Weighted DiGraph object
      * */
-    public DiGraph() {
+    public EdgeWeightedDiGraph() {
         adjacencyList = new HashMap<>();
         inDegree = new HashMap<>();
     }
-
 
     /*
      * does graph contain {@code v}?
@@ -76,53 +78,55 @@ public class DiGraph<Vertex> {
     /*
      * add a new edge from {@code v} to {@ code w} to the graph
      * */
-    public void addEdge(Vertex v, Vertex w) {
+    public void addEdge(DirectedEdge<Vertex> edge) {
+        Vertex v = edge.startVertex();
+        Vertex w = edge.endVertex();
         validate(v);
         validate(w);
         // add if not already there
-        if (!adjacencyList.get(v).contains(w)) {
-            // add w to neighbours of v
-            adjacencyList.get(v).add(w);
+        if (!adjacencyList.get(v).contains(edge)) {
+            // add edge to neighbours of v
+            adjacencyList.get(v).add(edge);
             numberOfEdges++;
             inDegree.put(w, inDegree.get(w) + 1);
         }
     }
 
-    public void removeEdge(Vertex v, Vertex w) {
+    public void removeEdge(DirectedEdge<Vertex> edge) {
+        Vertex v = edge.startVertex();
+        Vertex w = edge.endVertex();
         validate(v);
         validate(w);
         // only remove when present
-        if(adjacencyList.get(v).contains(w)) {
-            adjacencyList.get(v).remove(w);
+        if(adjacencyList.get(v).contains(edge)) {
+            adjacencyList.get(v).remove(edge);
             numberOfEdges--;
             inDegree.put(w, inDegree.get(w) -1);
         }
 
     }
 
-
-    /*
-     * return outdegree (number of directed edges incident from vertex {@code vertex})
-     * */
-    public int getOutDegree(Vertex v){
-        validate(v);
-        return adjacencyList.get(v).size();
-    }
-
-    /*
-     * return indegree (number of directed edges incident to vertex {@code vertex})
-     * */
-    public int getInDegree(Vertex v){
-        validate(v);
-        return inDegree.get(v);
-    }
-
     public Iterable<Vertex> getVertices(){
         return adjacencyList.keySet();
     }
 
-    public Iterable<Vertex> getNeighbours(Vertex v){
+    public Iterable<DirectedEdge<Vertex>> getNeighbours(Vertex v){
+
         return adjacencyList.get(v);
+    }
+
+    /*
+     * return all edges
+     * */
+    public Iterable<DirectedEdge<Vertex>> getEdges(){
+        HashSet<DirectedEdge<Vertex>> edges = new HashSet<>();
+        for(Vertex v : getVertices()){
+            for(DirectedEdge<Vertex> e : getNeighbours(v)){
+                edges.add(e);
+            }
+
+        }
+        return edges;
     }
 
     @Override
@@ -131,9 +135,9 @@ public class DiGraph<Vertex> {
         str.append(numberOfVertices + " vertices " + numberOfEdges + " edges " + "\n");
         str.append("edges:\n");
         for (Vertex v : getVertices()) {
-            str.append(v.toString() + " :");
-            for (Vertex w : getNeighbours(v)) {
-                str.append(" " + w.toString());
+            str.append(v.toString() + " ->\n");
+            for (DirectedEdge<Vertex> e : getNeighbours(v)) {
+                str.append(" " + e.endVertex().toString() + " " + e.weight() +"\n");
             }
             str.append("\n");
         }
@@ -142,6 +146,22 @@ public class DiGraph<Vertex> {
 
 
 
+    /*
+     * return outdegree (number of directed edges with startpoint vertex {@code vertex})
+     * */
+    public int getOutDegree(Vertex v){
+        validate(v);
+        return adjacencyList.get(v).size();
+    }
+
+    /*
+     * return indegree (number of directed edges with endpoint vertex {@code vertex})
+     * */
+    public int getInDegree(Vertex v){
+        validate(v);
+        return inDegree.get(v);
+    }
+
     /*validate vertex: is {@code v} a vertex in graph?*/
 
     public void validate(Vertex v) {
@@ -149,24 +169,4 @@ public class DiGraph<Vertex> {
             throw new IllegalArgumentException(("not a vertex in Graph"));
         }
     }
-
-    /*
-    * Returns a new directed graph in which all edges have opposite direction
-    *
-    * */
-    public DiGraph reverse(){
-        DiGraph<Vertex> reverseGraph = new DiGraph<>();
-        // add all vertices
-        for(Vertex v : getVertices()){
-            reverseGraph.addVertex(v);
-        }
-        // add all edges but reversed
-        for(Vertex v : getVertices()){
-            for (Vertex w : getNeighbours(v)){
-                reverseGraph.addEdge(w,v);
-            }
-        }
-        return reverseGraph;
-    }
-
 }
