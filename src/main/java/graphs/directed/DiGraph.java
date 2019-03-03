@@ -13,9 +13,9 @@ import java.util.Set;
 public class DiGraph<Vertex> {
     // adjacency list containing for each vertex its neighbours
     private HashMap<Vertex, Set<Vertex>> adjacencyList;
-    private HashMap<Vertex, Integer> inDegree; // for each vertex, the indegree
-    private int numberOfVertices = 0;
-    private int numberOfEdges = 0;
+    protected HashMap<Vertex, Integer> inDegree; // for each vertex, the indegree
+    protected int numberOfVertices = 0;
+    protected int numberOfEdges = 0;
 
     /*
      * initialize new DiGraph object

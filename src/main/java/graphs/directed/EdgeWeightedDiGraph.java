@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EdgeWeightedDiGraph<Vertex> {
+public class EdgeWeightedDiGraph<Vertex>  {
     // adjacency list containing for each vertex its neighbours (represented by the directed edge)
     private HashMap<Vertex, Set<DirectedEdge<Vertex>>> adjacencyList;
     private HashMap<Vertex, Integer> inDegree; // for each vertex, the indegree
@@ -27,6 +27,7 @@ public class EdgeWeightedDiGraph<Vertex> {
         adjacencyList = new HashMap<>();
         inDegree = new HashMap<>();
     }
+
 
     /*
      * does graph contain {@code v}?
@@ -75,6 +76,7 @@ public class EdgeWeightedDiGraph<Vertex> {
 
     }
 
+
     /*
      * add a new edge from {@code v} to {@ code w} to the graph
      * */
@@ -109,6 +111,8 @@ public class EdgeWeightedDiGraph<Vertex> {
     public Iterable<Vertex> getVertices(){
         return adjacencyList.keySet();
     }
+
+
 
     public Iterable<DirectedEdge<Vertex>> getNeighbours(Vertex v){
 
