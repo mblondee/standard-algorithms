@@ -1,6 +1,7 @@
 package graphs.undirected;
 
 
+import graphs.directed.MSTPrimLazy;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -45,6 +46,16 @@ public class MSTTest {
     public void KruksalTest(){
         //System.out.println(G);
         MSTKruskal<Integer> mst = new MSTKruskal<>(G);
+        for(Edge<Integer> e: mst.MST()){
+            System.out.println(e);
+        }
+        assertEquals(1.81, mst.getWeight(), 0.00001);
+
+    }
+
+    @Test
+    public void lazyPrimTest(){
+        MSTPrimLazy<Integer> mst = new MSTPrimLazy<>(G);
         for(Edge<Integer> e: mst.MST()){
             System.out.println(e);
         }

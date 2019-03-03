@@ -6,14 +6,20 @@ import percolation.unionfind.UFgeneric;
 import sorting.priorityqueue.MinPQ;
 
 /*
-* a data type for computing a minimum spanning tree i an edge weighted (undirected) graph
+* a data type for computing a minimum spanning tree in an edge weighted (undirected) connected graph
 * using Kruskal's algorithm and union find
 * - edges are processed in order of weight (smallest -> largest)
 * - each edge that does not form a cycle with previously added edges is added
 * - until number-of-vertices - 1 edges have been added
 *
 * union find is used to check if adding an edge would form a cycle
+*
+* worst case space and time proportional to (number-of-edges)*log_2(number-of-edges)
+ * since it uses a priority queue
+ *
+ * if the graph is not connected it computes a minimum spanning forest
 * */
+
 public class MSTKruskal<Vertex> {
     private EdgeWeightedGraph<Vertex> G;
     private LinkedQueue<Edge<Vertex>> mst; // edges in MST
