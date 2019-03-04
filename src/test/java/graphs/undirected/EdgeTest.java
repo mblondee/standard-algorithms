@@ -7,14 +7,14 @@ public class EdgeTest {
 
     @Test
     public void test(){
-        Edge<String> edge = new Edge<>("a", "b");
+/*        Edge<String> edge = new Edge<>("a", "b");
         Edge<String> edge1 = new Edge<>("a", "c");
         Edge<String> edge2 = new Edge<>("a", "b");
         Edge<String> edge3 = new Edge<>("b", "a");
         assertTrue(edge.equals(edge2));
         assertFalse(edge.equals(edge1));
         assertTrue(edge.equals(edge3));
-        assertEquals(null, edge.weight());
+        assertEquals(null, edge.weight());*/
 
 
         Edge<Integer> edge4 = new Edge<>(0,1,0.2);

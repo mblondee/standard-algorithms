@@ -72,7 +72,8 @@ public class GraphTest {
         G.addEdge(10,5);
 
         assertEquals(8, G.numberOfEdges());
-        System.out.println(G);
+        assertEquals(10, G.numberOfVertices());
+        //System.out.println(G);
 
         G.removeVertex(2);
         assertEquals(8, G.numberOfEdges());
@@ -85,7 +86,7 @@ public class GraphTest {
         G.removeVertex(5);
         assertEquals(5, G.numberOfEdges());
         assertEquals(7, G.numberOfVertices());
-        //System.out.println(G);
+        System.out.println(G);
 
         G.removeVertex(3);
         G.removeVertex(7);

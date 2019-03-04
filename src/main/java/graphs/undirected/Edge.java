@@ -1,7 +1,7 @@
 package graphs.undirected;
 
 /*
-* edge abstraction for (weighted) undirected edges
+* edge abstraction for unweighted undirected edges
 * */
 
 
@@ -10,12 +10,13 @@ public class Edge<Vertex> implements Comparable<Edge> {
 
     private Vertex v; // endpoint of the edge
     private Vertex w; // other endpoint of the edge
-    private Double weight = null;
+    private double weight;
     private static double COMPAREWEIGHT = 0.0001;
 
 
+
     /*
-     * initialize an undirected edge with weight
+     * initialize an undirected edge
      * */
     public Edge(Vertex v, Vertex w, double weight){
         this.v = v;
@@ -23,20 +24,6 @@ public class Edge<Vertex> implements Comparable<Edge> {
         this.weight = weight;
     }
 
-    /*
-     * initialize an undirected edge without weight
-     * */
-    public Edge(Vertex v, Vertex w){
-        this.v = v;
-        this.w = w;
-    }
-
-    /*
-     * return weight, if it is an unweighted edge returns null
-     * */
-    public Double weight(){
-        return weight;
-    }
 
     /*
     * return one of the two endpoints
@@ -60,6 +47,15 @@ public class Edge<Vertex> implements Comparable<Edge> {
         }
     }
 
+    /*
+     * return weight
+     * */
+    public double weight(){
+        return weight;
+
+    }
+
+
     @Override
     public int compareTo(Edge otherEdge){
         if(weight < otherEdge.weight()){
@@ -73,7 +69,7 @@ public class Edge<Vertex> implements Comparable<Edge> {
         }
     }
 
-    @Override
+   /* @Override
     public boolean equals(Object other){
         if(other == this){
             return true;
@@ -118,13 +114,10 @@ public class Edge<Vertex> implements Comparable<Edge> {
             hash = 31*hash + weight.hashCode();
         }
         return hash;
-    }
+    }*/
 
     @Override
     public String toString(){
-        if(weight == null){
-            String.format("%s-%s",v.toString(),w.toString());
-        }
         return String.format("%s-%s %5f",v.toString(),w.toString(), weight);
     }
 }

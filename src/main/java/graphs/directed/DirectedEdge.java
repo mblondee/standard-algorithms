@@ -87,7 +87,7 @@ public class DirectedEdge<Vertex>  {
     @Override
     public String toString(){
         if(weight == null){
-            String.format("%s->%s",v.toString(),w.toString());
+            return String.format("%s->%s",v.toString(),w.toString());
         }
         return String.format("%s->%s %5f",v.toString(),w.toString(), weight);
     }

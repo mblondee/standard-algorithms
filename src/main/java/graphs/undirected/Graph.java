@@ -3,6 +3,8 @@ package graphs.undirected;
 /*
 * representation of a simple undirected and unweighted graph using adjacency lists
 * using a HashMap to keep track of vertices and their neighbours
+*
+* no parallel edges possible
 * */
 
 

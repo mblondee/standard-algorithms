@@ -1,10 +1,10 @@
 package graphs.undirected;
 
 /*
- * representation of an undirected and weighted graph using adjacency lists
+ * representation of an undirected (weighted and unweighted) graph using adjacency lists
  * using a HashMap to keep track of vertices and the edges starting or ending in each vertex
  *
- * possible to have parallel edges
+ * not possible to have parallel edges
  * */
 
 
