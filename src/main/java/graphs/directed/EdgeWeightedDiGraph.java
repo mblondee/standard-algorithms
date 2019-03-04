@@ -5,7 +5,7 @@ package graphs.directed;
  * representation of a directed and weighted graph using adjacency lists
  * using a HashMap to keep track of vertices and their neighbours
  *
- * possible to have parallel edges
+ * no parallel edges
  * */
 
 
@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EdgeWeightedDiGraph<Vertex>  {
-    // adjacency list containing for each vertex its neighbours (represented by the directed edge)
+public class EdgeWeightedDiGraph<Vertex> extends DiGraph<Vertex>  {
+/*    // adjacency list containing for each vertex its neighbours (represented by the directed edge)
     private HashMap<Vertex, Set<DirectedEdge<Vertex>>> adjacencyList;
     private HashMap<Vertex, Integer> inDegree; // for each vertex, the indegree
     private int numberOfVertices = 0;
-    private int numberOfEdges = 0;
+    private int numberOfEdges = 0;*/
 
     /*
      * initialize new Weighted DiGraph object

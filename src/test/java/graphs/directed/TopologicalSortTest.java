@@ -14,12 +14,12 @@ public class TopologicalSortTest {
         for(Integer i = 0; i<=5; i++){
             G.addVertex(i);
         }
-        G.addEdge(5,2);
-        G.addEdge(5,0);
-        G.addEdge(4,0);
-        G.addEdge(4,1);
-        G.addEdge(2,3);
-        G.addEdge(3,1);
+        G.addEdge(new DirectedEdge<>(5,2));
+        G.addEdge(new DirectedEdge<>(5,0));
+        G.addEdge(new DirectedEdge<>(4,0));
+        G.addEdge(new DirectedEdge<>(4,1));
+        G.addEdge(new DirectedEdge<>(2,3));
+        G.addEdge(new DirectedEdge<>(3,1));
 
         TopologicalSort<Integer> top = new TopologicalSort<>(G);
         for(Integer i : top.getOrder()){

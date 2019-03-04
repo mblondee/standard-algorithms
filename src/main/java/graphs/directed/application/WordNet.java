@@ -27,6 +27,7 @@ package graphs.directed.application;
 * */
 
 import graphs.directed.DiGraph;
+import graphs.directed.DirectedEdge;
 
 
 import java.io.BufferedReader;
@@ -94,7 +95,7 @@ public class WordNet {
                 // subsequent fields are synonyms
                 String[] nextFields = Arrays.copyOfRange(toAdd, 1, toAdd.length);
                 for(String s: nextFields){
-                    graphOfSynsets.addEdge(id, Integer.parseInt(s));
+                    graphOfSynsets.addEdge(new DirectedEdge<>(id, Integer.parseInt(s)));
                 }
 
 

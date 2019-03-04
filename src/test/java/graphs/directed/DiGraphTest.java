@@ -29,7 +29,7 @@ public class DiGraphTest {
                 Integer v2 = Integer.parseInt(lineString.split("\\s+")[1]);
                 G.addVertex(v1);
                 G.addVertex(v2);
-                G.addEdge(v1,v2);
+                G.addEdge(new DirectedEdge<>(v1,v2));
             }
             bufferReader.close();
         }
@@ -37,6 +37,46 @@ public class DiGraphTest {
             System.out.println("Error while reading file " + e.getMessage());
         }
     }
+
+    @Test
+    public void test1(){
+        DiGraph<String> G1 = new DiGraph<>();
+        G1.addVertex("a");
+        G1.addVertex("b");
+        G1.addVertex("c");
+        G1.addVertex("d");
+        assertEquals(4, G1.numberOfVertices());
+        assertEquals(0, G1.numberOfEdges());
+        G1.addEdge(new DirectedEdge<>("a", "b"));
+        assertEquals(4, G1.numberOfVertices());
+        assertEquals(1, G1.numberOfEdges());
+        G1.addEdge(new DirectedEdge<>("a", "c"));
+        G1.addEdge(new DirectedEdge<>("a", "d"));
+        assertEquals(3, G1.numberOfEdges());
+        G1.addEdge(new DirectedEdge<>("a", "d"));
+        assertEquals(3, G1.numberOfEdges());
+        G1.addEdge(new DirectedEdge<>("b", "d"));
+        assertEquals(4, G1.numberOfEdges());
+        assertEquals(0, G1.getInDegree("a"));
+        assertEquals(3, G1.getOutDegree("a"));
+        assertEquals(1, G1.getInDegree("b"));
+        assertEquals(1, G1.getOutDegree("b"));
+        assertEquals(1, G1.getInDegree("c"));
+        assertEquals(0, G1.getOutDegree("c"));
+        assertEquals(2, G1.getInDegree("d"));
+        assertEquals(0, G1.getOutDegree("d"));
+
+        //System.out.println(G1);
+        //System.out.println("----");
+        G1.removeEdge(new DirectedEdge<>("b", "d"));
+        //System.out.println(G1);
+        assertEquals(3, G1.numberOfEdges());
+        G1.removeVertex("a");
+        //System.out.println(G1);
+        assertEquals(3, G1.numberOfVertices());
+        assertEquals(0, G1.numberOfEdges());
+    }
+
 
     @Test
     public void test2(){

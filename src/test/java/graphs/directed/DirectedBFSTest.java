@@ -30,7 +30,7 @@ public class DirectedBFSTest {
                 Integer v2 = Integer.parseInt(lineString.split("\\s+")[1]);
                 G.addVertex(v1);
                 G.addVertex(v2);
-                G.addEdge(v1,v2);
+                G.addEdge(new DirectedEdge<>(v1,v2));
             }
             bufferReader.close();
         }

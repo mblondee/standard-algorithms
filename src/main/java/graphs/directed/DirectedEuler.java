@@ -25,7 +25,7 @@ public class DirectedEuler<Vertex> {
     private final DiGraph<Vertex> G;
     private boolean hasEuler;
     private StrongComponent<Vertex> strongComponent; // data type containing strong components
-    private HashMap<Vertex, Iterator<Vertex> > adjacencyList; // adjacency list -> to be able to iterate one at a time
+    private HashMap<Vertex, Iterator<DirectedEdge<Vertex>> > adjacencyList; // adjacency list -> to be able to iterate one at a time
     private LinkedStack<Vertex> cycle;
     private LinkedStack<Vertex> backTrackStack;
 
@@ -58,7 +58,7 @@ public class DirectedEuler<Vertex> {
                 //put current on stack
                 backTrackStack.push(top);
                 //get neighbour
-                top = adjacencyList.get(top).next();
+                top = adjacencyList.get(top).next().endVertex();
             }
             cycle.push(top);
 

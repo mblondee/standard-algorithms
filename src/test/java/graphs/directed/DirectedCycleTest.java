@@ -31,7 +31,7 @@ public class DirectedCycleTest {
                 Integer v2 = Integer.parseInt(lineString.split("\\s+")[1]);
                 G.addVertex(v1);
                 G.addVertex(v2);
-                G.addEdge(v1,v2);
+                G.addEdge(new DirectedEdge<>(v1,v2));
             }
             bufferReader.close();
         }
@@ -55,12 +55,12 @@ public class DirectedCycleTest {
         G1.addVertex("a");
         G1.addVertex("b");
         G1.addVertex("c");
-        G1.addEdge("a", "b");
-        G1.addEdge("b", "c");
-        G1.addEdge("a", "c");
+        G1.addEdge(new DirectedEdge<>("a", "b"));
+        G1.addEdge(new DirectedEdge<>("b", "c"));
+        G1.addEdge(new DirectedEdge<>("a", "c"));
         DirectedCycle<String> cyc = new DirectedCycle<>(G1);
         assertFalse(cyc.hasCycle());
-        G1.addEdge("c", "a");
+        G1.addEdge(new DirectedEdge<>("c", "a"));
         DirectedCycle<String> cyc1 = new DirectedCycle<>(G1);
         assertTrue(cyc1.hasCycle());
         for(String i : cyc1.getCycle()){

@@ -71,17 +71,18 @@ public class WordNetTest {
         for(Integer i = 0; i<12; i++){
             G.addVertex(i);
         }
-        G.addEdge(6,3);
-        G.addEdge(7,3);
-        G.addEdge(3,1);
-        G.addEdge(4,1);
-        G.addEdge(8,5);
-        G.addEdge(10,9);
-        G.addEdge(11,9);
-        G.addEdge(9,5);
-        G.addEdge(5,1);
-        G.addEdge(1,0);
-        G.addEdge(2,0);
+        G.addEdge(new DirectedEdge<>(6,3));
+        G.addEdge(new DirectedEdge<>(7,3));
+        G.addEdge(new DirectedEdge<>(3,1));
+        G.addEdge(new DirectedEdge<>(4,1));
+        G.addEdge(new DirectedEdge<>(8,5));
+        G.addEdge(new DirectedEdge<>(10,9));
+        G.addEdge(new DirectedEdge<>(11,9));
+        G.addEdge(new DirectedEdge<>(9,5));
+        G.addEdge(new DirectedEdge<>(5,1));
+        G.addEdge(new DirectedEdge<>(1,0));
+        G.addEdge(new DirectedEdge<>(2,0));
+
 
         assertEquals(11, G.numberOfEdges());
 
@@ -98,7 +99,7 @@ public class WordNetTest {
         assertEquals(new Integer(0), bfs2.getMinAncestor());
         assertEquals(5, bfs2.getMinLengthPath());
 
-        G.removeEdge(2,0);
+        G.removeEdge(new DirectedEdge<>(2,0)); // werkt nog??
         AncestorBFS<Integer> bfs3 = new AncestorBFS<>(G, 10, 2);
         assertEquals(null,  bfs3.getMinAncestor());
         assertEquals(Integer.MAX_VALUE, bfs3.getMinLengthPath());
@@ -110,17 +111,18 @@ public class WordNetTest {
         for(Integer i = 0; i<12; i++){
             G.addVertex(i);
         }
-        G.addEdge(6,3);
-        G.addEdge(7,3);
-        G.addEdge(3,1);
-        G.addEdge(4,1);
-        G.addEdge(8,5);
-        G.addEdge(10,9);
-        G.addEdge(11,9);
-        G.addEdge(9,5);
-        G.addEdge(5,1);
-        G.addEdge(1,0);
-        G.addEdge(2,0);
+        G.addEdge(new DirectedEdge<>(6,3));
+        G.addEdge(new DirectedEdge<>(7,3));
+        G.addEdge(new DirectedEdge<>(3,1));
+        G.addEdge(new DirectedEdge<>(4,1));
+        G.addEdge(new DirectedEdge<>(8,5));
+        G.addEdge(new DirectedEdge<>(10,9));
+        G.addEdge(new DirectedEdge<>(11,9));
+        G.addEdge(new DirectedEdge<>(9,5));
+        G.addEdge(new DirectedEdge<>(5,1));
+        G.addEdge(new DirectedEdge<>(1,0));
+        G.addEdge(new DirectedEdge<>(2,0));
+
 
         ShortestAncestralPath<Integer> sap = new ShortestAncestralPath<>(G);
         assertEquals(5, sap.getLength(6,10));
@@ -129,7 +131,7 @@ public class WordNetTest {
         assertEquals(3, sap.getLength(4,2));
         assertEquals(new Integer(0), sap.getAncestor(4,2));
 
-        G.removeEdge(2,0);
+        G.removeEdge(new DirectedEdge<>(2,0)); // werkt???
         assertEquals(-1, sap.getLength(4,2));
         assertEquals(null, sap.getAncestor(4,2));
 
@@ -141,17 +143,19 @@ public class WordNetTest {
         for(Integer i = 0; i<12; i++){
             G.addVertex(i);
         }
-        G.addEdge(6,3);
-        G.addEdge(7,3);
-        G.addEdge(3,1);
-        G.addEdge(4,1);
-        G.addEdge(8,5);
-        G.addEdge(10,9);
-        G.addEdge(11,9);
-        G.addEdge(9,5);
-        G.addEdge(5,1);
-        G.addEdge(1,0);
-        G.addEdge(2,0);
+
+        G.addEdge(new DirectedEdge<>(6,3));
+        G.addEdge(new DirectedEdge<>(7,3));
+        G.addEdge(new DirectedEdge<>(3,1));
+        G.addEdge(new DirectedEdge<>(4,1));
+        G.addEdge(new DirectedEdge<>(8,5));
+        G.addEdge(new DirectedEdge<>(10,9));
+        G.addEdge(new DirectedEdge<>(11,9));
+        G.addEdge(new DirectedEdge<>(9,5));
+        G.addEdge(new DirectedEdge<>(5,1));
+        G.addEdge(new DirectedEdge<>(1,0));
+        G.addEdge(new DirectedEdge<>(2,0));
+
 
         ShortestAncestralPath<Integer> sap = new ShortestAncestralPath<>(G);
         List<Integer> lst1 = new ArrayList<>();

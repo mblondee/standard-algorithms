@@ -35,7 +35,8 @@ public class DirectedPath<Vertex> {
 
     private void dfs(DiGraph<Vertex> G, Vertex v){
         markedVertices.put(v, true);
-        for(Vertex w: G.getNeighbours(v)){
+        for(DirectedEdge<Vertex> edge: G.getNeighbours(v)){
+            Vertex w = edge.endVertex();
             if(! markedVertices.get(w)){
                 edgeFrom.put(w,v);
                 path.add(w);

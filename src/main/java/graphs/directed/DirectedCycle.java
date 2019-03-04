@@ -42,7 +42,8 @@ public class DirectedCycle<Vertex> {
         // as long as a cycle hasn't been found: check neighbours
         // if marked: then we have encountered a cycle
         // if not marked: vertex is added to path
-        for(Vertex w : G.getNeighbours(v)){
+        for(DirectedEdge<Vertex> edge : G.getNeighbours(v)){
+            Vertex w = edge.endVertex();
             // stop if a cycle has been found
             if(cycle != null){return;}
             if(! markedVertices.get(w)){

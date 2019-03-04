@@ -37,7 +37,8 @@ public class TopologicalSort<Vertex> {
 
     private void topSort(Vertex v){
         markedVertices.put(v, true);
-        for(Vertex w : G.getNeighbours(v)){
+        for(DirectedEdge<Vertex> edge : G.getNeighbours(v)){
+            Vertex w = edge.endVertex();
             if(! markedVertices.get(w)){
                 topSort(w);
             }

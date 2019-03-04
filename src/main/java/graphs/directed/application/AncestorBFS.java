@@ -7,6 +7,7 @@ package graphs.directed.application;
 import collections.queue.LinkedQueue;
 import graphs.directed.DiGraph;
 import graphs.directed.DirectedBFS;
+import graphs.directed.DirectedEdge;
 
 import java.util.HashMap;
 
@@ -63,7 +64,8 @@ public class AncestorBFS<Vertex> {
             }
 
             //check neighbours of v
-            for(Vertex w : G.getNeighbours(v)){
+            for(DirectedEdge<Vertex> edge : G.getNeighbours(v)){
+                Vertex w = edge.endVertex();
                 // add all neighbours that are not marked
                 if(! markedVertices.get(w)){
                     markedVertices.put(w, true);

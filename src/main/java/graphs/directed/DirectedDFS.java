@@ -35,7 +35,8 @@ public class DirectedDFS<Vertex> {
         // mark v as visited
         markedVertices.put(v, true);
         // recursively visit all of v's neighbours that are not marked yet
-        for(Vertex w : G.getNeighbours(v)){
+        for(DirectedEdge<Vertex> edge : G.getNeighbours(v)){
+            Vertex w = edge.endVertex();
             // if w is not marked
             if(! markedVertices.get(w)){
                 edgeFrom.put(w, v);
