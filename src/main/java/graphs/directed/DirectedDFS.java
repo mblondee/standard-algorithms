@@ -2,7 +2,7 @@ package graphs.directed;
 
 /*
  * data type for finding paths from a source vertex to every other vertex in a
- * simple directed and unweighted graph using depth first search
+ * simple directed (weighted or unweighted) graph using depth first search
  * to search in a graph: mark a vertex as visited and visit recursively all neighbouring vertices that have not yet been marked
  * */
 
