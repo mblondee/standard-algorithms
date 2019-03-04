@@ -3,7 +3,7 @@ package graphs.directed;
 
 /*
  * a data type for determining which vertices are on a directed path from a given vertex in a
- * directed and unweighted graph
+ * directed (weighted and unweighte) graph
  * using depth first search
  * */
 
