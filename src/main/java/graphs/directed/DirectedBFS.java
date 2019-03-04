@@ -2,11 +2,11 @@ package graphs.directed;
 
 /*
  * data type for finding paths from a source vertex to every other vertex in a
- * simple directed and unweighted graph using breadth first search
+ * simple directed (weighted and unweighted) graph using breadth first search
  * it uses a queue to save the next vertex to visit, hence the paths found are shortest paths
  * when a vertex is removed from the queue, its neighbours that are not visited yet are
  * marked and added to the queue
- * this is repeated only the queue is empty
+ * this is repeated until the queue is empty
  * */
 
 import collections.queue.LinkedQueue;

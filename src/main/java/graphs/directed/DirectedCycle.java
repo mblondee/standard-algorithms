@@ -1,7 +1,7 @@
 package graphs.directed;
 
 /*
- * a data type for determining whether a simple (no loops) directed and unweighted graph
+ * a data type for determining whether a simple (no loops) directed (weighted and unweighted) graph
  * has a simple cycle
  * */
 
@@ -67,7 +67,11 @@ public class DirectedCycle<Vertex> {
     }
 
     public Iterable<Vertex> getCycle(){
-        return cycle;
+        if(hasCycle()){
+            return cycle;
+        }
+
+        return new LinkedStack<>();
     }
 
     public boolean hasCycle(){
