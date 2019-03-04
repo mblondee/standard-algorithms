@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 public class StrongComponentTest {
 
     private static DiGraph<Integer> G;
+    private static EdgeWeightedDiGraph<Integer> G1;
 
     @BeforeClass
     public static void initialize(){
@@ -30,6 +31,29 @@ public class StrongComponentTest {
                 G.addVertex(v1);
                 G.addVertex(v2);
                 G.addEdge(new DirectedEdge<>(v1,v2));
+            }
+            bufferReader.close();
+        }
+        catch(Exception e){
+            System.out.println("Error while reading file " + e.getMessage());
+        }
+
+        String fileName1 = "src/main/resources/tinyWeightedEdge.txt";
+        G1 = new EdgeWeightedDiGraph<>();
+
+        String line1;
+        try {
+            FileReader inputFile = new FileReader(fileName1);
+            BufferedReader bufferReader = new BufferedReader(inputFile);
+            while ( (line1 = bufferReader.readLine()) != null){
+                String lineString = line1.trim();
+                Integer v1 = Integer.parseInt(lineString.split(" ")[0]);
+                Integer v2 = Integer.parseInt(lineString.split(" ")[1]);
+                double w = Double.parseDouble(lineString.split(" ")[2]);
+                G1.addVertex(v1);
+                G1.addVertex(v2);
+                DirectedEdge<Integer> e = new DirectedEdge<>(v1,v2, w);
+                G1.addEdge(e);
             }
             bufferReader.close();
         }
@@ -99,4 +123,45 @@ public class StrongComponentTest {
         }
     }
 
+
+    @Test
+    public void test1(){
+        StrongComponent<Integer> sc = new StrongComponent<>(G1);
+        assertTrue(sc.getPathFrom(6).contains(0));
+        assertFalse(sc.getPathFrom(6).contains(1));
+        assertTrue(sc.getPathFrom(6).contains(2));
+        assertTrue(sc.getPathFrom(6).contains(3));
+        assertTrue(sc.getPathFrom(6).contains(4));
+        assertTrue(sc.getPathFrom(6).contains(5));
+        assertTrue(sc.getPathFrom(6).contains(6));
+        assertTrue(sc.getPathFrom(6).contains(7));
+
+        assertTrue(sc.getPathTo(6).contains(0));
+        assertTrue(sc.getPathTo(6).contains(1));
+        assertTrue(sc.getPathTo(6).contains(2));
+        assertTrue(sc.getPathTo(6).contains(3));
+        assertFalse(sc.getPathTo(6).contains(4));
+        assertFalse(sc.getPathTo(6).contains(5));
+        assertTrue(sc.getPathTo(6).contains(6));
+        assertFalse(sc.getPathTo(6).contains(7));
+
+        assertTrue(sc.strongComponent(6).contains(0));
+        assertFalse(sc.strongComponent(6).contains(1));
+        assertTrue(sc.strongComponent(6).contains(2));
+        assertTrue(sc.strongComponent(6).contains(3));
+        assertFalse(sc.strongComponent(6).contains(4));
+        assertFalse(sc.strongComponent(6).contains(5));
+        assertTrue(sc.strongComponent(6).contains(6));
+        assertFalse(sc.strongComponent(6).contains(7));
+
+
+
+
+/*        for(Integer i: sc.getPathFrom(6)){
+            System.out.println(i);
+        }*/
+/*        for(Integer i: sc.getPathTo(6)){
+            System.out.println(i);
+        }*/
+    }
 }

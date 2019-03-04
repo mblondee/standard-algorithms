@@ -1,7 +1,8 @@
 package graphs.directed;
 
 /*
- * a data type for finding the strong component of a vertex in a  directed and unweighted graph
+ * a data type for finding the strong component of a vertex in a  directed (weighted and unweighted) graph
+ * this is a maximal subgraph in which there is path between all pairs of vertices
  *
  * for a vertex v in a graph G we check which vertices are on a path from v
  * in the reversed graph of G we check which vertices are on a path from v
