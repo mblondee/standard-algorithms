@@ -69,52 +69,6 @@ public class Edge<Vertex> implements Comparable<Edge> {
         }
     }
 
-   /* @Override
-    public boolean equals(Object other){
-        if(other == this){
-            return true;
-        }
-        if(! (other instanceof Edge)){
-            return false;
-        }
-        Edge<Vertex> otherEdge = (Edge<Vertex>) other;
-        Vertex otherv = otherEdge.eitherVertex();
-        Vertex otherw = otherEdge.otherVertex(otherv);
-
-        if(weight == null){
-            if(v==otherv){
-                return w==otherw;
-            }
-            else if (v == otherw){
-                return w == otherv;
-            }
-            else{
-                return false;
-            }
-        }
-        else{
-            if(v == otherv){
-                return w==otherw && weight - otherEdge.weight() < COMPAREWEIGHT;
-            }
-            else if (v == otherw){
-                return w==otherv && weight - otherEdge.weight() < COMPAREWEIGHT;
-            }
-            else{
-                return false;
-            }
-        }
-    }
-
-    @Override
-    public int hashCode(){
-        int hash = 7;
-        hash = 31*hash + v.hashCode();
-        hash = 31*hash + w.hashCode();
-        if ( weight != null){
-            hash = 31*hash + weight.hashCode();
-        }
-        return hash;
-    }*/
 
     @Override
     public String toString(){
