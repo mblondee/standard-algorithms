@@ -1,7 +1,5 @@
 package graphs.directed;
 
-import graphs.directed.DiGraph;
-import graphs.directed.DirectedBFS;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -13,6 +11,7 @@ import static org.junit.Assert.*;
 public class DirectedBFSTest {
 
     private static DiGraph<Integer> G;
+    private static EdgeWeightedDiGraph<Integer> G1;
 
     @BeforeClass
     public static void initialize(){
@@ -31,6 +30,30 @@ public class DirectedBFSTest {
                 G.addVertex(v1);
                 G.addVertex(v2);
                 G.addEdge(new DirectedEdge<>(v1,v2));
+            }
+            bufferReader.close();
+        }
+        catch(Exception e){
+            System.out.println("Error while reading file " + e.getMessage());
+        }
+
+
+        String fileName1 = "src/main/resources/tinyWeightedEdge.txt";
+        G1 = new EdgeWeightedDiGraph<>();
+
+        String line1;
+        try {
+            FileReader inputFile = new FileReader(fileName1);
+            BufferedReader bufferReader = new BufferedReader(inputFile);
+            while ( (line1 = bufferReader.readLine()) != null){
+                String lineString = line1.trim();
+                Integer v1 = Integer.parseInt(lineString.split(" ")[0]);
+                Integer v2 = Integer.parseInt(lineString.split(" ")[1]);
+                double w = Double.parseDouble(lineString.split(" ")[2]);
+                G1.addVertex(v1);
+                G1.addVertex(v2);
+                DirectedEdge<Integer> e = new DirectedEdge<>(v1,v2, w);
+                G1.addEdge(e);
             }
             bufferReader.close();
         }
@@ -85,6 +108,23 @@ public class DirectedBFSTest {
                 System.out.println();
             }
         }
+
+    @Test
+    public void test1(){
+        DirectedBFS<Integer> bfs = new DirectedBFS<>(G1,4 );
+        assertFalse(bfs.hasPathTo(0));
+        assertFalse(bfs.hasPathTo(1));
+        assertFalse(bfs.hasPathTo(2));
+        assertFalse(bfs.hasPathTo(3));
+        assertTrue(bfs.hasPathTo(4));
+        assertTrue(bfs.hasPathTo(5));
+        assertFalse(bfs.hasPathTo(6));
+        assertTrue(bfs.hasPathTo(7));
+
+        assertEquals(0, bfs.distanceTo(4));
+        assertEquals(1, bfs.distanceTo(5));
+        assertEquals(1, bfs.distanceTo(7));
+    }
 
 
 }
