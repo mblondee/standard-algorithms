@@ -48,7 +48,7 @@ public class MSTKruskal<Vertex> {
             if(! uf.connected(v,w)){
                 uf.union(v,w); // merge components of v and w
                 mst.enqueue(e); // add edge to mst
-                weight += e.getWeight();
+                weight += e.weight();
             }
 
 

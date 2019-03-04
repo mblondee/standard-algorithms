@@ -162,7 +162,7 @@ public class EdgeWeightedGraph<Vertex> {
         for (Vertex v : getVertices()) {
             str.append(v.toString() + " ->\n");
             for (Edge<Vertex> e : getNeighbours(v)) {
-                str.append(" " + e.otherVertex(v).toString() + " " + e.getWeight() +"\n");
+                str.append(" " + e.otherVertex(v).toString() + " " + e.weight() +"\n");
             }
             str.append("\n");
         }

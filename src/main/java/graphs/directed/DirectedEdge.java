@@ -6,14 +6,12 @@ package graphs.directed;
  * */
 
 
-import java.util.Optional;
-import java.util.OptionalDouble;
-
 public class DirectedEdge<Vertex>  {
 
     private Vertex v; // start vertex
     private Vertex w; // end vertex
     private Double weight = null;
+    private static double COMPAREWEIGHT = 0.0001;
 
 
     /*
@@ -48,17 +46,14 @@ public class DirectedEdge<Vertex>  {
     }
 
     /*
-     * return weight if it is a weighted edge
+     * return weight, if it is an unweighted edge returns null
      * */
     public Double weight(){
             return weight;
 
     }
 
-/*
-public OptionalDouble weight(){
-    return Optional.of(weight);
-}*/
+
 
     @Override
     public boolean equals(Object other){
@@ -75,7 +70,7 @@ public OptionalDouble weight(){
         }
         return (startVertex() == otherEdge.startVertex()
         && endVertex() == otherEdge.endVertex()
-        && (weight()-otherEdge.weight()) < 0.00001);
+        && (weight()-otherEdge.weight()) < COMPAREWEIGHT);
     }
 
     @Override

@@ -59,7 +59,7 @@ public class MSTPrimLazy<Vertex> {
                 continue;
             }
             mst.enqueue(e);
-            weight += e.getWeight();
+            weight += e.weight();
 
             // v added to tree
             if(! markedVertices.get(v)){
