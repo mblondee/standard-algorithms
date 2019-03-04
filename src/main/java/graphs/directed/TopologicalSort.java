@@ -3,6 +3,8 @@ package graphs.directed;
 /*
 * a data type to compute a topological ordering of a directed (weighted and unweighted) graph (only possible if graph is acyclic)
 * using depth first search
+*
+* a topological ordering exists iff the graph is acylic
 * */
 
 import collections.stack.LinkedStack;
@@ -44,6 +46,10 @@ public class TopologicalSort<Vertex> {
             }
         }
         order.push(v);
+    }
+
+    public boolean hashTopologicalOrder(){
+        return order!=null;
     }
 
     public LinkedStack<Vertex> getOrder(){
