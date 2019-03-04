@@ -1,7 +1,7 @@
 package graphs.directed;
 
 /*
-* a data type to compute a topological ordering of a directed graph (only possible if graph is acyclic)
+* a data type to compute a topological ordering of a directed (weighted and unweighted) graph (only possible if graph is acyclic)
 * using depth first search
 * */
 
@@ -47,6 +47,10 @@ public class TopologicalSort<Vertex> {
     }
 
     public LinkedStack<Vertex> getOrder(){
-        return order;
+        if(order != null) {
+            return order;
+        }
+        return new LinkedStack<>();
+
     }
 }
