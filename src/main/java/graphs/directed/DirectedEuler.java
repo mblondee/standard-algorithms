@@ -1,7 +1,7 @@
 package graphs.directed;
 
 /*
- * a data type for determining whether a simple (no loops) directed and unweighted graph
+ * a data type for determining whether a simple (no loops and no parallel edges) directed and (weighted and unweighted) graph
  * has a directed eulerian cycle (visiting all edges)
  *
  * A directed graph G has a directed eulerian cycle if and only if

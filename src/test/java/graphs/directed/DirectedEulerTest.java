@@ -33,7 +33,7 @@ public class DirectedEulerTest {
             System.out.println(i);
         }
 
-        G1.removeEdge(new DirectedEdge<>(4,0)); // werkt??
+        G1.removeEdge(new DirectedEdge<>(4,0));
         DirectedEuler<Integer> euler1 = new DirectedEuler<>(G1);
         assertFalse(euler1.hasEulerianCycle());
     }
