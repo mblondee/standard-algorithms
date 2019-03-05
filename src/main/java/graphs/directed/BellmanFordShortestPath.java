@@ -3,6 +3,15 @@ package graphs.directed;
 /*
  * computes shortest paths in an edgeweighted digraph from a source vertex or finds a negative cycle reachable from source
  *
+ * - initialize all distances (except for source) to +infinity
+ * - consider the edges in a random order and relax all edges (is there a path with less weight to the end vertex)
+ * - do this #vertices times
+ * if there is no negative cycle than this will solve the single source shortest path problem
+ *
+ * a queue is used to keep track of the eligible edges to be relaxed: the only edges that can lead to a change in shortest distance
+ * are those with a start index whose shortest distance was changed in the previous pass
+ *
+ *
  * check for negative cycles to avoid an infinite loop
  *
  * edge weights can be positive, negative or zero
