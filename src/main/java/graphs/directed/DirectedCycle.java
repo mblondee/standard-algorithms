@@ -71,7 +71,7 @@ public class DirectedCycle<Vertex> {
             return cycle;
         }
 
-        return new LinkedStack<>();
+        return null;
     }
 
     public boolean hasCycle(){
