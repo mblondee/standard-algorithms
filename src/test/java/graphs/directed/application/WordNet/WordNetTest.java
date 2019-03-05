@@ -1,10 +1,8 @@
-package graphs.directed;
+package graphs.directed.application.WordNet;
 
 
-import AncestorBFS;
-import Outcast;
-import ShortestAncestralPath;
-import graphs.directed.application.WordNet.WordNet;
+import graphs.directed.DiGraph;
+import graphs.directed.DirectedEdge;
 import org.junit.Test;
 
 
