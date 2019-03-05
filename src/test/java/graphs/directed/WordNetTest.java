@@ -1,10 +1,10 @@
 package graphs.directed;
 
 
-import graphs.directed.application.AncestorBFS;
-import graphs.directed.application.Outcast;
-import graphs.directed.application.ShortestAncestralPath;
-import graphs.directed.application.WordNet;
+import AncestorBFS;
+import Outcast;
+import ShortestAncestralPath;
+import graphs.directed.application.WordNet.WordNet;
 import org.junit.Test;
 
 
