@@ -1,4 +1,4 @@
-package graphs.directed.application.WordNet;
+package graphs.directed.application;
 
 /*
 * a data type for detecting outcasts in a list of WordNet nouns: which noun is least related to the others?

@@ -1,4 +1,4 @@
-package graphs.directed.application.WordNet;
+package graphs.directed.application;
 /*
  * data type for finding a shortest common ancestor between two vertices in a simple directed and unweighted graph using breadth first search
  * */

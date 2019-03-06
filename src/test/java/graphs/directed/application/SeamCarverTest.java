@@ -1,4 +1,4 @@
-package graphs.directed.application.WordNet;
+package graphs.directed.application;
 
 import graphs.directed.application.seamcarver.SeamCarver;
 import help.libraries.Picture;

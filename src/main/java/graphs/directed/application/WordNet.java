@@ -1,4 +1,4 @@
-package graphs.directed.application.WordNet;
+package graphs.directed.application;
 
 /*
 * data type WordNet: a WordNet digraph every vertex v represents a synset (group of words that are synonyms)

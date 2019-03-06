@@ -1,4 +1,4 @@
-package graphs.directed.application.WordNet;
+package graphs.directed.application;
 
 /*
 * a data type for computing a shortest ancestral path between two vertices in a directed graph
