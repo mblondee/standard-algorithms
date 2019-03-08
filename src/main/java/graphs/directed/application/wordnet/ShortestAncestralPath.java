@@ -1,4 +1,4 @@
-package graphs.directed.application;
+package graphs.directed.application.wordnet;
 
 /*
 * a data type for computing a shortest ancestral path between two vertices in a directed graph
@@ -9,6 +9,7 @@ package graphs.directed.application;
 * */
 
 import graphs.directed.DiGraph;
+import graphs.directed.application.wordnet.AncestorBFS;
 
 
 public class ShortestAncestralPath<Vertex> {

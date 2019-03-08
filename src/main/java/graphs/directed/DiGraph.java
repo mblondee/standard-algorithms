@@ -134,7 +134,7 @@ public class DiGraph<Vertex> {
     }
 
     /*
-    * return all edges starting in {@code c}
+    * return all edges starting in {@code v}
     * */
     public Iterable<DirectedEdge<Vertex>> getNeighbours(Vertex v){
         return adjacencyList.get(v);

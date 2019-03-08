@@ -3,6 +3,10 @@ package graphs.directed.application;
 
 import graphs.directed.DiGraph;
 import graphs.directed.DirectedEdge;
+import graphs.directed.application.wordnet.AncestorBFS;
+import graphs.directed.application.wordnet.Outcast;
+import graphs.directed.application.wordnet.ShortestAncestralPath;
+import graphs.directed.application.wordnet.WordNet;
 import org.junit.Test;
 
 

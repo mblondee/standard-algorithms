@@ -11,6 +11,8 @@ package graphs.directed.application.seamcarver;
 * a pixel (x,y) refers to the pixel in column x and row y
 * pixel (0,0) at upper left corner
 * pixel (width-1, height-1) at bottom right corner
+*
+* This is assignment 2 in the Algorithms II course on Coursera.
 * */
 
 import help.libraries.Picture;

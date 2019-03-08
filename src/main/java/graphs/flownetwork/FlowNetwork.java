@@ -2,6 +2,7 @@ package graphs.flownetwork;
 
 /*
 * a capacitated network where each directed edge is a FlowEdge and has a real valued capacity and flow
+* the flow of an edge cannot exceed ist capacity
 * */
 
 import java.util.HashMap;
@@ -75,6 +76,13 @@ public class FlowNetwork<Vertex> {
      * */
     public Iterable<Vertex> getVertices(){
         return adjacencyList.keySet();
+    }
+
+    /*
+     * return all edges starting or ending in {@code v}
+     * */
+    public Iterable<FlowEdge<Vertex>> getNeighbours(Vertex v){
+        return adjacencyList.get(v);
     }
 
     /*

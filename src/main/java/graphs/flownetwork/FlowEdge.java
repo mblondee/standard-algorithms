@@ -4,6 +4,10 @@ package graphs.flownetwork;
 * a data type representing a capacitated edge with a flow
 * each edge consists of 2 vertices, a (real valued) capacity and a (real valued) flow
 *
+* methods for computing the residual network for a flow network are also given
+* every edge v -> w is converted as follows:
+* forward edge is the remaining flow
+* backward edge is the flow
 * */
 
 public class FlowEdge<Vertex> {
@@ -73,10 +77,10 @@ public class FlowEdge<Vertex> {
     * */
     public double getResidualCapacityTo(Vertex v){
         if(v == startVertex){
-            return flow;
+            return flow; // backward edge
         }
         else if(v == endVertex){
-            return capacity - flow;
+            return capacity - flow; // forward edge
         }
         else{
             throw new IllegalArgumentException("invalid vertex");
@@ -94,11 +98,11 @@ public class FlowEdge<Vertex> {
         }
 
         if (v == startVertex) {
-            flow -= delta;
+            flow -= delta; // backward edge
 
         }
         else if(v == endVertex){
-            flow += delta;
+            flow += delta; // forward edge
         }
 
         //round within floating point precision

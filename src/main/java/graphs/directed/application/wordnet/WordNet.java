@@ -1,4 +1,4 @@
-package graphs.directed.application;
+package graphs.directed.application.wordnet;
 
 /*
 * data type WordNet: a WordNet digraph every vertex v represents a synset (group of words that are synonyms)
@@ -24,10 +24,13 @@ package graphs.directed.application;
 * an ancestral path between vertices v and w is a directed path from v to a common ancestor, together with a directed from w to the ancestor
 * a shortest ancestral path is an ancestral path of minimum total length
 * the common ancestor in a shortest ancestral path is called a shortest common ancestor
+*
+* This is based on assigment 1 in the Algorithms II course on Coursera.
 * */
 
 import graphs.directed.DiGraph;
 import graphs.directed.DirectedEdge;
+import graphs.directed.application.wordnet.ShortestAncestralPath;
 
 
 import java.io.BufferedReader;
