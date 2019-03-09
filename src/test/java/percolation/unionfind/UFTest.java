@@ -11,7 +11,7 @@ import percolation.unionfind.impl.WeightedQuickUnionCompression;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 
 /*
  * Class TestUF test the different UF implementations

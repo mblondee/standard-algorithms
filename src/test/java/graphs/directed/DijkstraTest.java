@@ -23,9 +23,9 @@ public class DijkstraTest {
             BufferedReader bufferReader = new BufferedReader(inputFile);
             while ( (line = bufferReader.readLine()) != null){
                 String lineString = line.trim();
-                Integer v1 = Integer.parseInt(lineString.split(" ")[0]);
-                Integer v2 = Integer.parseInt(lineString.split(" ")[1]);
-                double w = Double.parseDouble(lineString.split(" ")[2]);
+                Integer v1 = Integer.parseInt(lineString.split("\\s+")[0]);
+                Integer v2 = Integer.parseInt(lineString.split("\\s+")[1]);
+                double w = Double.parseDouble(lineString.split("\\s+")[2]);
                 G.addVertex(v1);
                 G.addVertex(v2);
                 DirectedEdge<Integer> e = new DirectedEdge<>(v1,v2, w);
