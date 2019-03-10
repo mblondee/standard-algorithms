@@ -94,12 +94,34 @@ public class LSDRadixSort {
             for(int r = 0; r< radix; r++){
                 count[r+1] += count[r];
             }
+
+            // most significant byte has the sign: starting with 1 negative, starting with 0 positive
+            // negative ranges from byte 1000 0000 (128) to 1111 1111 (255)
+            // positive ranges from byte 0000 0000 (0) to 0111 1111 (127)
+            // if we would move the data back to aux we would get the positives sorted, the negatives as well
+            // but the positives before the negatives hence we have to shift the positives + 127 and the negatives -127
+            if(jump == length -1){
+                int shiftpositives = count[radix] - count[radix/2];
+                int shiftnegatives = count[radix/2];
+                for(int r = 0; r<radix/2; r++){
+                    count[r] += shiftpositives;
+                }
+                for(int r = radix/2; r<radix; r++){
+                    count[r] -= shiftnegatives;
+                }
+
+            }
+
+
             //move data to aux
             for(int i = 0; i<arrayLength; i++){
                 // get current byte as before
                 int byteCurrent = (array[i] >> bitsabyte*jump) & (radix-1);
                 aux[count[byteCurrent]++] = array[i];
             }
+
+
+
             //copy back to array
             for(int i =0;i<arrayLength; i++){
                 array[i] = aux[i];

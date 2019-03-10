@@ -27,6 +27,16 @@ public class LSDRadixTest {
         int[] testArray1 = {0x00-0x7F, 0x80-0xFF};
         LSDRadixSort.sort(testArray1);
         assertTrue(isSorted(testArray1));
+
+        int[] testArray3 = {0, 6, -1, -3};
+        LSDRadixSort.sort(testArray3);
+        assertTrue(isSorted(testArray3));
+
+        int[] testArray2 = {0xFFFFF, 0x00-0x7F, 0x80-0xFF};
+        LSDRadixSort.sort(testArray2);
+        assertTrue(isSorted(testArray2));
+
+
     }
 
     private static boolean isSorted(int[] array){
