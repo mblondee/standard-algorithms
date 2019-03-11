@@ -48,7 +48,7 @@ public class LSDRadixSort {
             // move data to aux
             for(int i = 0; i<arrayLength; i++){
                 // in array[i] get character at digit and find in count where to put it
-                // then increment in count such that next
+                // then increment in count such that it contains next index
                 aux[count[array[i].charAt(digit)]++] = array[i];
 
             }
