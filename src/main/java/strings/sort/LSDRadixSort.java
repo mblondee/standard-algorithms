@@ -15,8 +15,7 @@ package strings.sort;
 * sort a String[] array of n extended ASCII strings (R=256) of same length
 * sort an int[] array of n 32-bit integers, treating each integer as a sequence of 4 bytes (R=256)
 *
-* uses ~ 7 mn + 3 mr array accesses and extra space n + r
-* to sort n items of length m in an r-character alphabet
+* //TODO: charAt() for Strings is now linear, maybe other approach?
 * */
 
 public class LSDRadixSort {
