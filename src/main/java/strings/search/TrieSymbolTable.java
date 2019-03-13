@@ -3,7 +3,14 @@ package strings.search;
 /*
 * a symbol table of key-values pairs where the keys are strings
 * using a multiway trie
+*
+* return all keys with a given prefix
+* return all keys that match a pattern (with wildcards)
+* return longest prefix in set of keys of a given string
 * */
+
+import collections.queue.LinkedQueue;
+
 
 public class TrieSymbolTable<Value> {
 
@@ -136,6 +143,125 @@ public class TrieSymbolTable<Value> {
         }
         // if it is empty return null (remove it)
         return null;
+    }
+
+    /*
+    * return all keys as an Iterable
+    * */
+    public Iterable<String> keys(){
+        return keysWithPrefix("");
+    }
+
+    /*
+    * return all keys that start with {@code prefix}
+    * */
+    public Iterable<String> keysWithPrefix(String prefix){
+        LinkedQueue<String>  queue = new LinkedQueue<>();
+        // find node that contains prefix
+        Node<Value> node = get(root, prefix, 0);
+        // collect all keys that start from node
+        collect(node, new StringBuilder(prefix), queue);
+        return queue;
+    }
+
+    private void collect(Node node, StringBuilder string, LinkedQueue<String> queue){
+        if(node == null){
+            return;
+        }
+
+        if(node.value != null){
+            // if a key has been found add to queue
+            queue.enqueue(string.toString());
+        }
+
+        // if a key has not been found
+        for(char c = 0; c<RADIX; c++){
+            // append c
+            string.append(c);
+            // collect from c -> if there is no key it will eventually end in a null node
+            collect(node.next[c], string, queue);
+            // if string has been added to queue c can be removed (last char in string)
+            string.deleteCharAt(string.length()-1);
+        }
+    }
+
+
+    /*
+    * return all keys that match {@code pattern} where . is a wildcard
+    * will look for strings with length of wildcard
+    * */
+    public Iterable<String> keysThatMatch(String pattern){
+        LinkedQueue<String>  queue = new LinkedQueue<>();
+        collect(root, new StringBuilder(), pattern, queue);
+        return queue;
+    }
+
+    private void collect(Node node, StringBuilder string, String pattern, LinkedQueue<String> queue){
+        if(node == null){
+            return;
+        }
+        int d = string.length();
+        // suppose pattern has same length as string -> enqueue string if current node has a value (string is key)
+        if(pattern.length() == d && node.value != null){
+            queue.enqueue(string.toString());
+        }
+        // suppose pattern has same length as string but current node has no value (string is not a key)
+        if(pattern.length() == d){
+            // done we cannot find a match
+            return;
+        }
+        // else we still need to check next characters
+        char c = pattern.charAt(d);
+        if(c == '.'){
+            // all char are possible -> check them all
+            for(char ch = 0; ch < RADIX; ch++){
+                string.append(ch);
+                collect(node.next[ch], string, pattern, queue);
+                string.deleteCharAt(string.length()-1);
+            }
+        }
+        else{
+            // only c is possible as next char
+            string.append(c);
+            collect(node.next[c], string, pattern, queue);
+            string.deleteCharAt(string.length()-1);
+        }
+    }
+
+    /*
+    * returns the string that is the longest prefix of {@code string}
+    * */
+    public String longestPrefixOf(String string){
+        if(string == null){
+            throw new IllegalArgumentException("input cannot be null");
+        }
+        return longestPrefixOf(root, new StringBuilder(), string, 0, "");
+    }
+
+    private String longestPrefixOf(Node node, StringBuilder stringFitting, String string, int currentChar, String currentMatch){
+        // no more options return last match
+        if(node == null){
+            return currentMatch;
+        }
+        // string itself is a key
+        if(stringFitting.length() == string.length() && node.value != null){
+            return stringFitting.toString();
+        }
+        // we have reached the end of string but it is not a key
+        if(stringFitting.length() == string.length()){
+            return currentMatch;
+        }
+        // there are still characters to investigate
+        // next char that has to be matched
+        char c = string.charAt(currentChar);
+        if(node.next[c] != null){
+            stringFitting.append(c);
+            if(node.next[c].value != null){
+                currentMatch = stringFitting.toString();
+            }
+            return longestPrefixOf(node.next[c], stringFitting, string, currentChar+1 , currentMatch);
+        }
+        return currentMatch;
     }
 
 }
