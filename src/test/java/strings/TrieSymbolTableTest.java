@@ -36,5 +36,13 @@ public class TrieSymbolTableTest {
         assertFalse(ST.contains("halo"));
         assertFalse(ST.contains("haha"));
         assertEquals(1, ST.size());
+
+        assertFalse(ST.contains(""));
+
+        ST.put("", 2);
+        assertEquals(2, ST.size());
+        assertEquals(new Integer(2), ST.get(""));
+        assertEquals(new Integer(7), ST.get("hallo"));
+
     }
 }

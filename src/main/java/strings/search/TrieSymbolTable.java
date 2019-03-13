@@ -2,6 +2,7 @@ package strings.search;
 
 /*
 * a symbol table of key-values pairs where the keys are strings
+* using a multiway trie
 * */
 
 public class TrieSymbolTable<Value> {
