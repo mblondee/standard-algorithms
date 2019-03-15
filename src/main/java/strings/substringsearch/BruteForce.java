@@ -1,7 +1,7 @@
 package strings.substringsearch;
 
 /*
-* brute force implementation of substring search: search for pattern in text
+* brute force implementation of substring search: search for (first occurence of) pattern in text
 * */
 
 
