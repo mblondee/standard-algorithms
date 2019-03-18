@@ -3,6 +3,7 @@ package strings;
 import org.junit.Test;
 import strings.substringsearch.BruteForce;
 import strings.substringsearch.KMP;
+import strings.substringsearch.RabinKarp;
 
 import static org.junit.Assert.*;
 
@@ -25,5 +26,13 @@ public class SubStringTest {
         String text2 = "abracadabra";
         assertEquals(4, new KMP("cada").search(text2));
         assertEquals(4, new KMP("adabra").search(text1));
+    }
+
+    @Test
+    public void RabinKarp(){
+        String text1 = "abacadabrabracabracadabrabrabracad";
+        String text2 = "abracadabra";
+        assertEquals(4, new RabinKarp("cada").search(text2));
+        assertEquals(4, new RabinKarp("adabra").search(text1));
     }
 }
