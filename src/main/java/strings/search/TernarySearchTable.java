@@ -136,7 +136,7 @@ public class TernarySearchTable<Value> {
     }
 
     /*
-     * does the symbol contain {@code key}?
+     * does the table contain {@code key}?
      * */
     public boolean contains(String key){
         if(key == null){
@@ -171,6 +171,14 @@ public class TernarySearchTable<Value> {
 
         //right
         collect(node.right, string, queue);
+    }
+
+    /*
+    * is {@code prefix} a prefix of some word?
+    * */
+    public boolean isPrefix(String prefix){
+        Node<Value> node = get(root, prefix, 0);
+        return node != null;
     }
 
     public Iterable<String> keysWithPrefix(String prefix){
