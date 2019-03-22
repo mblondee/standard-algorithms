@@ -3,9 +3,12 @@ package strings;
 import graphs.directed.DirectedEdge;
 import org.junit.Assert;
 import org.junit.Test;
+import strings.applications.grep.Grep;
 import strings.search.NFA;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -106,6 +109,25 @@ public class RegExpTest {
         assertFalse(nfa.matches(""));
         assertTrue(nfa.matches("AB"));
         assertTrue(nfa.matches("ABAB"));
+    }
+
+    @Test
+    public void grepTest(){
+        String[] testArray = {"AC", "AD", "AAA", "ABD", "ADD", "BCD", "ABCCBD", "BABAAA", "BABBAAA"};
+        String[] testFilter = {"ABD","ABCCBD"};
+
+        ArrayList<String> filtered = new ArrayList<>();
+
+        Grep grep = new Grep("(A*B|AC)D");
+        for(String s: testArray){
+            if(grep.grepIt(s)){
+                filtered.add(s);
+            }
+        }
+
+        Assert.assertThat(filtered, IsIterableContainingInAnyOrder.containsInAnyOrder(testFilter
+        ));
+
     }
 
 }
