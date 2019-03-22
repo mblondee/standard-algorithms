@@ -100,4 +100,12 @@ public class RegExpTest {
         assertFalse(nfa.matches("BCA"));
     }
 
+    @Test
+    public void plusTest(){
+        NFA nfa = new NFA("(AB)+");
+        assertFalse(nfa.matches(""));
+        assertTrue(nfa.matches("AB"));
+        assertTrue(nfa.matches("ABAB"));
+    }
+
 }

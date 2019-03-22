@@ -11,9 +11,10 @@ package strings.search;
 * - two or more concatenated regular expressions: the cross product of the two sets of strings
 * - two or more regular expressions separated  by | (or): the union of the two sets of strings
 * - a regular expression followed by * (closure): any number of copies of the RE (also 0)
+* a regular expression followed by +: any number of copies of the RE (at least 1)
 *
 * assumption: all regexps are well defined, regexp may have wildcard '.' (can be any char)
-* string to test has no (,),*,|
+* string to test has no (,),*,|, +
 *
 * */
 
@@ -39,11 +40,11 @@ public class NFA {
 
         graph = new DiGraph<>();
         // the nfa has a state for each character in the regexp + an accept state
-        for(Integer i = 0; i<=reglength; i++){
+        for(int i = 0; i<=reglength; i++){
           graph.addVertex(i);
         }
 
-        for(Integer i = 0; i<reglength; i++){
+        for(int i = 0; i<reglength; i++){
             int leftParenthesis = i; //left parenthesis or current state
 
             if(regexp.charAt(i) == '(' || regexp.charAt(i) == '|'){
@@ -75,8 +76,13 @@ public class NFA {
                 graph.addEdge(new DirectedEdge<>(i+1, leftParenthesis));
             }
 
+            // is next char +?
+            if(i < reglength -1 && regexp.charAt(i+1) == '+'){
+                graph.addEdge(new DirectedEdge<>(i+1, leftParenthesis));
+            }
+
             // add epsilon transitions
-            if(regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')'){
+            if(regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')' || regexp.charAt(i) == '+'){
                 graph.addEdge(new DirectedEdge<>(i, i+1));
             }
 
