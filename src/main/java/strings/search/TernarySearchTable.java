@@ -2,7 +2,9 @@ package strings.search;
 
 /*
  * a symbol table of key-values pairs where the keys are strings
- * using ternary search trie
+ * using ternary search trie: a trie in which nodes store a single character and pointers to 3 children
+ * (kid, middle - low kid, left - high kid, right)
+ * if there is value present, the corresponding string (root -> node) is a valid string
  *
  * return all keys with a given prefix
  * return all keys that match a pattern (with wildcards)
