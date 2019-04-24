@@ -17,6 +17,9 @@ package advanceddesign.dynamicprogramming;
 * maxValue[i][w] = max(maxValue[i-1][w], maxValue[i-1][w-wi] + vi) if wi < w
 * maxValue[i][w] = maxValue[i-1][w] else
 *
+* running time of computing the maxValue table takes O(nW) time
+* computing the set of items in the knapsack given the maxValue table takes O(W+n) time
+*
 * */
 
 

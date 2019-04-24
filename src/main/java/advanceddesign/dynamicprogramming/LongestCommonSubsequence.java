@@ -14,7 +14,7 @@ package advanceddesign.dynamicprogramming;
 * LCS[i,j] = 1 + LCS[i-1, j-1]
 *
 * running time of computing the LCS table takes O(mn) time
-* computing a sequence giving the LCS table takes O(m+n) time
+* computing a sequence given the LCS table takes O(m+n) time
 *
 * */
 
