@@ -2,7 +2,7 @@ package advanceddesign.dynamicprogramming;
 
 /*
 * 0-1 Knapsack problem: A thief robbing a store finds n items. The ith item has a value vi and weight wi (integers). He can
-* carry at most W weight (integer) in his knapsack. Which items should he take.
+* carry at most W weight (integer) in his knapsack. Which items should he take in order to take as valuable a load as possible?
 *
 * Dynamic programming solution:
 * We make a table maxValue of dimensions n+1 x W+1
@@ -34,6 +34,8 @@ public class Knapsack {
 
     private int numberOfItems;
 
+    List<Integer> listOfItems; // items in knapsack
+
 
     public Knapsack(int[] values, int[] weights, int totalWeight){
         this.values = values;
@@ -42,6 +44,7 @@ public class Knapsack {
         this.numberOfItems = values.length;
         maxValue = new int[numberOfItems + 1][totalWeight + 1];
         makeTable();
+        computeItems();
     }
 
     private void makeTable(){
@@ -59,16 +62,8 @@ public class Knapsack {
         }
     }
 
-    public int[][] getMaxValue(){
-        return maxValue;
-    }
-
-    public int getTotalValue(){
-        return maxValue[numberOfItems][totalWeight];
-    }
-
-    public List<Integer> getItems(){
-        List<Integer> listOfItems = new ArrayList<>();
+    private void computeItems(){
+        listOfItems = new ArrayList<>();
 
         int item = numberOfItems;
         int weight = totalWeight;
@@ -85,9 +80,20 @@ public class Knapsack {
                 item--;
             }
         }
+    }
 
+    public List<Integer> getItems(){
         return listOfItems;
     }
+
+    public int[][] getMaxValue(){
+        return maxValue;
+    }
+
+    public int getTotalValue(){
+        return maxValue[numberOfItems][totalWeight];
+    }
+
 
 
 
