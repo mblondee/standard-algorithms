@@ -5,14 +5,16 @@ min heap: complete binary tree, minimum is at root
 children <= parent
 * */
 
+import problems.leetcode.ListNode;
+
 public class MinHeap {
 
-    private MinHeapNode[] heapArray;
+    private ListNode[] heapArray;
     private int heapSize; // current number of elements in min heap
 
     // build min heap from array of nodes
-    public MinHeap(MinHeapNode[] input){
-        heapSize = input.length;
+    public MinHeap(ListNode[] input, int heapSize){
+        this.heapSize = heapSize;
         heapArray = input;
         // last half are all trees of height one: satisfy the heap condition
         // first one that is not on the last row: parent of last element
@@ -21,10 +23,6 @@ public class MinHeap {
             heapify(first);
             first--;
         }
-    }
-
-    private static int getIndexParent(int position){
-        return (position-1)/2;
     }
 
     private static int getIndexLeftChild(int position){
@@ -36,7 +34,7 @@ public class MinHeap {
     }
 
     // return root (min element)
-    public MinHeapNode getMin(){
+    public ListNode getMin(){
         if(heapSize <= 0){
             return null;
         }
@@ -44,7 +42,7 @@ public class MinHeap {
     }
 
     // replace root with newNode
-    public void replaceMin(MinHeapNode newNode){
+    public void replaceMin(ListNode newNode){
         heapArray[0] = newNode;
         heapify(0);
     }
@@ -57,23 +55,23 @@ public class MinHeap {
         int rightChild = getIndexRightChild(index);
         int smallest = index;
         // compare index to leftChild (if leftChild exists!)
-        if( leftChild < heapSize && heapArray[leftChild].value < heapArray[index].value){
+        if( leftChild < heapSize && heapArray[leftChild].val < heapArray[index].val){
             smallest = leftChild;
         }
         // compare smallest to rightChild (if rightChild exists!)
-        if(rightChild < heapSize && heapArray[rightChild].value < heapArray[smallest].value){
+        if(rightChild < heapSize && heapArray[rightChild].val < heapArray[smallest].val){
             smallest = rightChild;
         }
         if(smallest != index){
             // replace index with smallest and do heapify on subtree
-            MinHeapNode temp = heapArray[index];
+            ListNode temp = heapArray[index];
             heapArray[index] = heapArray[smallest];
             heapArray[smallest] = temp;
             heapify(smallest);
         }
     }
 
-    public MinHeapNode[] getHeap(){
+    public ListNode[] getHeap(){
         return heapArray;
     }
 
@@ -82,6 +80,9 @@ public class MinHeap {
         heapArray[0] = heapArray[heapSize -1];
         heapArray[heapSize-1] = null;
         heapSize--;
+        if(heapSize == 0){
+            return;
+        }
         heapify(0);
     }
 
