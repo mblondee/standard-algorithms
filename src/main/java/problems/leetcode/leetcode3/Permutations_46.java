@@ -5,7 +5,7 @@ package problems.leetcode.leetcode3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Permutations {
+public class Permutations_46 {
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if(nums.length == 0){

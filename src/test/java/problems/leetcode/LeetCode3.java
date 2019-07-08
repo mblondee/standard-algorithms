@@ -1,6 +1,5 @@
 package problems.leetcode;
 
-import collections.applications.Permutation;
 import org.junit.Test;
 import problems.leetcode.leetcode3.*;
 
@@ -96,17 +95,44 @@ public class LeetCode3 {
 
     @Test
     public void testPermutations(){
-        List<List<Integer>> perm1 =Permutations.permute(new int[]{0,1,2});
+        List<List<Integer>> perm1 = Permutations_46.permute(new int[]{0,1,2});
         assertEquals(6, perm1.size());
 
-        List<List<Integer>> perm2 = Permutations.permute(new int[]{});
+        List<List<Integer>> perm2 = Permutations_46.permute(new int[]{});
         assertEquals(0, perm2.size());
     }
 
     @Test
     public void testPermutationsII(){
-        List<List<Integer>> perm1 =PermutationsII.permuteUnique(new int[]{1,1,2});
+        List<List<Integer>> perm1 = PermutationsII_47.permuteUnique(new int[]{1,1,2});
         assertEquals(3, perm1.size());
+    }
+
+    @Test
+    public void testRotateImage(){
+        int[][] matrix1 = {{1,2,3}, {4,5,6}, {7,8,9}};
+        RotateImage_48.rotate(matrix1);
+
+        int[][] matrix2 = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+        RotateImage_48.rotate(matrix2);
+    }
+
+    @Test
+    public void testGroupAnagrams(){
+        String[] test = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        List<List<String>> result = GroupAnagrams_49.groupAnagrams(test);
+        assertEquals(3, result.size());
+    }
+
+    @Test
+    public void testPow(){
+        assertEquals(4*4*4*4*4.0, Pow_50.myPow(4,5), 0.0001);
+
+        assertEquals(1024.00000, Pow_50.myPow(2.00000, 10), 0.0001);
+        assertEquals(9.26100, Pow_50.myPow(2.10000, 3), 0.0001);
+        assertEquals(0.25000, Pow_50.myPow(2.00000, -2), 0.0001);
+
+        assertEquals(0.0, Pow_50.myPow(2.000, Integer.MIN_VALUE), 0.0001);
     }
 }
 
