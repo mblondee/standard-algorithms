@@ -1,7 +1,10 @@
 package problems.leetcode;
 
+import collections.applications.Permutation;
 import org.junit.Test;
 import problems.leetcode.leetcode3.*;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -89,7 +92,21 @@ public class LeetCode3 {
         assertEquals(2, JumpGameII.jump(new int[]{2,3,1,1,4}));
         assertEquals(0, JumpGameII.jump(new int[]{2}));
         //assertEquals(Integer.MAX_VALUE, JumpGameII.jump(new int[]{0,3,1,1,4}));
+    }
 
+    @Test
+    public void testPermutations(){
+        List<List<Integer>> perm1 =Permutations.permute(new int[]{0,1,2});
+        assertEquals(6, perm1.size());
+
+        List<List<Integer>> perm2 = Permutations.permute(new int[]{});
+        assertEquals(0, perm2.size());
+    }
+
+    @Test
+    public void testPermutationsII(){
+        List<List<Integer>> perm1 =PermutationsII.permuteUnique(new int[]{1,1,2});
+        assertEquals(3, perm1.size());
     }
 }
 
