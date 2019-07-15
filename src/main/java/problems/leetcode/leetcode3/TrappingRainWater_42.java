@@ -8,7 +8,7 @@ package problems.leetcode.leetcode3;
 // x = min(highest-left, highest-right)
 // if x - height[i] > 0, then x - height[i] is the amount of water that can be hold index i
 
-public class TrappingRainWater {
+public class TrappingRainWater_42 {
     public static int trap(int[] height) {
         int[] left = computeLeft(height);
         int[] right = computeRight(height);

@@ -11,7 +11,7 @@ package problems.leetcode.leetcode3;
         s could be empty and contains only lowercase letters a-z.
         p could be empty and contains only lowercase letters a-z, and characters like ? or *.*/
 
-public class WildCardMatching {
+public class WildCardMatching_44 {
 
     // this one does too many backtracking
     public static boolean isMatch1(String s, String p) {

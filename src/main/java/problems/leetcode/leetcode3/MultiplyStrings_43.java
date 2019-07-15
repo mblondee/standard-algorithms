@@ -3,7 +3,7 @@ package problems.leetcode.leetcode3;
 /*Given two non-negative integers num1 and num2 represented as strings,
         return the product of num1 and num2, also represented as a string.*/
 
-public class MultiplyStrings {
+public class MultiplyStrings_43 {
 
     public static String multiply(String num1, String num2) {
         int len1 = num1.length();

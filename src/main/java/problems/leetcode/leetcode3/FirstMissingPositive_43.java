@@ -19,7 +19,7 @@ package problems.leetcode.leetcode3;
 * the first i such that A[i] != i+1 represents the missing positive number i+1
 * */
 
-public class FirstMissingPositive {
+public class FirstMissingPositive_43 {
     public static int firstMissingPositive(int[] nums) {
 
         if(nums.length == 0){

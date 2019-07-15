@@ -10,7 +10,7 @@ Given an array of non-negative integers, you are initially positioned at the fir
 
 import java.util.LinkedList;
 
-public class JumpGameII {
+public class JumpGameII_45 {
 
     public static int jump1(int[] nums) {
 
