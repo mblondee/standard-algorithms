@@ -261,28 +261,38 @@ public class LeetCode3 {
     }
 
     @Test
-    public void testInsertInterval(){
-        int[][] intervals1 = {{1,3}, {6,9}};
-        int[][] inserted1 = InsertInterval_57.insert(intervals1, new int[]{2,5});
-        int[][] result1 = {{1,5}, {6,9}};
-        for(int i = 0; i < result1.length; i++){
+    public void testInsertInterval() {
+        int[][] intervals1 = {{1, 3}, {6, 9}};
+        int[][] inserted1 = InsertInterval_57.insert(intervals1, new int[]{2, 5});
+        int[][] result1 = {{1, 5}, {6, 9}};
+        for (int i = 0; i < result1.length; i++) {
             assertArrayEquals(result1[i], inserted1[i]);
         }
 
 
-        int[][] intervals2 = {{1,3}, {6,9}, {10,11}};
-        int[][] inserted2 = InsertInterval_57.insert(intervals2, new int[]{2,5});
-        int[][] result2 = {{1,5}, {6,9}, {10,11}};
-        for(int i = 0; i < result2.length; i++){
+        int[][] intervals2 = {{1, 3}, {6, 9}, {10, 11}};
+        int[][] inserted2 = InsertInterval_57.insert(intervals2, new int[]{2, 5});
+        int[][] result2 = {{1, 5}, {6, 9}, {10, 11}};
+        for (int i = 0; i < result2.length; i++) {
             assertArrayEquals(result2[i], inserted2[i]);
         }
 
-        int[][] intervals3 = {{1,3}, {6,9}};
-        int[][] inserted3 = InsertInterval_57.insert(intervals3, new int[]{8,10});
-        int[][] result3 = {{1,3}, {6,10}};
-        for(int i = 0; i < result3.length; i++){
+        int[][] intervals3 = {{1, 3}, {6, 9}};
+        int[][] inserted3 = InsertInterval_57.insert(intervals3, new int[]{8, 10});
+        int[][] result3 = {{1, 3}, {6, 10}};
+        for (int i = 0; i < result3.length; i++) {
             assertArrayEquals(result3[i], inserted3[i]);
         }
     }
+
+        @Test
+        public void testLengthOfLastWord(){
+            assertEquals(5, LengthOfLastWord_58.lengthOfLastWord("Hello World"));
+            assertEquals(0, LengthOfLastWord_58.lengthOfLastWord(""));
+            assertEquals(0, LengthOfLastWord_58.lengthOfLastWord("   "));
+            assertEquals(2, LengthOfLastWord_58.lengthOfLastWord("ha"));
+            assertEquals(2, LengthOfLastWord_58.lengthOfLastWord("ha "));
+        }
+
 }
 
