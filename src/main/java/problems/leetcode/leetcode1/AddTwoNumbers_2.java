@@ -22,7 +22,7 @@ package problems.leetcode.leetcode1;
 
 import problems.leetcode.ListNode;
 
-public class AddTwoNumbers {
+public class AddTwoNumbers_2 {
 
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {

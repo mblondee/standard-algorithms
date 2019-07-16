@@ -25,7 +25,7 @@ Only the space character ' ' is considered as whitespace character.
 * INT_MAX (231 − 1) or INT_MIN (−231) is returned.
 * */
 
-public class StringToInteger {
+public class StringToInteger_8 {
 
     public static int myAtoi(String str) {
         if(str.length() == 0){

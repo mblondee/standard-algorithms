@@ -11,7 +11,7 @@ And then read line by line: "PAHNAPLSIIGYIR"
 Write the code that will take a string and make this conversion given a number of rows.
 * */
 
-public class ZigZagConversion {
+public class ZigZagConversion_6 {
 
     public static String convert(String s, int numRows){
         if(numRows == 1){

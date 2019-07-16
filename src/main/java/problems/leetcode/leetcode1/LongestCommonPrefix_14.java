@@ -11,7 +11,7 @@ If there is no common prefix, return an empty string "".
 // each iteration in for loop : at most length k of shortest string (of the two)
 // stringbuilder adding
 
-public class LongestCommonPrefix {
+public class LongestCommonPrefix_14 {
     public static String longestCommonPrefix(String[] strs) {
         if(strs.length == 0){
             return "";

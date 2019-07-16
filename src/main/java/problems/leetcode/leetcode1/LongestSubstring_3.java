@@ -12,7 +12,7 @@ package problems.leetcode.leetcode1;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubstring {
+public class LongestSubstring_3 {
 
     public static int lengthOfLongestSubstring(String s) {
 

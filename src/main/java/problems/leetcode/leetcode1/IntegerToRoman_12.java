@@ -20,7 +20,7 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 
 import java.util.HashMap;
 
-public class IntegerToRoman {
+public class IntegerToRoman_12 {
 
     public static String intToRoman(int num) {
         StringBuilder str = new StringBuilder();

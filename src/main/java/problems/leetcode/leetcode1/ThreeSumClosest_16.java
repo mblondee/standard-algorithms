@@ -8,7 +8,7 @@ package problems.leetcode.leetcode1;
 
 import java.util.Arrays;
 
-public class ThreeSumClosest {
+public class ThreeSumClosest_16 {
     public static int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int difference = Integer.MAX_VALUE;

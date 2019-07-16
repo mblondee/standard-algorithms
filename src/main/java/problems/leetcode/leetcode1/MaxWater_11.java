@@ -11,7 +11,7 @@ package problems.leetcode.leetcode1;
 //time complexity O(n)
 // space complexity O(1)
 
-public class MaxWater {
+public class MaxWater_11 {
 
     public static int maxArea(int[] height) {
 

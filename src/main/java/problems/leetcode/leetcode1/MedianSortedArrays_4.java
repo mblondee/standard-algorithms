@@ -7,7 +7,7 @@ package problems.leetcode.leetcode1;
 * You may assume nums1 and nums2 cannot be both empty.
 * */
 
-public class MedianSortedArrays {
+public class MedianSortedArrays_4 {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n = nums1.length;

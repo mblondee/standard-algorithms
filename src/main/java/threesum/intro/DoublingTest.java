@@ -9,7 +9,7 @@ public class DoublingTest {
 
 
     // return array of size n with random 6-digit integers
-    // return time to call ThreeSum.count();
+    // return time to call ThreeSum_15.count();
     public static double timeTrial(int n){
         int[] a = new int[n];
         for (int i = 0; i<n; i++){
@@ -21,7 +21,7 @@ public class DoublingTest {
     }
 
     // generate sequence of random input arrays
-    // print size array + running time ThreeSum for each array
+    // print size array + running time ThreeSum_15 for each array
     // doubling array size at each repetition
     public static void main(String[] args){
         for (int n = 250; true; n+=n){

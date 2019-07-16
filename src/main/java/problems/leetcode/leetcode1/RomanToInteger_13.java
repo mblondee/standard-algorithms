@@ -6,7 +6,7 @@ package problems.leetcode.leetcode1;
 
 import java.util.HashMap;
 
-public class RomanToInteger {
+public class RomanToInteger_13 {
     public static int romanToInt(String s) {
         HashMap<Character, Integer> dictionary = new HashMap<>();
         dictionary.put('I',1);

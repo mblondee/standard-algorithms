@@ -11,7 +11,7 @@ public class DoublingRatio {
     private DoublingRatio(){}
 
     // return array of size n with random 6-digit integers
-    // return time to call ThreeSum.count();
+    // return time to call ThreeSum_15.count();
     public static double timeTrial(int n){
         int[] a = new int[n];
         for (int i = 0; i<n; i++){
@@ -22,7 +22,7 @@ public class DoublingRatio {
         return timer.elapsedTime();
     }
 
-    // print table of running times to call ThreeSum.count()
+    // print table of running times to call ThreeSum_15.count()
     // for arrays of size 250, 500, 1000, 2000 and so on
     // as well as ratio of running times between successive array sizes
     public static void main(String[] args){

@@ -17,7 +17,7 @@ p could be empty and contains only lowercase letters a-z, and characters like . 
 // recursive solution -> check first 2 chars of p and first of s
 
 
-public class RegExMatching {
+public class RegExMatching_10 {
     public static boolean isMatch(String s, String p) {
         return helper(s,p,0,0,s.length(),p.length());
 

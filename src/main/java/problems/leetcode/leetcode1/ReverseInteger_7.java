@@ -4,7 +4,7 @@ package problems.leetcode.leetcode1;
 * Given a 32-bit signed integer, reverse digits of an integer.
 * */
 
-public class ReverseInteger {
+public class ReverseInteger_7 {
 
     public static int reverse(int x) {
 

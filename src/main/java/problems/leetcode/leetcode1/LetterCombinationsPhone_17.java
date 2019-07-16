@@ -2,7 +2,7 @@ package problems.leetcode.leetcode1;
 
 import java.util.*;
 
-public class LetterCombinationsPhone {
+public class LetterCombinationsPhone_17 {
 
     public static List<String> letterCombinations(String digits) {
 

@@ -9,7 +9,7 @@ package problems.leetcode.leetcode1;
 * space complexity O(1)
 * */
 
-public class LongestPalindromicSubstring {
+public class LongestPalindromicSubstring_5 {
 
     public static String longestPalindrome(String s) {
         if(s.length()== 0){

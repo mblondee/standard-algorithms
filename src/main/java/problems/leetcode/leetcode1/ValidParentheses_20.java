@@ -13,7 +13,7 @@ Note that an empty string is also considered valid.
 
 import java.util.Stack;
 
-public class ValidParentheses {
+public class ValidParentheses_20 {
     public static char LEFTPAR = '(';
     public static char RIGHPAR = ')';
     public static char LEFTCURL = '{';

@@ -4,7 +4,7 @@ package problems.leetcode.leetcode1;
 * Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
 * */
 
-public class PalindromeNumber {
+public class PalindromeNumber_9 {
     public static boolean isPalindrome(int x) {
         if(x < 0){
             return false;

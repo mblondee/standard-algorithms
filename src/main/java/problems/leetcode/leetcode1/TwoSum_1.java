@@ -7,7 +7,7 @@ package problems.leetcode.leetcode1;
 
 import java.util.HashMap;
 
-public class TwoSum {
+public class TwoSum_1 {
 
     public static int[] twoSum(int[] nums, int target){
         int[] result = new int[2];

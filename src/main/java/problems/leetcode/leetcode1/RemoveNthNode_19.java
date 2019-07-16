@@ -21,7 +21,7 @@ import problems.leetcode.ListNode;
  * }
  */
 
-public class RemoveNthNode {
+public class RemoveNthNode_19 {
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null){
             return null;
