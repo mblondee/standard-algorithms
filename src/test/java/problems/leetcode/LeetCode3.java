@@ -285,14 +285,47 @@ public class LeetCode3 {
         }
     }
 
-        @Test
-        public void testLengthOfLastWord(){
-            assertEquals(5, LengthOfLastWord_58.lengthOfLastWord("Hello World"));
-            assertEquals(0, LengthOfLastWord_58.lengthOfLastWord(""));
-            assertEquals(0, LengthOfLastWord_58.lengthOfLastWord("   "));
-            assertEquals(2, LengthOfLastWord_58.lengthOfLastWord("ha"));
-            assertEquals(2, LengthOfLastWord_58.lengthOfLastWord("ha "));
+    @Test
+    public void testLengthOfLastWord(){
+        assertEquals(5, LengthOfLastWord_58.lengthOfLastWord("Hello World"));
+        assertEquals(0, LengthOfLastWord_58.lengthOfLastWord(""));
+        assertEquals(0, LengthOfLastWord_58.lengthOfLastWord("   "));
+        assertEquals(2, LengthOfLastWord_58.lengthOfLastWord("ha"));
+        assertEquals(2, LengthOfLastWord_58.lengthOfLastWord("ha "));
+    }
+
+    @Test
+    public void testSpiralMatrixII(){
+        int[][] matrix3 = {{1,2,3}, {8,9,4}, {7,6,5}};
+        int[][] result3 = SpiralMatrixII_59.generateMatrix(3);
+        for(int i = 0; i < result3.length; i++){
+            assertArrayEquals(matrix3[i], result3[i]);
         }
+
+        int[][] matrix2 = {{1,2}, {4,3}};
+        int[][] result2 = SpiralMatrixII_59.generateMatrix(2);
+        for(int i = 0; i < result2.length; i++){
+            assertArrayEquals(matrix2[i], result2[i]);
+        }
+
+        int[][] matrix1 = {{1}};
+        int[][] result1 = SpiralMatrixII_59.generateMatrix(1);
+        for(int i = 0; i < result1.length; i++){
+            assertArrayEquals(matrix1[i], result1[i]);
+        }
+
+
+    }
+
+    @Test
+    public void testPermutationSequence(){
+        assertEquals("123", PermutationSequence_60.getPermutation(3,1));
+        assertEquals("132", PermutationSequence_60.getPermutation(3,2));
+        assertEquals("213", PermutationSequence_60.getPermutation(3,3));
+        assertEquals("231", PermutationSequence_60.getPermutation(3,4));
+        assertEquals("312", PermutationSequence_60.getPermutation(3,5));
+        assertEquals("321", PermutationSequence_60.getPermutation(3,6));
+    }
 
 }
 
