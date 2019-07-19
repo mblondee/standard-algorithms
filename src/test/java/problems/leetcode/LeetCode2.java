@@ -443,28 +443,28 @@ public class LeetCode2 {
     @Test
     public void testSearchRotatedSortedArray(){
         int[] test1 = {6,7,0,1,2,4,5};
-        assertEquals(-1, SearchRotatedSortedArray.search(test1, -1));
-        assertEquals(2, SearchRotatedSortedArray.search(test1, 0));
-        assertEquals(3, SearchRotatedSortedArray.search(test1, 1));
-        assertEquals(4, SearchRotatedSortedArray.search(test1, 2));
-        assertEquals(-1, SearchRotatedSortedArray.search(test1, 3));
-        assertEquals(5, SearchRotatedSortedArray.search(test1, 4));
-        assertEquals(6, SearchRotatedSortedArray.search(test1, 5));
-        assertEquals(0, SearchRotatedSortedArray.search(test1, 6));
-        assertEquals(1, SearchRotatedSortedArray.search(test1, 7));
-        assertEquals(-1, SearchRotatedSortedArray.search(test1, 8));
+        assertEquals(-1, SearchRotatedSortedArray_33.search(test1, -1));
+        assertEquals(2, SearchRotatedSortedArray_33.search(test1, 0));
+        assertEquals(3, SearchRotatedSortedArray_33.search(test1, 1));
+        assertEquals(4, SearchRotatedSortedArray_33.search(test1, 2));
+        assertEquals(-1, SearchRotatedSortedArray_33.search(test1, 3));
+        assertEquals(5, SearchRotatedSortedArray_33.search(test1, 4));
+        assertEquals(6, SearchRotatedSortedArray_33.search(test1, 5));
+        assertEquals(0, SearchRotatedSortedArray_33.search(test1, 6));
+        assertEquals(1, SearchRotatedSortedArray_33.search(test1, 7));
+        assertEquals(-1, SearchRotatedSortedArray_33.search(test1, 8));
 
         int[] test2 = {8,7};
-        assertEquals(0, SearchRotatedSortedArray.search(test2, 8));
-        assertEquals(1, SearchRotatedSortedArray.search(test2, 7));
-        assertEquals(-1, SearchRotatedSortedArray.search(test2, 0));
+        assertEquals(0, SearchRotatedSortedArray_33.search(test2, 8));
+        assertEquals(1, SearchRotatedSortedArray_33.search(test2, 7));
+        assertEquals(-1, SearchRotatedSortedArray_33.search(test2, 0));
 
         int[] test3 = {8};
-        assertEquals(0, SearchRotatedSortedArray.search(test3, 8));
-        assertEquals(-1, SearchRotatedSortedArray.search(test3, 7));
+        assertEquals(0, SearchRotatedSortedArray_33.search(test3, 8));
+        assertEquals(-1, SearchRotatedSortedArray_33.search(test3, 7));
 
         int[] test4 = {};
-        assertEquals(-1, SearchRotatedSortedArray.search(test4, 7));
+        assertEquals(-1, SearchRotatedSortedArray_33.search(test4, 7));
     }
 
     @Test

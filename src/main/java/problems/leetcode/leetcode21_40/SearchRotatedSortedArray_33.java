@@ -10,7 +10,8 @@ package problems.leetcode.leetcode21_40;
 
         Your algorithm's runtime complexity must be in the order of O(log n).*/
 
-public class SearchRotatedSortedArray {
+
+public class SearchRotatedSortedArray_33 {
 
     public static int search(int[] nums, int target) {
         if(nums.length == 0){
