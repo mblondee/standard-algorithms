@@ -1,7 +1,7 @@
 package problems.leetcode;
 
 import org.junit.Test;
-import problems.leetcode.leetcode1.*;
+import problems.leetcode.leetcode1_20.*;
 
 import java.util.Arrays;
 import java.util.List;
