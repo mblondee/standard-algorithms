@@ -3,7 +3,6 @@ package problems.leetcode;
 import org.junit.Test;
 import problems.leetcode.leetcode3.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
